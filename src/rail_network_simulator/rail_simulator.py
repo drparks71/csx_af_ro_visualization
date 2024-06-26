@@ -15,8 +15,8 @@ import matplotlib.pyplot as plt
 from scipy.sparse.csgraph import floyd_warshall
 import dill as pickle
 
-from civilpy.transportation.rail_network_simulator.analyzer import *
-from civilpy.transportation.rail_network_simulator.utils import *
+from src.rail_network_simulator.analyzer import *
+from src.rail_network_simulator.utils import *
 
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 

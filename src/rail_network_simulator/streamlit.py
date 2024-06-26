@@ -1,6 +1,6 @@
 import streamlit as st
 
-from civilpy.transportation.rail_network_simulator.rail_simulator import *
+from src.rail_network_simulator.rail_simulator import *
 
 # Use the full page instead of a narrow central column
 st.set_page_config(layout="wide")
@@ -9,7 +9,7 @@ st.markdown("<h1 style='text-align: center; color: teal;'>AF-RO Outage Visualize
 
 st.markdown("<h1 style='text-align: center; color: green;'>Construction Phases</h1>", unsafe_allow_html=True)
 
-phase1, phase2, phase3, phase4, phase5, phase6, phase7, phase8 = st.columns(8)
+phase1, phase2, phase3, phase4 = st.columns(4)
 
 with phase1:
     phase1.header('Phase 1')
@@ -27,21 +27,21 @@ with phase4:
     phase4.header('Phase 4')
     phase_4_opt_1 = st.checkbox("Option 1", key='const_phase_4_opt_1')
 
-with phase5:
-    phase5.header('Phase 5')
-    phase_5_opt_1 = st.checkbox("Option 1", key='const_phase_5_opt_1')
-
-with phase6:
-    phase6.header('Phase 6')
-    phase_6_opt_1 = st.checkbox("Option 1", key='const_phase_6_opt_1')
-
-with phase7:
-    phase7.header('Phase 7')
-    phase_7_opt_1 = st.checkbox("Option 1", key='const_phase_7_opt_1')
-
-with phase8:
-    phase8.header('Phase 8')
-    phase_8_opt_1 = st.checkbox("Option 1", key='const_phase_8_opt_1')
+# with phase5:
+#     phase5.header('Phase 5')
+#     phase_5_opt_1 = st.checkbox("Option 1", key='const_phase_5_opt_1')
+#
+# with phase6:
+#     phase6.header('Phase 6')
+#     phase_6_opt_1 = st.checkbox("Option 1", key='const_phase_6_opt_1')
+#
+# with phase7:
+#     phase7.header('Phase 7')
+#     phase_7_opt_1 = st.checkbox("Option 1", key='const_phase_7_opt_1')
+#
+# with phase8:
+#     phase8.header('Phase 8')
+#     phase_8_opt_1 = st.checkbox("Option 1", key='const_phase_8_opt_1')
 
 # Outage Selection Overrides
 st.markdown("<h1 style='text-align: center; color: green;'>Outage Selection Override</h1>", unsafe_allow_html=True)
@@ -62,10 +62,10 @@ with col2:
 
 with col3:
     col3.header('Slaters Lane-AF')
-    AFSlatersMain3Closed = st.checkbox("Main 3 Outage", key='AF_Slaters_main3_disabled')
-    AFSlatersMain2Closed = st.checkbox("Main 2 Outage", key='AF_Slaters_main2_disabled')
-    AFSlatersMain1Closed = st.checkbox("Main 1 Outage", key='AF_Slaters_main1_disabled')
     AFSlatersMain0Closed = st.checkbox("Main 0 Outage", key='AF_Slaters_main0_disabled')
+    AFSlatersMain1Closed = st.checkbox("Main 1 Outage", key='AF_Slaters_main1_disabled')
+    AFSlatersMain2Closed = st.checkbox("Main 2 Outage", key='AF_Slaters_main2_disabled')
+    AFSlatersMain3Closed = st.checkbox("Main 3 Outage", key='AF_Slaters_main3_disabled')
 
 with col4:
     col4.header('After AF')
@@ -98,15 +98,15 @@ RO.addNode("Proposed_3", 30, 2, label_color='white', voffset=.4)      # 3
 # Define Northern (High MP) Origins
 RO.addNode("Ex_2", 0, 8, label_color='white', voffset=.4)             # 4
 RO.addNode("Ex_3", 0, 6, label_color='white', voffset=.4)             # 5
-RO.addNode("Proposed_2_org", 6, 4)   # 6
-RO.addNode("Proposed_3_org", 10, 2)  # 7
+RO.addNode("Proposed_2_org", 6, 4)                                    # 6
+RO.addNode("Proposed_3_org", 10, 2)                                   # 7
 
 # Define Switch Points
 RO.addNode("1_S", 10, 8)             # 6
-RO.addNode("3_S", 12, 6)              # 7
+RO.addNode("3_S", 12, 6)             # 7
 RO.addNode("5_S", 16, 6)             # 8
-RO.addNode("7_S", 18, 8)            # 9
-RO.addNode("9_S", 16, 8)            # 10
+RO.addNode("7_S", 18, 8)             # 9
+RO.addNode("9_S", 16, 8)             # 10
 RO.addNode("11_S", 4, 6)             # 11
 RO.addNode("13_S", 20, 6)            # 12
 RO.addNode("15_S", 22, 4)            # 13
@@ -540,7 +540,7 @@ AF = World(
 # Define Southern (Low MP) Origins
 AF.addNode("NS Horn Track 1", 30, 1, label_color='white', voffset=.4, hoffset=1)        # 0
 AF.addNode("y1e", 24, 1)                                                                # 1
-AF.addNode("NS Horn Track 2", 30, 3.5, label_color='white', voffset=.4, hoffset=1)        # 2
+AF.addNode("NS Horn Track 2", 30, 3.5, label_color='white', voffset=.4, hoffset=1)      # 2
 AF.addNode("NS Horn Track 3", 30, 6, label_color='white', voffset=.4, hoffset=1)        # 3
 AF.addNode("Ex Main 3", 30, 8, label_color='white', voffset=.4, hoffset=.5)             # 4
 AF.addNode("Ex Main 2", 30, 10, label_color='white', voffset=.4, hoffset=.5)            # 5
@@ -548,7 +548,7 @@ AF.addNode("Ex Main 1", 30, 12, label_color='white', voffset=.4, hoffset=.5)    
 AF.addNode("NS_org", 16, 14)                                                            # 7
 AF.addNode("NS_yard", 30, 14, label_color='white', voffset=.4, hoffset=.25)             # 8
 AF.addNode("Setoff_org", 8, 14)                                                         # 9
-AF.addNode("Setoff Track", 1, 14, label_color='white', voffset=.4, hoffset=1)        # 10
+AF.addNode("Setoff Track", 1, 14, label_color='white', voffset=.4, hoffset=1)           # 10
 
 # Define Switches
 AF.addNode("1_S", 26.5, 3.5)            # 11
@@ -633,8 +633,9 @@ AF.addLink("2_5", "47_S", "Main 2", length=50, free_flow_speed=50, number_of_lan
 # Main 3 Segments
 AF.addLink("3_0", "NS Horn Track 3", "3_S", length=50, free_flow_speed=50, number_of_lanes=1, merge_priority=0.1)  # 38
 AF.addLink("3_1", "3_S", "5_S", length=50, free_flow_speed=50, number_of_lanes=1, merge_priority=0.1)              # 39
-AF.addLink("3_2", "5_S", "43_S", length=50, free_flow_speed=50, number_of_lanes=1, merge_priority=0.1)             # 40
-AF.addLink("3_3", "43_S", "Main 3", length=50, free_flow_speed=50, number_of_lanes=1, merge_priority=0.1)          # 41
+AF.addLink("3_2", "5_S", "6_S", length=50, free_flow_speed=50, number_of_lanes=1, merge_priority=0.1)              # 40
+AF.addLink("3_3", "6_S", "43_S", length=50, free_flow_speed=50, number_of_lanes=1, merge_priority=0.1)             # 41
+AF.addLink("3_4", "43_S", "Main 3", length=50, free_flow_speed=50, number_of_lanes=1, merge_priority=0.1)          # 42
 
 # Update the graph depending on what routes are closed
 # 1 combination with all 4 tracks closed
@@ -646,284 +647,272 @@ if AFSlatersMain0Closed and AFSlatersMain1Closed and AFSlatersMain2Closed and AF
 
 # 4 combos of 3 tracks closed
 elif AFSlatersMain0Closed and AFSlatersMain1Closed and AFSlatersMain2Closed:
-    # # Example of closing main 0/1/2
-    # AF.LINKS[1].color = 'red'  # 5-7X
-    # AF.LINKS[2].color = 'red'  # 9-11X
-    # AF.LINKS[3].color = 'red'  # 13-19X
-    # AF.LINKS[5].color = 'red'  # 25-29X
-    # AF.LINKS[6].color = 'red'  # 31-33X
-    # AF.LINKS[7].color = 'red'  # 37-39X
-    # AF.LINKS[9].color = 'red'  # 45-47X
-    # AF.LINKS[13].color = 'red'  # NS
-    # AF.LINKS[14].color = 'red'  # NS Yard
-    # AF.LINKS[17].color = 'red'  # 0_0
-    # AF.LINKS[18].color = 'red'  # 0_1
-    # AF.LINKS[19].color = 'red'  # 0_2
-    # AF.LINKS[21].color = 'red'  # 0_3
-    # AF.LINKS[22].color = 'red'  # 0_4
-    # AF.LINKS[23].color = 'red'  # 0_5
-    # AF.LINKS[24].color = 'red'  # 0_6
-    # AF.LINKS[29].color = 'red'  # 1_4
-    # AF.LINKS[30].color = 'red'  # 1_5
-    # AF.LINKS[31].color = 'red'  # 1_6
-    # AF.LINKS[32].color = 'red'  # 1_7
-    # AF.LINKS[37].color = 'red'  # 2_5
-    # AF.LINKS[38].color = 'red'  # 2_6
-    #
-    # AF.NODES[6].color = 'red'  # main1_org
-    # AF.NODES[7].color = 'red'  # NS_org
-    # AF.NODES[8].color = 'red'  # NS_Yard
-    # AF.NODES[14].color = 'red'  # 5_S
-    # AF.NODES[15].color = 'red'  # 7_S
-    # AF.NODES[16].color = 'red'  # 9_S
-    # AF.NODES[17].color = 'red'  # 11_S
-    # AF.NODES[18].color = 'red'  # 13_S
-    # AF.NODES[19].color = 'red'  # 19_S
-    # AF.NODES[23].color = 'red'  # 27_S
-    # AF.NODES[25].color = 'red'  # 31_S
-    # AF.NODES[26].color = 'red'  # 28_S
-    # AF.NODES[27].color = 'red'  # 35_S
-    # AF.NODES[22].color = 'red'  # 25_S
-    # AF.NODES[24].color = 'red'  # 29_S
-    # AF.NODES[28].color = 'red'  # 37_S
-    # AF.NODES[29].color = 'red'  # 39_S
-    # AF.NODES[32].color = 'red'  # 45_S
-    # AF.NODES[33].color = 'red'  # 47_S
-    # AF.NODES[34].color = 'red'  # main0_dest
-    # AF.NODES[35].color = 'red'  # Main1_dest
-    # AF.NODES[36].color = 'red'  # main2_dest
+    # Example of closing main 0/1/2
+    AF.LINKS[1].color = 'red'  # 25-29X
+    AF.LINKS[2].color = 'red'  # 9-11X
+    AF.LINKS[3].color = 'red'  # 13-19X
+    AF.LINKS[5].color = 'red'  # 25-29X
+    AF.LINKS[6].color = 'red'  # 31-33X
+    AF.LINKS[7].color = 'red'  # 37-39X
+    AF.LINKS[9].color = 'red'  # 45-47X
+    AF.LINKS[13].color = 'red'  # NS
+    AF.LINKS[14].color = 'red'  # NS Yard
+    AF.LINKS[17].color = 'red'  # 0_0
+    AF.LINKS[18].color = 'red'  # 0_1
+    AF.LINKS[19].color = 'red'  # 0_2
+    AF.LINKS[20].color = 'red'  # 0_3
+    AF.LINKS[21].color = 'red'  # 0_4
+    AF.LINKS[22].color = 'red'  # 0_5
+    AF.LINKS[23].color = 'red'  # 0_6
+    AF.LINKS[28].color = 'red'  # 1_4
+    AF.LINKS[29].color = 'red'  # 1_5
+    AF.LINKS[30].color = 'red'  # 1_6
+    AF.LINKS[31].color = 'red'  # 1_7
+    AF.LINKS[37].color = 'red'  # 2_5
+
+    AF.NODES[6].color = 'red'  # Ex Main 1
+    AF.NODES[7].color = 'red'  # NS_org
+    AF.NODES[8].color = 'red'  # NS_Yard
+    AF.NODES[15].color = 'red'  # 7_S
+    AF.NODES[16].color = 'red'  # 9_S
+    AF.NODES[17].color = 'red'  # 11_S
+    AF.NODES[18].color = 'red'  # 13_S
+    AF.NODES[19].color = 'red'  # 19_S
+    AF.NODES[23].color = 'red'  # 27_S
+    AF.NODES[25].color = 'red'  # 31_S
+    AF.NODES[26].color = 'red'  # 33_S
+    AF.NODES[27].color = 'red'  # 35_S
+    AF.NODES[22].color = 'red'  # 25_S
+    AF.NODES[24].color = 'red'  # 29_S
+    AF.NODES[28].color = 'red'  # 37_S
+    AF.NODES[29].color = 'red'  # 39_S
+    AF.NODES[32].color = 'red'  # 45_S
+    AF.NODES[33].color = 'red'  # 47_S
+    AF.NODES[34].color = 'red'  # Main 0
+    AF.NODES[35].color = 'red'  # Main 1
+    AF.NODES[36].color = 'red'  # Main 2
 
 elif AFSlatersMain0Closed and AFSlatersMain1Closed and AFSlatersMain3Closed:
-    # # Example of closing main 0/1/3
-    # AF.LINKS[7].color = 'red'  # 37-39X
-    # AF.LINKS[8].color = 'red'  # 41-43X
-    # AF.LINKS[22].color = 'red'  # 0_5
-    # AF.LINKS[23].color = 'red'  # 0_6
-    # AF.LINKS[31].color = 'red'  # 1_7
-    # AF.LINKS[41].color = 'red'  # 3_3
-    #
-    # AF.NODES[28].color = 'red'  # 37_S
-    # AF.NODES[29].color = 'red'  # 39_S
-    # AF.NODES[30].color = 'red'  # 41_S
-    # AF.NODES[31].color = 'red'  # 43_S
-    # AF.NODES[34].color = 'red'  # main0_dest
-    # AF.NODES[35].color = 'red'  # Main1_dest
-    # AF.NODES[37].color = 'red'  # main3_dest
+    # Example of closing main 0/1/3
+    AF.LINKS[7].color = 'red'   # 37-39X
+    AF.LINKS[8].color = 'red'   # 41-43X
+    AF.LINKS[10].color = 'red'  # yard1
+    AF.LINKS[11].color = 'red'  # y1_2
+    AF.LINKS[22].color = 'red'  # 0_5
+    AF.LINKS[23].color = 'red'  # 0_6
+    AF.LINKS[31].color = 'red'  # 1_7
+    AF.LINKS[40].color = 'red'  # 3_2
+    AF.LINKS[41].color = 'red'  # 3_3
+    AF.LINKS[42].color = 'red'  # 3_4
+
+    AF.NODES[0].color = 'red'   # NS Horn Track 1
+    AF.NODES[1].color = 'red'   # y1e
+    AF.NODES[14].color = 'red'  # 6_S
+    AF.NODES[29].color = 'red'  # 39_S
+    AF.NODES[31].color = 'red'  # 43_S
+    AF.NODES[34].color = 'red'  # main0_dest
+    AF.NODES[35].color = 'red'  # Main1_dest
+    AF.NODES[37].color = 'red'  # main3_dest
 
 elif AFSlatersMain0Closed and AFSlatersMain2Closed and AFSlatersMain3Closed:
-    # # Example of closing main 0/2/3
-    # AF.LINKS[4].color = 'red'  # 21-23X
-    # AF.LINKS[7].color = 'red'  # 37-39X
-    # AF.LINKS[8].color = 'red'  # 41-43X
-    # AF.LINKS[9].color = 'red'  # 45-47X
-    # AF.LINKS[22].color = 'red'  # 0_5
-    # AF.LINKS[23].color = 'red'  # 0_6
-    # AF.LINKS[34].color = 'red'  # 2_2
-    # AF.LINKS[35].color = 'red'  # 2_4
-    # AF.LINKS[36].color = 'red'  # 2_5
-    # AF.LINKS[37].color = 'red'  # 2_6
-    # AF.LINKS[40].color = 'red'  # 3_2
-    # AF.LINKS[41].color = 'red'  # 3_3
-    #
-    # AF.NODES[18].color = 'red'  # 17_S
-    # AF.NODES[20].color = 'red'  # 21_S
-    # AF.NODES[21].color = 'red'  # 23_S
-    # AF.NODES[28].color = 'red'  # 37_S
-    # AF.NODES[29].color = 'red'  # 39_S
-    # AF.NODES[30].color = 'red'  # 41_S
-    # AF.NODES[31].color = 'red'  # 43_S
-    # AF.NODES[32].color = 'red'  # 45_S
-    # AF.NODES[33].color = 'red'  # 47_S
-    # AF.NODES[34].color = 'red'  # main0_dest
-    # AF.NODES[36].color = 'red'  # main2_dest
-    # AF.NODES[37].color = 'red'  # main3_dest
+    # Example of closing main 0/2/3
+    AF.LINKS[4].color = 'red'  # 13-19X
+    AF.LINKS[7].color = 'red'  # 37-39X
+    AF.LINKS[8].color = 'red'  # 41-43X
+    AF.LINKS[9].color = 'red'  # 45-47X
+    AF.LINKS[10].color = 'red'  # yard1
+    AF.LINKS[11].color = 'red'  # y1_2
+    AF.LINKS[22].color = 'red'  # 0_5
+    AF.LINKS[23].color = 'red'  # 0_6
+    AF.LINKS[34].color = 'red'  # 2_2
+    AF.LINKS[35].color = 'red'  # 2_4
+    AF.LINKS[36].color = 'red'  # 2_5
+    AF.LINKS[37].color = 'red'  # 2_6
+    AF.LINKS[40].color = 'red'  # 3_2
+    AF.LINKS[41].color = 'red'  # 3_3
+
+    AF.NODES[0].color = 'red'   # NS Horn Track 1
+    AF.NODES[1].color = 'red'   # y1e
+    AF.NODES[14].color = 'red'  # 6_S
+    AF.NODES[21].color = 'red'  # 23_S
+    AF.NODES[29].color = 'red'  # 39_S
+    AF.NODES[30].color = 'red'  # 41_S
+    AF.NODES[31].color = 'red'  # 43_S
+    AF.NODES[33].color = 'red'  # 47_S
+    AF.NODES[34].color = 'red'  # main0_dest
+    AF.NODES[36].color = 'red'  # main2_dest
+    AF.NODES[37].color = 'red'  # main3_dest
 
 elif AFSlatersMain1Closed and AFSlatersMain2Closed and AFSlatersMain3Closed:
-    # # Example of closing main 1/2/3
-    # AF.LINKS[4].color = 'red'  # 21-23X
-    # AF.LINKS[6].color = 'red'  # 31-33X
-    # AF.LINKS[7].color = 'red'  # 37-39X
-    # AF.LINKS[8].color = 'red'  # 41-43X
-    # AF.LINKS[9].color = 'red'  # 45-47X
-    # AF.LINKS[28].color = 'red'  # 1_4
-    # AF.LINKS[29].color = 'red'  # 1_5
-    # AF.LINKS[30].color = 'red'  # 1_6
-    # AF.LINKS[31].color = 'red'  # 1_7
-    # AF.LINKS[34].color = 'red'  # 2_2
-    # AF.LINKS[35].color = 'red'  # 2_4
-    # AF.LINKS[36].color = 'red'  # 2_5
-    # AF.LINKS[37].color = 'red'  # 2_6
-    # AF.LINKS[40].color = 'red'  # 3_2
-    # AF.LINKS[41].color = 'red'  # 3_3
-    #
-    # AF.NODES[18].color = 'red'  # 13_S
-    # AF.NODES[20].color = 'red'  # 21_S
-    # AF.NODES[21].color = 'red'  # 23_S
-    # AF.NODES[25].color = 'red'  # 31_S
-    # AF.NODES[26].color = 'red'  # 33_S
-    # AF.NODES[28].color = 'red'  # 37_S
-    # AF.NODES[29].color = 'red'  # 39_S
-    # AF.NODES[30].color = 'red'  # 41_S
-    # AF.NODES[31].color = 'red'  # 43_S
-    # AF.NODES[32].color = 'red'  # 45_S
-    # AF.NODES[33].color = 'red'  # 47_S
-    # AF.NODES[35].color = 'red'  # Main1_dest
-    # AF.NODES[36].color = 'red'  # main2_dest
-    # AF.NODES[37].color = 'red'  # main3_dest
+    # Example of closing main 1/2/3
+    AF.LINKS[4].color = 'red'  # 21-23X
+    AF.LINKS[6].color = 'red'  # 31-33X
+    AF.LINKS[7].color = 'red'  # 37-39X
+    AF.LINKS[8].color = 'red'  # 41-43X
+    AF.LINKS[9].color = 'red'  # 45-47X
+    AF.LINKS[10].color = 'red'  # yard1
+    AF.LINKS[11].color = 'red'  # y1_2
+    AF.LINKS[28].color = 'red'  # 1_4
+    AF.LINKS[29].color = 'red'  # 1_5
+    AF.LINKS[30].color = 'red'  # 1_6
+    AF.LINKS[31].color = 'red'  # 1_7
+    AF.LINKS[34].color = 'red'  # 2_2
+    AF.LINKS[35].color = 'red'  # 2_4
+    AF.LINKS[36].color = 'red'  # 2_5
+    AF.LINKS[37].color = 'red'  # 2_6
+    AF.LINKS[40].color = 'red'  # 3_2
+    AF.LINKS[41].color = 'red'  # 3_3
+    AF.LINKS[42].color = 'red'  # 3_4
+
+    AF.NODES[0].color = 'red'   # NS Horn Track 1
+    AF.NODES[1].color = 'red'   # y1e
+    AF.NODES[14].color = 'red'  # 6_S
+    AF.NODES[21].color = 'red'  # 23_S
+    AF.NODES[26].color = 'red'  # 33_S
+    AF.NODES[28].color = 'red'  # 37_S
+    AF.NODES[30].color = 'red'  # 41_S
+    AF.NODES[31].color = 'red'  # 43_S
+    AF.NODES[32].color = 'red'  # 45_S
+    AF.NODES[33].color = 'red'  # 47_S
+    AF.NODES[35].color = 'red'  # Main1_dest
+    AF.NODES[36].color = 'red'  # main2_dest
+    AF.NODES[37].color = 'red'  # main3_dest
 
 # 6 combos of 2 tracks closed
 elif AFSlatersMain0Closed and AFSlatersMain1Closed:
-    # # Example of closing main 0/1
-    # AF.LINKS[7].color = 'red'  # 37-39X
-    # AF.LINKS[22].color = 'red'  # 0_5
-    # AF.LINKS[23].color = 'red'  # 0_6
-    # AF.LINKS[31].color = 'red'  # 1_7
-    #
-    # AF.NODES[28].color = 'red'  # 37_S
-    # AF.NODES[29].color = 'red'  # 39_S
-    # AF.NODES[34].color = 'red'  # main0_dest
-    # AF.NODES[35].color = 'red'  # Main1_dest
+    # Example of closing main 0/1
+    AF.LINKS[7].color = 'red'  # 37-39X
+    AF.LINKS[22].color = 'red'  # 0_5
+    AF.LINKS[23].color = 'red'  # 0_6
+    AF.LINKS[31].color = 'red'  # 1_7
+
+    AF.NODES[29].color = 'red'  # 39_S
+    AF.NODES[34].color = 'red'  # main0_dest
+    AF.NODES[35].color = 'red'  # Main1_dest
 
 elif AFSlatersMain0Closed and AFSlatersMain2Closed:
-    # # Example of closing main 0/2
-    # AF.LINKS[7].color = 'red'  # 37-39X
-    # AF.LINKS[9].color = 'red'  # 45-47X
-    # AF.LINKS[22].color = 'red'  # 0_5
-    # AF.LINKS[23].color = 'red'  # 0_6
-    # AF.LINKS[36].color = 'red'  # 2_5
-    # AF.LINKS[37].color = 'red'  # 2_6
-    #
-    # AF.NODES[28].color = 'red'  # 37_S
-    # AF.NODES[29].color = 'red'  # 39_S
-    # AF.NODES[32].color = 'red'  # 45_S
-    # AF.NODES[33].color = 'red'  # 47_S
-    # AF.NODES[34].color = 'red'  # main0_dest
-    # AF.NODES[36].color = 'red'  # main2_dest
+    # Example of closing main 0/2
+    AF.LINKS[7].color = 'red'  # 37-39X
+    AF.LINKS[9].color = 'red'  # 45-47X
+    AF.LINKS[22].color = 'red'  # 0_5
+    AF.LINKS[23].color = 'red'  # 0_6
+    AF.LINKS[36].color = 'red'  # 2_5
+    AF.LINKS[37].color = 'red'  # 2_6
+
+    AF.NODES[29].color = 'red'  # 39_S
+    AF.NODES[33].color = 'red'  # 47_S
+    AF.NODES[34].color = 'red'  # main0_dest
+    AF.NODES[36].color = 'red'  # main2_dest
 
 elif AFSlatersMain0Closed and AFSlatersMain3Closed:
-    # # Example of closing main 0/3
-    # AF.LINKS[7].color = 'red'  # 37-39X
-    # AF.LINKS[8].color = 'red'  # 41-43X
-    # AF.LINKS[22].color = 'red'  # 0_5
-    # AF.LINKS[23].color = 'red'  # 0_6
-    # AF.LINKS[41].color = 'red'  # 3_3
-    #
-    # AF.NODES[28].color = 'red'  # 37_S
-    # AF.NODES[29].color = 'red'  # 39_S
-    # AF.NODES[30].color = 'red'  # 41_S
-    # AF.NODES[31].color = 'red'  # 43_S
-    # AF.NODES[34].color = 'red'  # main0_dest
-    # AF.NODES[37].color = 'red'  # main3_dest
+    # Example of closing main 0/3
+    AF.LINKS[7].color = 'red'  # 37-39X
+    AF.LINKS[8].color = 'red'  # 41-43X
+    AF.LINKS[22].color = 'red'  # 0_5
+    AF.LINKS[23].color = 'red'  # 0_6
+    AF.LINKS[41].color = 'red'  # 3_3
+    AF.LINKS[42].color = 'red'  # 3_4
+
+    AF.NODES[29].color = 'red'  # 39_S
+    AF.NODES[31].color = 'red'  # 43_S
+    AF.NODES[34].color = 'red'  # main0_dest
+    AF.NODES[37].color = 'red'  # main3_dest
 
 elif AFSlatersMain1Closed and AFSlatersMain2Closed:
-    # # Example of closing main 1/2
-    # AF.LINKS[6].color = 'red'  # 31-33X
-    # AF.LINKS[9].color = 'red'  # 45-47X
-    # AF.LINKS[30].color = 'red'  # 1_6
-    # AF.LINKS[31].color = 'red'  # 1_7
-    # AF.LINKS[36].color = 'red'  # 2_5
-    # AF.LINKS[37].color = 'red'  # 2_6
-    #
-    # AF.NODES[25].color = 'red'  # 31_S
-    # AF.NODES[26].color = 'red'  # 33_S
-    # AF.NODES[32].color = 'red'  # 45_S
-    # AF.NODES[33].color = 'red'  # 47_S
-    # AF.NODES[35].color = 'red'  # Main1_dest
-    # AF.NODES[36].color = 'red'  # main2_dest
+    # Example of closing main 1/2
+    AF.LINKS[6].color = 'red'  # 31-33X
+    AF.LINKS[9].color = 'red'  # 45-47X
+    AF.LINKS[30].color = 'red'  # 1_6
+    AF.LINKS[31].color = 'red'  # 1_7
+    AF.LINKS[36].color = 'red'  # 2_5
+    AF.LINKS[37].color = 'red'  # 2_6
+
+    AF.NODES[32].color = 'red'  # 45_S
+    AF.NODES[33].color = 'red'  # 47_S
+    AF.NODES[35].color = 'red'  # Main1_dest
+    AF.NODES[36].color = 'red'  # main2_dest
 
 elif AFSlatersMain2Closed and AFSlatersMain3Closed:
-    # # Example of closing main 2/3
-    # AF.LINKS[4].color = 'red'  # 21-23X
-    # AF.LINKS[8].color = 'red'  # 41-43X
-    # AF.LINKS[9].color = 'red'  # 45-47X
-    # AF.LINKS[34].color = 'red'  # 2_2
-    # AF.LINKS[35].color = 'red'  # 2_4
-    # AF.LINKS[36].color = 'red'  # 2_5
-    # AF.LINKS[37].color = 'red'  # 2_6
-    # AF.LINKS[40].color = 'red'  # 3_2
-    # AF.LINKS[41].color = 'red'  # 3_3
-    #
-    # AF.NODES[18].color = 'red'  # 13_S
-    # AF.NODES[20].color = 'red'  # 21_S
-    # AF.NODES[21].color = 'red'  # 23_S
-    # AF.NODES[30].color = 'red'  # 41_S
-    # AF.NODES[31].color = 'red'  # 43_S
-    # AF.NODES[32].color = 'red'  # 45_S
-    # AF.NODES[33].color = 'red'  # 47_S
-    # AF.NODES[36].color = 'red'  # main2_dest
-    # AF.NODES[37].color = 'red'  # main3_dest
+    AF.LINKS[4].color = 'red'   # 21-23X
+    AF.LINKS[8].color = 'red'   # 41-43X
+    AF.LINKS[9].color = 'red'   # 45-47X
+    AF.LINKS[10].color = 'red'  # yard1
+    AF.LINKS[11].color = 'red'  # y1_2
+    AF.LINKS[34].color = 'red'  # 2_2
+    AF.LINKS[35].color = 'red'  # 2_3
+    AF.LINKS[36].color = 'red'  # 2_4
+    AF.LINKS[37].color = 'red'  # 2_5
+    AF.LINKS[40].color = 'red'  # 3_2
+    AF.LINKS[41].color = 'red'  # 3_3
+    AF.LINKS[42].color = 'red'  # 3_4
+
+    AF.NODES[0].color = 'red'   # NS Horn Track 1
+    AF.NODES[1].color = 'red'   # y1e
+    AF.NODES[14].color = 'red'  # 6_S
+    AF.NODES[21].color = 'red'  # 23_S
+    AF.NODES[30].color = 'red'  # 41_S
+    AF.NODES[31].color = 'red'  # 43_S
+    AF.NODES[33].color = 'red'  # 47_S
+    AF.NODES[37].color = 'red'  # Main 3
+    AF.NODES[36].color = 'red'  # Main 2
 
 elif AFSlatersMain1Closed and AFSlatersMain3Closed:
-    # # Example of closing main 1/3
-    # AF.LINKS[8].color = 'red'  # 41-43X
-    # AF.LINKS[31].color = 'red'  # 1_7
-    # AF.LINKS[41].color = 'red'  # 3_3
-    #
-    # AF.NODES[30].color = 'red'  # 41_S
-    # AF.NODES[31].color = 'red'  # 43_S
-    # AF.NODES[35].color = 'red'  # Main1_dest
-    # AF.NODES[37].color = 'red'  # main3_dest
+    # Example of closing main 1/3
+    AF.LINKS[8].color = 'red'   # 41-43X
+    AF.LINKS[10].color = 'red'  # yard1
+    AF.LINKS[11].color = 'red'  # y1_2
+    AF.LINKS[31].color = 'red'  # 1_7
+    AF.LINKS[40].color = 'red'  # 3_2
+    AF.LINKS[41].color = 'red'  # 3_3
+    AF.LINKS[42].color = 'red'  # 3_4
 
-elif AFSlatersMain3Closed and AFSlatersMain2Closed:
-    AF.LINKS[41].color = 'red'
-    AF.LINKS[40].color = 'red'
-    AF.LINKS[8].color = 'red'
-    AF.LINKS[4].color = 'red'
-    AF.LINKS[35].color = 'red'
-    AF.LINKS[36].color = 'red'
-    AF.LINKS[37].color = 'red'
-    AF.LINKS[9].color = 'red'
-    AF.LINKS[34].color = 'red'
+    AF.NODES[0].color = 'red'   # NS Horn Track 1
+    AF.NODES[1].color = 'red'   # y1e
+    AF.NODES[14].color = 'red'  # 6_S
+    AF.NODES[31].color = 'red'  # 43_S
+    AF.NODES[35].color = 'red'  # Main1_dest
+    AF.NODES[37].color = 'red'  # main3_dest
 
-    AF.NODES[20].color = 'red'
-    AF.NODES[21].color = 'red'
-    AF.NODES[30].color = 'red'
-    AF.NODES[31].color = 'red'
-    AF.NODES[37].color = 'red'
-    AF.NODES[32].color = 'red'
-    AF.NODES[33].color = 'red'
-    AF.NODES[36].color = 'red'
 
 # 4 versions of 1 track closed (0,0,0,0 is 16th possible combo and not included since it's the default state)
 elif AFSlatersMain3Closed:
-    AF.LINKS[8].color = 'red'
-    AF.LINKS[10].color = 'red'
-    AF.LINKS[11].color = 'red'
-    AF.LINKS[40].color = 'red'
-    AF.LINKS[41].color = 'red'
+    AF.LINKS[8].color = 'red'   # 41-43X
+    AF.LINKS[10].color = 'red'  # yard1
+    AF.LINKS[11].color = 'red'  # y1_2
+    AF.LINKS[40].color = 'red'  # 3_2
+    AF.LINKS[41].color = 'red'  # 3_3
+    AF.LINKS[42].color = 'red'  # 3_4
 
-    AF.NODES[0].color = 'red'
-    AF.NODES[1].color = 'red'
-    AF.NODES[14].color = 'red'
-    AF.NODES[30].color = 'red'
-    AF.NODES[31].color = 'red'
-    AF.NODES[37].color = 'red'
+    AF.NODES[0].color = 'red'   # NS Horn Track 1
+    AF.NODES[1].color = 'red'   # y1e
+    AF.NODES[14].color = 'red'  # 6_S
+    AF.NODES[31].color = 'red'  # 43_S
+    AF.NODES[37].color = 'red'  # Main 3
 
 
 elif AFSlatersMain2Closed:
-    AF.LINKS[36].color = 'red'
-    AF.LINKS[37].color = 'red'
-    AF.LINKS[9].color = 'red'
+    AF.LINKS[36].color = 'red'  # Main 2
+    AF.LINKS[37].color = 'red'  # Main 3
+    AF.LINKS[9].color = 'red'   # 45-47X
 
-    AF.NODES[30].color = 'red'
-    AF.NODES[32].color = 'red'
-    AF.NODES[33].color = 'red'
-    AF.NODES[36].color = 'red'
+    AF.NODES[30].color = 'red'  # 41_S
+    AF.NODES[32].color = 'red'  # 45_S
+    AF.NODES[33].color = 'red'  # 47_S
+    AF.NODES[36].color = 'red'  # Main 2
 
 elif AFSlatersMain1Closed:
-    AF.LINKS[31].color = 'red'
+    AF.LINKS[31].color = 'red'  # 1_7
 
-    AF.NODES[34].color = 'red'
-    AF.NODES[31].color = 'red'
+    AF.NODES[35].color = 'red'  # 2_3
 
 elif AFSlatersMain0Closed:
-    AF.LINKS[7].color = 'red'
-    AF.LINKS[23].color = 'red'
-    AF.LINKS[22].color = 'red'
+    AF.LINKS[7].color = 'red'   # 37-39X
+    AF.LINKS[22].color = 'red'  # 0_5
+    AF.LINKS[23].color = 'red'  # 0_6
 
-    AF.NODES[28].color = 'red'
-    AF.NODES[29].color = 'red'
-    AF.NODES[34].color = 'red'
+    AF.NODES[28].color = 'red'  # 1_4
+    AF.NODES[29].color = 'red'  # 1_5
+    AF.NODES[34].color = 'red'  # 2_2
 
 # Determine if the Routes are open or closed on either side of the interlocking
 AF.signal_attributes_low = {
@@ -947,6 +936,6 @@ AF.signal_attributes_high = {
 
 }
 
-AF.title = '←Slaters Lane                            AF                              FRANCONIA→'
+AF.title = '←Slaters Lane                            AF                              Franconia→'
 
 st.pyplot(AF.show_network(figsize=(20, 20)))
