@@ -2074,7 +2074,7 @@ class World:
 
         maxx = max([n.x for n in self.NODES])
         minx = min([n.x for n in self.NODES])
-        maxy = max([n.y for n in self.NODES])
+        maxy = max([n.y for n in self.NODES]) + 2
         miny = min([n.y for n in self.NODES])
         buffx, buffy = (maxx - minx) / 10, (maxy - miny) / 10
 
