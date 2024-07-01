@@ -142,135 +142,85 @@ if SlatersROMain3Closed and SlatersROMain2Closed and SlatersROMain1Closed and Sl
 
 # 4 combos of 3 tracks closed
 elif SlatersROMain0Closed and SlatersROMain1Closed and SlatersROMain2Closed:
-    pass
-    # # Example of closing main 0/1/2
-    # RO.LINKS[1].color = 'red'  # 5-7X
-    # RO.LINKS[2].color = 'red'  # 9-11X
-    # RO.LINKS[3].color = 'red'  # 13-19X
-    # RO.LINKS[5].color = 'red'  # 25-29X
-    # RO.LINKS[6].color = 'red'  # 31-33X
-    # RO.LINKS[7].color = 'red'  # 37-39X
-    # RO.LINKS[9].color = 'red'  # 45-47X
-    # RO.LINKS[13].color = 'red'  # NS
-    # RO.LINKS[14].color = 'red'  # NS Yard
-    # RO.LINKS[18].color = 'red'  # 0_0
-    # RO.LINKS[19].color = 'red'  # 0_1
-    # RO.LINKS[20].color = 'red'  # 0_2
-    # RO.LINKS[21].color = 'red'  # 0_3
-    # RO.LINKS[22].color = 'red'  # 0_4
-    # RO.LINKS[23].color = 'red'  # 0_5
-    # RO.LINKS[24].color = 'red'  # 0_6
-    # RO.LINKS[29].color = 'red'  # 1_4
-    # RO.LINKS[30].color = 'red'  # 1_5
-    # RO.LINKS[31].color = 'red'  # 1_6
-    # RO.LINKS[32].color = 'red'  # 1_7
-    # RO.LINKS[37].color = 'red'  # 2_5
-    # RO.LINKS[38].color = 'red'  # 2_6
-    #
-    # RO.NODES[6].color = 'red'  # main1_org
-    # RO.NODES[7].color = 'red'  # NS_org
-    # RO.NODES[8].color = 'red'  # NS_Yard
-    # RO.NODES[14].color = 'red'  # 5_S
-    # RO.NODES[15].color = 'red'  # 7_S
-    # RO.NODES[16].color = 'red'  # 9_S
-    # RO.NODES[17].color = 'red'  # 11_S
-    # RO.NODES[18].color = 'red'  # 13_S
-    # RO.NODES[19].color = 'red'  # 19_S
-    # RO.NODES[23].color = 'red'  # 27_S
-    # RO.NODES[25].color = 'red'  # 31_S
-    # RO.NODES[26].color = 'red'  # 28_S
-    # RO.NODES[27].color = 'red'  # 35_S
-    # RO.NODES[22].color = 'red'  # 25_S
-    # RO.NODES[24].color = 'red'  # 29_S
-    # RO.NODES[28].color = 'red'  # 37_S
-    # RO.NODES[29].color = 'red'  # 39_S
-    # RO.NODES[32].color = 'red'  # 45_S
-    # RO.NODES[33].color = 'red'  # 47_S
-    # RO.NODES[34].color = 'red'  # main0_dest
-    # RO.NODES[35].color = 'red'  # Main1_dest
-    # RO.NODES[36].color = 'red'  # main2_dest
+    RO.LINKS[0].color = 'red'   # Ex 2
+    RO.LINKS[1].color = 'red'   # 0_1
+    RO.LINKS[2].color = 'red'   # Main 0
+    RO.LINKS[4].color = 'red'   # 1_1
+    RO.LINKS[5].color = 'red'   # 1_2
+    RO.LINKS[6].color = 'red'   # 1_3
+    RO.LINKS[7].color = 'red'   # Main 1
+    RO.LINKS[10].color = 'red'  # 2_2
+    RO.LINKS[11].color = 'red'  # Main 2
+    RO.LINKS[14].color = 'red'  # 1-3
+    RO.LINKS[15].color = 'red'  # 5-7
+    RO.LINKS[16].color = 'red'  # 11-13
+
+    RO.NODES[0].color = 'red'   # Main 0
+    RO.NODES[1].color = 'red'   # Main 1
+    RO.NODES[2].color = 'red'   # Main 2
+    RO.NODES[4].color = 'red'   # Exisiting 2
+    RO.NODES[8].color = 'red'   # 1_S
+    RO.NODES[9].color = 'red'   # 3_S
+    RO.NODES[10].color = 'red'  # 5_S
+    RO.NODES[11].color = 'red'  # 7_S
+    RO.NODES[13].color = 'red'  # 11_S
+    RO.NODES[14].color = 'red'  # 13_S
 
 elif SlatersROMain0Closed and SlatersROMain1Closed and SlatersROMain3Closed:
-    pass
-    # # Example of closing main 0/1/3
-    # RO.LINKS[7].color = 'red'  # 37-39X
-    # RO.LINKS[8].color = 'red'  # 41-43X
-    # RO.LINKS[23].color = 'red'  # 0_5
-    # RO.LINKS[24].color = 'red'  # 0_6
-    # RO.LINKS[32].color = 'red'  # 1_7
-    # RO.LINKS[42].color = 'red'  # 3_3
-    #
-    # RO.NODES[28].color = 'red'  # 37_S
-    # RO.NODES[29].color = 'red'  # 39_S
-    # RO.NODES[30].color = 'red'  # 41_S
-    # RO.NODES[31].color = 'red'  # 43_S
-    # RO.NODES[34].color = 'red'  # main0_dest
-    # RO.NODES[35].color = 'red'  # Main1_dest
-    # RO.NODES[37].color = 'red'  # main3_dest
+    RO.LINKS[1].color = 'red'   # 0_1
+    RO.LINKS[2].color = 'red'   # Main 0
+    RO.LINKS[7].color = 'red'   # Main 1
+    RO.LINKS[12].color = 'red'  # 15_S
+    RO.LINKS[13].color = 'red'  # Main 3
+    RO.LINKS[15].color = 'red'  # 5-7
+
+    RO.NODES[0].color = 'red'    # Main 0
+    RO.NODES[1].color = 'red'    # Main 1
+    RO.NODES[3].color = 'red'    # Main 3
+    RO.NODES[7].color = 'red'    # Proposed_3_org
+    RO.NODES[11].color = 'red'   # 7_S
 
 elif SlatersROMain0Closed and SlatersROMain2Closed and SlatersROMain3Closed:
-    pass
-    # # Example of closing main 0/2/3
-    # RO.LINKS[4].color = 'red'  # 21-23X
-    # RO.LINKS[7].color = 'red'  # 37-39X
-    # RO.LINKS[8].color = 'red'  # 41-43X
-    # RO.LINKS[9].color = 'red'  # 45-47X
-    # RO.LINKS[23].color = 'red'  # 0_5
-    # RO.LINKS[24].color = 'red'  # 0_6
-    # RO.LINKS[35].color = 'red'  # 2_2
-    # RO.LINKS[35].color = 'red'  # 2_3
-    # RO.LINKS[36].color = 'red'  # 2_4
-    # RO.LINKS[37].color = 'red'  # 2_5
-    # RO.LINKS[38].color = 'red'  # 2_6
-    # RO.LINKS[41].color = 'red'  # 3_2
-    # RO.LINKS[42].color = 'red'  # 3_3
-    #
-    # RO.NODES[18].color = 'red'  # 17_S
-    # RO.NODES[20].color = 'red'  # 21_S
-    # RO.NODES[21].color = 'red'  # 23_S
-    # RO.NODES[28].color = 'red'  # 37_S
-    # RO.NODES[29].color = 'red'  # 39_S
-    # RO.NODES[30].color = 'red'  # 41_S
-    # RO.NODES[31].color = 'red'  # 43_S
-    # RO.NODES[32].color = 'red'  # 45_S
-    # RO.NODES[33].color = 'red'  # 47_S
-    # RO.NODES[34].color = 'red'  # main0_dest
-    # RO.NODES[36].color = 'red'  # main2_dest
-    # RO.NODES[37].color = 'red'  # main3_dest
+    RO.LINKS[1].color = 'red'    # 0_1
+    RO.LINKS[2].color = 'red'    # Main 0
+    RO.LINKS[8].color = 'red'    # 9_S
+    RO.LINKS[9].color = 'red'    # 2_1
+    RO.LINKS[10].color = 'red'   # 2_2
+    RO.LINKS[11].color = 'red'   # Main 2
+    RO.LINKS[12].color = 'red'   # 15_S
+    RO.LINKS[13].color = 'red'   # Main 3
+    RO.LINKS[15].color = 'red'   # 5-7
+    RO.LINKS[16].color = 'red'   # 11-13
+
+    RO.NODES[0].color = 'red'    # Main 0
+    RO.NODES[2].color = 'red'    # Main 2
+    RO.NODES[3].color = 'red'    # Main 3
+    RO.NODES[6].color = 'red'    # Proposed_2_org
+    RO.NODES[7].color = 'red'    # Proposed_3_org
+    RO.NODES[11].color = 'red'   # 7_S
+    RO.NODES[14].color = 'red'   # 13_S
+    RO.NODES[15].color = 'red'  # 15_S
 
 elif SlatersROMain1Closed and SlatersROMain2Closed and SlatersROMain3Closed:
-    pass
-    # # Example of closing main 1/2/3
-    # RO.LINKS[4].color = 'red'  # 21-23X
-    # RO.LINKS[6].color = 'red'  # 31-33X
-    # RO.LINKS[7].color = 'red'  # 37-39X
-    # RO.LINKS[8].color = 'red'  # 41-43X
-    # RO.LINKS[9].color = 'red'  # 45-47X
-    # RO.LINKS[29].color = 'red'  # 1_4
-    # RO.LINKS[30].color = 'red'  # 1_5
-    # RO.LINKS[31].color = 'red'  # 1_6
-    # RO.LINKS[32].color = 'red'  # 1_7
-    # RO.LINKS[35].color = 'red'  # 2_2
-    # RO.LINKS[36].color = 'red'  # 2_4
-    # RO.LINKS[37].color = 'red'  # 2_5
-    # RO.LINKS[38].color = 'red'  # 2_6
-    # RO.LINKS[41].color = 'red'  # 3_2
-    # RO.LINKS[42].color = 'red'  # 3_3
-    #
-    # RO.NODES[18].color = 'red'  # 13_S
-    # RO.NODES[20].color = 'red'  # 21_S
-    # RO.NODES[21].color = 'red'  # 23_S
-    # RO.NODES[25].color = 'red'  # 31_S
-    # RO.NODES[26].color = 'red'  # 33_S
-    # RO.NODES[28].color = 'red'  # 37_S
-    # RO.NODES[29].color = 'red'  # 39_S
-    # RO.NODES[30].color = 'red'  # 41_S
-    # RO.NODES[31].color = 'red'  # 43_S
-    # RO.NODES[32].color = 'red'  # 45_S
-    # RO.NODES[33].color = 'red'  # 47_S
-    # RO.NODES[35].color = 'red'  # Main1_dest
-    # RO.NODES[36].color = 'red'  # main2_dest
-    # RO.NODES[37].color = 'red'  # main3_dest
+    RO.LINKS[6].color = 'red'    # 1_3
+    RO.LINKS[7].color = 'red'    # Main 1
+    RO.LINKS[8].color = 'red'    # 9_S
+    RO.LINKS[9].color = 'red'    # 2_1
+    RO.LINKS[10].color = 'red'   # 2_2
+    RO.LINKS[11].color = 'red'   # Main 2
+    RO.LINKS[12].color = 'red'   # 15_S
+    RO.LINKS[13].color = 'red'   # Main 3
+    RO.LINKS[14].color = 'red'   # 1-3
+    RO.LINKS[16].color = 'red'   # 11-13
+
+    RO.NODES[1].color = 'red'    # Main 1
+    RO.NODES[2].color = 'red'    # Main 2
+    RO.NODES[3].color = 'red'    # Main 3
+    RO.NODES[6].color = 'red'    # Proposed_2_org
+    RO.NODES[7].color = 'red'    # Proposed_3_org
+    RO.NODES[13].color = 'red'   # 11_S
+    RO.NODES[14].color = 'red'   # 13_S
+    RO.NODES[15].color = 'red'   # 15_S
 
 # 6 combos of 2 tracks closed
 elif SlatersROMain0Closed and SlatersROMain1Closed:
@@ -307,7 +257,6 @@ elif SlatersROMain0Closed and SlatersROMain3Closed:
     RO.NODES[3].color = 'red'    # Main 3
     RO.NODES[7].color = 'red'    # Proposed_3_org
     RO.NODES[11].color = 'red'   # 7_S
-
 
 elif SlatersROMain1Closed and SlatersROMain2Closed:
     RO.LINKS[6].color = 'red'    # 1_3
@@ -393,7 +342,7 @@ RO.signal_attributes_low = {
 
 RO.title = "←L'Enfant                       RO (CFP 110.1/Sta. 325+00)                       Slaters Lane→"
 
-st.pyplot(RO.show_network(figsize=(20, 20)))
+st.pyplot(RO.show_network(figsize=(20, 20), show_links=True, show_switches=True))
 
 # =======================================        Slaters Lane      ==============================================
 
