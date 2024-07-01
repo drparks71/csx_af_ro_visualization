@@ -391,7 +391,7 @@ RO.signal_attributes_low = {
     'Proposed 3': (RO.LINKS[13].color, (27.5, 2.75), RO.LINKS[3].color)
 }
 
-RO.title = "←L'Enfant                          RO (CFP 110.1)                          Slaters Lane→"
+RO.title = "←L'Enfant                       RO (CFP 110.1/Sta. 325+00)                       Slaters Lane→"
 
 st.pyplot(RO.show_network(figsize=(20, 20)))
 
@@ -459,7 +459,7 @@ Slaters.addLink("9_11X", "9_S", "11_S", length=20)                    # 20
 Slaters.addLink("17_19X", "17_S", "19_S", length=20)                  # 21
 Slaters.addLink("21_23X", "21_S", "23_S", length=20)                  # 22
 
-Slaters.title = "←RO                         Slater's Lane (CFP 106.3)                           AF→"
+Slaters.title = "←RO                         Slater's Lane (CFP 106.3/Sta. 130+00)                           AF→"
 
 st.pyplot(Slaters.show_network(figsize=(20, 20)))
 
@@ -871,6 +871,6 @@ AF.signal_attributes_high = {
 
 }
 
-AF.title = '←Slaters Lane         AF (CFP 104.3)  sta.                             Franconia→'
+AF.title = '←Slaters Lane         AF (CFP 104.3/Sta. 25+00)                             Franconia→'
 
 st.pyplot(AF.show_network(figsize=(20, 20)))
