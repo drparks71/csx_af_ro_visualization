@@ -702,7 +702,6 @@ elif AFSlatersMain1Closed and AFSlatersMain3Closed:
     AF.NODES[35].color = 'red'  # Main1_dest
     AF.NODES[37].color = 'red'  # main3_dest
 
-
 # 4 versions of 1 track closed (0,0,0,0 is 16th possible combo and not included since it's the default state)
 elif AFSlatersMain3Closed:
     AF.LINKS[8].color = 'red'   # 41-43X
@@ -717,7 +716,6 @@ elif AFSlatersMain3Closed:
     AF.NODES[14].color = 'red'  # 6_S
     AF.NODES[31].color = 'red'  # 43_S
     AF.NODES[37].color = 'red'  # Main 3
-
 
 elif AFSlatersMain2Closed:
     AF.LINKS[36].color = 'red'  # Main 2
