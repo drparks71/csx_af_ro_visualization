@@ -27,21 +27,6 @@ with phase4:
     phase4.header('Phase 4')
     phase_4_opt_1 = st.checkbox("Option 1", key='const_phase_4_opt_1')
 
-# with phase5:
-#     phase5.header('Phase 5')
-#     phase_5_opt_1 = st.checkbox("Option 1", key='const_phase_5_opt_1')
-#
-# with phase6:
-#     phase6.header('Phase 6')
-#     phase_6_opt_1 = st.checkbox("Option 1", key='const_phase_6_opt_1')
-#
-# with phase7:
-#     phase7.header('Phase 7')
-#     phase_7_opt_1 = st.checkbox("Option 1", key='const_phase_7_opt_1')
-#
-# with phase8:
-#     phase8.header('Phase 8')
-#     phase_8_opt_1 = st.checkbox("Option 1", key='const_phase_8_opt_1')
 
 # Outage Selection Overrides
 st.markdown("<h1 style='text-align: center; color: green;'>Outage Selection Override</h1>", unsafe_allow_html=True)
@@ -49,9 +34,9 @@ st.markdown("<h1 style='text-align: center; color: green;'>Outage Selection Over
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    col1.header('Before RO')
-    option16 = st.checkbox("Main 2 Outage", key='After_RO_main2_disabled')
-    option17 = st.checkbox("Main 3 Outage", key='After_RO_main3_disabled')
+    col1.header('After RO')
+    Main2AfterRO = st.checkbox("Main 2 Outage", key='After_RO_main2_disabled')
+    Main3AfterRO = st.checkbox("Main 3 Outage", key='After_RO_main3_disabled')
 
 with col2:
     col2.header('RO-Slaters Lane')
@@ -68,7 +53,7 @@ with col3:
     AFSlatersMain3Closed = st.checkbox("Main 3 Outage", key='AF_Slaters_main3_disabled')
 
 with col4:
-    col4.header('After AF')
+    col4.header('Before AF')
     option1 = st.checkbox("Yard 1 Outage", key='pre_AF_yard1_disabled')
     option2 = st.checkbox("Yard 2 Outage", key='pre_AF_yard2_disabled')
     option3 = st.checkbox("Yard 3 Outage", key='pre_AF_yard3_disabled')
@@ -131,6 +116,36 @@ RO.addLink("Main 3", "Proposed_3_org", "Main 3", length=20)           # 13
 RO.addLink("1-3", "1_S", "3_S", length=20)                            # 14
 RO.addLink("5-7", "5_S", "7_S", length=20)                            # 15
 RO.addLink("11-13", "11_S", "13_S", length=20)                        # 16
+
+
+if Main2AfterRO & Main3AfterRO:
+    for link in RO.LINKS:
+        link.color = 'red'
+    for node in RO.NODES:
+        node.color = 'red'
+
+if Main2AfterRO:
+    RO.LINKS[0].color = 'red'     # Existing 2
+    RO.LINKS[1].color = 'red'     # 0_1
+    RO.LINKS[14].color = 'red'    # 1-3
+
+    RO.NODES[4].color = 'red'     # Existing 2
+    RO.NODES[8].color = 'red'     # 1_S
+
+elif Main3AfterRO:
+    RO.LINKS[3].color = 'red'   # Ex 3
+    RO.LINKS[4].color = 'red'   # 1_1
+    RO.LINKS[8].color = 'red'   # 9_S
+    RO.LINKS[9].color = 'red'   # 2_1
+    RO.LINKS[10].color = 'red'  # 2_2
+    RO.LINKS[12].color = 'red'  # 15_S
+    RO.LINKS[13].color = 'red'  # Main 3
+
+    RO.NODES[5].color = 'red'   # Existing 3
+    RO.NODES[6].color = 'red'   # Proposed_2_org
+    RO.NODES[7].color = 'red'   # Proposed_3_org
+    RO.NODES[12].color = 'red'  # 9_S
+    RO.NODES[15].color = 'red'  # 15_S
 
 # Update the graph depending on what routes are closed
 # 1 combination with all 4 tracks closed
@@ -341,76 +356,6 @@ RO.signal_attributes_low = {
 }
 
 RO.title = "←L'Enfant                       RO (CFP 110.1/Sta. 325+00)                       Slaters Lane→"
-
-st.pyplot(RO.show_network(figsize=(20, 20), show_links=True, show_switches=True))
-
-# =======================================        Slaters Lane      ==============================================
-
-# Create the World Object
-Slaters = World(
-    name="Slaters",
-    deltan=1,
-    tmax=1000,
-    print_mode=1, save_mode=0, show_mode=1,
-    random_seed=0
-)
-
-# Define Southern (Low MP) Origins
-Slaters.addNode("0_Slaters_RO", 30, 8)      # 0
-Slaters.addNode("1_Slaters_RO", 30, 6)      # 1
-Slaters.addNode("2_Slaters_RO", 30, 4)      # 2
-Slaters.addNode("3_Slaters_RO", 30, 2)      # 3
-
-# Define Northern (High MP) Origins
-Slaters.addNode("OOS_NS", 2.5, 10)          # 4
-Slaters.addNode("0_Slaters_AF", 0, 8)       # 5
-Slaters.addNode("1_Slaters_AF", 0, 6)       # 6
-Slaters.addNode("2_Slaters_AF", 0, 4)       # 7
-Slaters.addNode("3_Slaters_AF", 0, 2)       # 8
-
-# Define Switch Points
-Slaters.addNode("NS_OOS", 6, 10)            # 9
-Slaters.addNode("3_S", 8, 8)                # 10
-Slaters.addNode("5_S", 6, 2)                # 11
-Slaters.addNode("7_S", 8, 4)                # 12
-Slaters.addNode("9_S", 15, 4)               # 13
-Slaters.addNode("11_S", 17, 6)              # 14
-Slaters.addNode("13_S", 10, 6)              # 15
-Slaters.addNode("15_S", 12, 8)              # 16
-Slaters.addNode("17_S", 22, 8)              # 17
-Slaters.addNode("19_S", 24, 6)              # 18
-Slaters.addNode("21_S", 22, 4)              # 19
-Slaters.addNode("23_S", 24, 2)              # 20
-
-# Track Segments
-Slaters.addLink("PepCo  Lead", "OOS_NS", "NS_OOS", length=50)         # 1
-Slaters.addLink("3_S", "NS_OOS", "3_S", length=50)                    # 2
-Slaters.addLink("0_0", "0_Slaters_AF", "3_S", length=50)              # 3
-Slaters.addLink("0_1", "3_S", "15_S", length=50)                      # 4
-Slaters.addLink("0_2", "15_S", "17_S", length=50)                     # 5
-Slaters.addLink("0_3", "17_S", "0_Slaters_RO", length=50)             # 6
-Slaters.addLink("1_0", "1_Slaters_AF", "13_S", length=50)             # 7
-Slaters.addLink("1_1", "13_S", "11_S", length=50)                     # 8
-Slaters.addLink("1_2", "11_S", "19_S", length=50)                     # 9
-Slaters.addLink("1_3", "19_S", "1_Slaters_RO", length=50)             # 10
-Slaters.addLink("2_0", "2_Slaters_AF", "7_S", length=50)              # 11
-Slaters.addLink("2_1", "7_S", "9_S", length=50)                       # 12
-Slaters.addLink("2_2", "9_S", "21_S", length=50)                      # 13
-Slaters.addLink("2_3", "2_Slaters_RO", "21_S", length=50)             # 14
-Slaters.addLink("3_0", "3_Slaters_AF", "5_S", length=50)              # 15
-Slaters.addLink("3_1", "5_S", "23_S", length=50)                      # 16
-Slaters.addLink("3_2", "23_S", "3_Slaters_RO", length=50)             # 17
-
-# Cross Overs
-Slaters.addLink("13_15X", "13_S", "15_S", length=20)                  # 18
-Slaters.addLink("5_7X", "5_S", "7_S", length=20)                      # 19
-Slaters.addLink("9_11X", "9_S", "11_S", length=20)                    # 20
-Slaters.addLink("17_19X", "17_S", "19_S", length=20)                  # 21
-Slaters.addLink("21_23X", "21_S", "23_S", length=20)                  # 22
-
-Slaters.title = "←RO                         Slater's Lane (CFP 106.3/Sta. 130+00)                           AF→"
-
-st.pyplot(Slaters.show_network(figsize=(20, 20)))
 
 # ===========================================    AF    ===========================================================
 AF = World(
@@ -779,8 +724,6 @@ elif AFSlatersMain2Closed:
     AF.LINKS[37].color = 'red'  # Main 3
     AF.LINKS[9].color = 'red'   # 45-47X
 
-    AF.NODES[30].color = 'red'  # 41_S
-    AF.NODES[32].color = 'red'  # 45_S
     AF.NODES[33].color = 'red'  # 47_S
     AF.NODES[36].color = 'red'  # Main 2
 
@@ -821,5 +764,353 @@ AF.signal_attributes_high = {
 }
 
 AF.title = '←Slaters Lane         AF (CFP 104.3/Sta. 25+00)                             Franconia→'
+
+# =======================================      Slaters Lane        ==============================================
+
+# Create the World Object
+Slaters = World(
+    name="Slaters",
+    deltan=1,
+    tmax=1000,
+    print_mode=1, save_mode=0, show_mode=1,
+    random_seed=0
+)
+
+# Define Southern (Low MP) Origins
+Slaters.addNode("RO-Slaters Main 0", 0, 8, label_color='white', voffset=.4)        # 0
+Slaters.addNode("RO-Slaters Main 1", 0, 6, label_color='white', voffset=.4)        # 1
+Slaters.addNode("RO-Slaters Main 2", 0, 4, label_color='white', voffset=.4)        # 2
+Slaters.addNode("RO-Slaters Main 3", 0, 2, label_color='white', voffset=.4)        # 3
+
+# Define Northern (High MP) Origins
+Slaters.addNode("OOS_NS", 28.5, 10, label_color='white', voffset=.4, hoffset=-.5)    # 4
+Slaters.addNode("Slaters-AF Main 0", 30, 8, label_color='white', voffset=.4)         # 5
+Slaters.addNode("Slaters-AF Main 1", 30, 6, label_color='white', voffset=.4)         # 6
+Slaters.addNode("Slaters-AF Main 2", 30, 4, label_color='white', voffset=.4)         # 7
+Slaters.addNode("Slaters-AF Main 3", 30, 2, label_color='white', voffset=.4)         # 8
+
+# Define Switch Points
+Slaters.addNode("NS_OOS", 24, 10)            # 9
+Slaters.addNode("3_S", 22, 8)                # 10
+Slaters.addNode("5_S", 24, 2)                # 11
+Slaters.addNode("7_S", 22, 4)                # 12
+Slaters.addNode("9_S", 15, 4)                # 13
+Slaters.addNode("11_S", 13, 6)               # 14
+Slaters.addNode("13_S", 20, 6)               # 15
+Slaters.addNode("15_S", 18, 8)               # 16
+Slaters.addNode("17_S", 8, 8)                # 17
+Slaters.addNode("19_S", 6, 6)                # 18
+Slaters.addNode("21_S", 8, 4)                # 19
+Slaters.addNode("23_S", 6, 2)                # 20
+
+# Track Segments
+Slaters.addLink("PepCo  Lead", "OOS_NS", "NS_OOS", length=50)              # 0
+Slaters.addLink("3_S", "NS_OOS", "3_S", length=50)                         # 1
+Slaters.addLink("0_0", "Slaters-AF Main 0", "3_S", length=50)              # 2
+Slaters.addLink("0_1", "3_S", "15_S", length=50)                           # 3
+Slaters.addLink("0_2", "15_S", "17_S", length=50)                          # 4
+Slaters.addLink("0_3", "17_S", "RO-Slaters Main 0", length=50)             # 5
+Slaters.addLink("1_0", "Slaters-AF Main 1", "13_S", length=50)             # 6
+Slaters.addLink("1_1", "13_S", "11_S", length=50)                          # 7
+Slaters.addLink("1_2", "11_S", "19_S", length=50)                          # 8
+Slaters.addLink("1_3", "19_S", "RO-Slaters Main 1", length=50)             # 9
+Slaters.addLink("2_0", "Slaters-AF Main 2", "7_S", length=50)              # 10
+Slaters.addLink("2_1", "7_S", "9_S", length=50)                            # 11
+Slaters.addLink("2_2", "9_S", "21_S", length=50)                           # 12
+Slaters.addLink("2_3", "RO-Slaters Main 2", "21_S", length=50)             # 13
+Slaters.addLink("3_0", "Slaters-AF Main 3", "5_S", length=50)              # 14
+Slaters.addLink("3_1", "5_S", "23_S", length=50)                           # 15
+Slaters.addLink("3_2", "23_S", "RO-Slaters Main 3", length=50)             # 16
+
+# Cross Overs
+Slaters.addLink("13_15X", "13_S", "15_S", length=20)                       # 17
+Slaters.addLink("5_7X", "5_S", "7_S", length=20)                           # 18
+Slaters.addLink("9_11X", "9_S", "11_S", length=20)                         # 19
+Slaters.addLink("17_19X", "17_S", "19_S", length=20)                       # 20
+Slaters.addLink("21_23X", "21_S", "23_S", length=20)                       # 21
+
+# Match the links in slaters to their values in other areas
+Slaters.NODES[0].color = RO.NODES[0].color  # RO-Slaters Main 0
+Slaters.NODES[1].color = RO.NODES[1].color  # RO-Slaters Main 1
+Slaters.NODES[2].color = RO.NODES[2].color  # RO-Slaters Main 2
+Slaters.NODES[3].color = RO.NODES[3].color  # RO-Slaters Main 3
+
+Slaters.LINKS[5].color = RO.LINKS[2].color     # Slaters 0_3 = RO Main 0
+Slaters.LINKS[9].color = RO.LINKS[7].color     # Slaters 1_3 = RO Main 1
+Slaters.LINKS[13].color = RO.LINKS[11].color   # Slaters 2_3 = RO Main 2
+Slaters.LINKS[16].color = RO.LINKS[13].color   # Slaters 3_2 = RO Main 3
+
+Slaters.NODES[5].color = AF.NODES[34].color  # RO-Slaters Main 0
+Slaters.NODES[6].color = AF.NODES[35].color  # RO-Slaters Main 1
+Slaters.NODES[7].color = AF.NODES[36].color  # RO-Slaters Main 2
+Slaters.NODES[8].color = AF.NODES[37].color  # RO-Slaters Main 3
+
+Slaters.LINKS[2].color = AF.LINKS[23].color   # Slaters 0_0 = AF 0_6
+Slaters.LINKS[6].color = AF.LINKS[31].color   # Slaters 1_0 = AF 1_7
+Slaters.LINKS[10].color = AF.LINKS[37].color  # Slaters 2_0 = AF 2_5
+Slaters.LINKS[14].color = AF.LINKS[42].color  # Slaters 3_0 = AF 3_4
+
+# Either of all 4 tracks closed on either side
+if (AFSlatersMain0Closed and AFSlatersMain1Closed and AFSlatersMain2Closed and AFSlatersMain3Closed) \
+        or (SlatersROMain0Closed and SlatersROMain1Closed and SlatersROMain2Closed and SlatersROMain3Closed):
+    for link in Slaters.LINKS:
+        link.color = 'red'
+    for node in Slaters.NODES:
+        node.color = 'red'
+
+# All combos of 2 closed tracks
+elif SlatersROMain0Closed & SlatersROMain1Closed:
+    Slaters.LINKS[0].color = 'red'   # Pepco Lead
+    Slaters.LINKS[1].color = 'red'   # 3_S
+    Slaters.LINKS[2].color = 'red'   # 0_0
+    Slaters.LINKS[3].color = 'red'   # 0_1
+    Slaters.LINKS[4].color = 'red'   # 0_2
+    Slaters.LINKS[6].color = 'red'   # 1_0
+    Slaters.LINKS[7].color = 'red'   # 1_1
+    Slaters.LINKS[8].color = 'red'   # 1_2
+    Slaters.LINKS[17].color = 'red'  # 13_15X
+    Slaters.LINKS[19].color = 'red'  # 9_11X
+    Slaters.LINKS[20].color = 'red'  # 17_19X
+
+    Slaters.NODES[4].color = 'red'   # OOS_NS
+    Slaters.NODES[5].color = 'red'  # Slaters-AF Main 0
+    Slaters.NODES[6].color = 'red'  # Slaters-AF Main 1
+    Slaters.NODES[9].color = 'red'   # NS_OOS
+    Slaters.NODES[10].color = 'red'  # 3_S
+    Slaters.NODES[14].color = 'red'  # 11_S
+    Slaters.NODES[15].color = 'red'  # 13_S
+    Slaters.NODES[16].color = 'red'  # 15_S
+    Slaters.NODES[17].color = 'red'  # 17_S
+    Slaters.NODES[18].color = 'red'  # 18_S
+
+elif SlatersROMain0Closed & SlatersROMain2Closed:
+    # Comment to collapse in IDE
+    Slaters.LINKS[17].color = 'red'  # 13_15X
+
+elif SlatersROMain0Closed & SlatersROMain3Closed:
+    Slaters.NODES[20].color = 'red'  # 23_S
+
+    Slaters.LINKS[17].color = 'red'  # 13_15X
+    Slaters.LINKS[21].color = 'red'  # 21_23X
+    Slaters.LINKS[15].color = 'red'  # 3_1
+
+elif SlatersROMain1Closed & SlatersROMain2Closed:
+    Slaters.LINKS[7].color = 'red'   # 1_1
+    Slaters.LINKS[8].color = 'red'   # 1_2
+    Slaters.LINKS[18].color = 'red'  # 5_7X
+    Slaters.LINKS[19].color = 'red'  # 9_11X
+    Slaters.LINKS[20].color = 'red'  # 17_19X
+
+    Slaters.NODES[14].color = 'red'  # 11_S
+    Slaters.NODES[18].color = 'red'  # 19_S
+
+elif SlatersROMain1Closed & SlatersROMain3Closed:
+    Slaters.LINKS[7].color = 'red'   # 1_2
+    Slaters.LINKS[8].color = 'red'   # 1_1
+    Slaters.LINKS[19].color = 'red'  # 9_11X
+    Slaters.LINKS[20].color = 'red'  # 17_19X
+
+    Slaters.NODES[14].color = 'red'  # 11_S
+    Slaters.NODES[18].color = 'red'  # 19_S
+    Slaters.NODES[20].color = 'red'  # 23_S
+    Slaters.LINKS[21].color = 'red'  # 21_23X
+    Slaters.LINKS[15].color = 'red'  # 3_1
+
+elif SlatersROMain2Closed & SlatersROMain3Closed:
+    Slaters.NODES[19].color = 'red'  # 21_S
+    Slaters.NODES[20].color = 'red'  # 23_S
+
+    Slaters.LINKS[12].color = 'red'  # 2_2
+    Slaters.LINKS[15].color = 'red'  # 3_1
+    Slaters.LINKS[21].color = 'red'  # 21_23X
+
+elif SlatersROMain0Closed & AFSlatersMain0Closed:
+    Slaters.LINKS[0].color = 'red'   # Pepco Lead
+    Slaters.LINKS[1].color = 'red'  # 3_S
+    Slaters.LINKS[3].color = 'red'  # 0_1
+    Slaters.LINKS[4].color = 'red'  # 0_2
+    Slaters.LINKS[20].color = 'red'  # 17_19X
+    Slaters.LINKS[17].color = 'red'  # 13_15X
+
+    Slaters.NODES[10].color = 'red'  # 3_S
+    Slaters.NODES[16].color = 'red'  # 15_S
+    Slaters.NODES[17].color = 'red'  # 17_S
+    Slaters.NODES[4].color = 'red'   # OOS_NS
+    Slaters.NODES[9].color = 'red'   # NS_OOS
+
+elif SlatersROMain0Closed & AFSlatersMain1Closed:
+    Slaters.LINKS[7].color = 'red'   # 1_1
+    Slaters.LINKS[17].color = 'red'  # 13_15X
+
+    Slaters.NODES[15].color = 'red'  # 13_S
+
+
+# AF/Slaters Closed
+elif AFSlatersMain0Closed & AFSlatersMain1Closed:
+    Slaters.LINKS[0].color = 'red'  # Pepco Lead
+    Slaters.LINKS[1].color = 'red'  # 3_S
+    Slaters.LINKS[3].color = 'red'  # 0_1
+    Slaters.LINKS[4].color = 'red'  # 0_2
+    Slaters.LINKS[5].color = 'red'  # 0_3
+    Slaters.LINKS[7].color = 'red'  # 1_1X
+    Slaters.LINKS[17].color = 'red'  # 13_15X
+    Slaters.LINKS[20].color = 'red'  # 17_19X
+
+    Slaters.NODES[0].color = 'red'   # RO-Slaters Main 0
+    Slaters.NODES[4].color = 'red'   # OOS_NS
+    Slaters.NODES[9].color = 'red'   # NS_OOS
+    Slaters.NODES[10].color = 'red'  # 3_S
+    Slaters.NODES[15].color = 'red'  # 13_S
+    Slaters.NODES[16].color = 'red'  # 15_S
+    Slaters.NODES[17].color = 'red'  # 17_S
+
+elif AFSlatersMain0Closed & AFSlatersMain2Closed:
+    Slaters.LINKS[3].color = 'red'  # 0_1
+    Slaters.LINKS[20].color = 'red'  # 17_19X
+
+    Slaters.NODES[10].color = 'red'  # 3_S
+    Slaters.NODES[17].color = 'red'  # 17_S
+
+elif AFSlatersMain0Closed & AFSlatersMain3Closed:
+    Slaters.LINKS[3].color = 'red'   # 0_1
+    Slaters.LINKS[15].color = 'red'  # 3_1
+    Slaters.LINKS[18].color = 'red'  # 5_7X
+    Slaters.LINKS[20].color = 'red'  # 17_19X
+
+    Slaters.NODES[10].color = 'red'  # 3_S
+    Slaters.NODES[11].color = 'red'  # 5_S
+    Slaters.NODES[17].color = 'red'  # 17_S
+
+elif AFSlatersMain1Closed & AFSlatersMain2Closed:
+    Slaters.LINKS[7].color = 'red'  # 1_1
+    Slaters.LINKS[17].color = 'red'  # 13_15X
+
+    Slaters.NODES[15].color = 'red'  # 13_S
+
+elif AFSlatersMain1Closed & AFSlatersMain3Closed:
+    Slaters.LINKS[7].color = 'red'   # 1_1
+    Slaters.LINKS[15].color = 'red'  # 3_1
+    Slaters.LINKS[17].color = 'red'  # 13_15X
+    Slaters.LINKS[18].color = 'red'  # 5_7X
+
+    Slaters.NODES[11].color = 'red'  # 5_S
+    Slaters.NODES[15].color = 'red'  # 13_S
+
+elif AFSlatersMain2Closed & AFSlatersMain3Closed:
+    Slaters.LINKS[11].color = 'red'  # 2_1
+    Slaters.LINKS[12].color = 'red'  # 2_2
+    Slaters.LINKS[13].color = 'red'  # 2_3
+    Slaters.LINKS[15].color = 'red'  # 3_1
+    Slaters.LINKS[16].color = 'red'  # 3_2
+    Slaters.LINKS[18].color = 'red'  # 5_7X
+    Slaters.LINKS[19].color = 'red'  # 9_11X
+    Slaters.LINKS[21].color = 'red'  # 21_23X
+
+    Slaters.NODES[2].color = 'red'  # RO-Slaters Main 2
+    Slaters.NODES[3].color = 'red'  # RO-Slaters Main 3
+    Slaters.NODES[11].color = 'red'  # 5_S
+    Slaters.NODES[12].color = 'red'  # 7_S
+    Slaters.NODES[13].color = 'red'  # 9_S
+    Slaters.NODES[19].color = 'red'  # 21_S
+    Slaters.NODES[20].color = 'red'  # 23_S
+
+elif AFSlatersMain1Closed & SlatersROMain1Closed:
+    Slaters.LINKS[7].color = 'red'   # 1_1
+    Slaters.LINKS[8].color = 'red'   # 1_2
+    Slaters.LINKS[17].color = 'red'  # 13_15X
+    Slaters.LINKS[19].color = 'red'  # 9_11X
+    Slaters.LINKS[20].color = 'red'  # 17_19X
+
+    Slaters.NODES[14].color = 'red'  # 11_S
+    Slaters.NODES[18].color = 'red'  # 19_S
+    Slaters.NODES[15].color = 'red'  # 13_S
+
+elif AFSlatersMain2Closed & SlatersROMain2Closed:
+    Slaters.LINKS[11].color = 'red'  # 2_1
+    Slaters.LINKS[12].color = 'red'  # 2_2
+    Slaters.LINKS[18].color = 'red'  # 5_7X
+    Slaters.LINKS[19].color = 'red'  # 9_11X
+    Slaters.LINKS[21].color = 'red'  # 21_23X
+
+    Slaters.NODES[12].color = 'red'  # 7_S
+    Slaters.NODES[13].color = 'red'  # 9_S
+    Slaters.NODES[19].color = 'red'  # 21_S
+
+elif AFSlatersMain3Closed & SlatersROMain3Closed:
+    Slaters.LINKS[15].color = 'red'  # 3_1
+    Slaters.LINKS[18].color = 'red'  # 5_7X
+    Slaters.LINKS[21].color = 'red'  # 21_23X
+
+    Slaters.NODES[11].color = 'red'  # 5_S
+    Slaters.NODES[20].color = 'red'  # 23_S
+
+# 1 track of RO-Slaters Closed
+elif SlatersROMain0Closed and not (AFSlatersMain2Closed or AFSlatersMain3Closed):
+    # Comment to make the statement collapsible in IDE
+    Slaters.LINKS[17].color = 'red'  # 13_15X
+
+elif SlatersROMain1Closed:
+    Slaters.LINKS[7].color = 'red'   # 1_2
+    Slaters.LINKS[8].color = 'red'   # 1_1
+    Slaters.LINKS[19].color = 'red'  # 9_11X
+    Slaters.LINKS[20].color = 'red'  # 17_19X
+
+    Slaters.NODES[14].color = 'red'  # 11_S
+    Slaters.NODES[18].color = 'red'  # 19_S
+
+elif SlatersROMain2Closed:
+    # Handled by the associated track segment logic alone
+    pass
+
+elif SlatersROMain3Closed:
+    Slaters.NODES[20].color = 'red'  # 23_S
+    Slaters.LINKS[21].color = 'red'  # 21_23X
+    Slaters.LINKS[15].color = 'red'  # 3_1
+
+# 1 Track of AF - SlatersMain closed
+elif AFSlatersMain0Closed:
+    Slaters.LINKS[3].color = 'red'   # 0_1
+    Slaters.NODES[10].color = 'red'   # 3_S
+
+elif AFSlatersMain1Closed:
+    Slaters.LINKS[7].color = 'red'   # 1_1X
+    Slaters.LINKS[17].color = 'red'  # 13_15X
+
+    Slaters.NODES[15].color = 'red'  # 13_S
+
+elif AFSlatersMain2Closed:
+    # Handled by the associated track segment logic alone
+    pass
+
+elif AFSlatersMain3Closed:
+    Slaters.LINKS[15].color = 'red'  # 3_1
+    Slaters.LINKS[18].color = 'red'  # 5_7X
+
+    Slaters.NODES[11].color = 'red'  # 5_S
+
+# Determine if the Routes are open or closed on either side of the interlocking
+Slaters.signal_attributes_high = {
+    # Slaters RO (color, position, opp end color)
+    'Proposed 0': (Slaters.LINKS[5].color, (1, 6.75), Slaters.LINKS[2].color),
+    'Proposed 1': (Slaters.LINKS[9].color, (1, 4.75), Slaters.LINKS[6].color),
+    'Proposed 2': (Slaters.LINKS[13].color, (1, 2.75), Slaters.LINKS[10].color),
+    'Proposed 3': (Slaters.LINKS[16].color, (1, 0.75), Slaters.LINKS[14].color)
+}
+
+Slaters.signal_attributes_low = {
+    # AF to Slaters
+    'OOS_NS': (Slaters.LINKS[0].color, (27.5, 10.75), 'yard'),
+    'Proposed 0': (Slaters.LINKS[2].color, (27.5, 8.75), Slaters.LINKS[5].color),
+    'Proposed 1': (Slaters.LINKS[6].color, (27.5, 6.75), Slaters.LINKS[9].color),
+    'Proposed 2': (Slaters.LINKS[10].color, (27.5, 4.75), Slaters.LINKS[13].color),
+    'Proposed 3': (Slaters.LINKS[14].color, (27.5, 2.75), Slaters.LINKS[16].color)
+}
+
+
+Slaters.title = "←RO                         Slater's Lane (CFP 106.3/Sta. 130+00)                           AF→"
+
+st.pyplot(RO.show_network(figsize=(20, 20)))
+
+st.pyplot(Slaters.show_network(figsize=(20, 20)))
 
 st.pyplot(AF.show_network(figsize=(20, 20)))

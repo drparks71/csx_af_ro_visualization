@@ -190,7 +190,7 @@ class Node:
 
                 inlink = veh.link
 
-                # 累積台数関連更新
+                # cumulativeNumberRelatedUpdate
                 inlink.cum_departure[-1] += self.W.DELTAN
                 outlink.cum_arrival[-1] += self.W.DELTAN
                 inlink.traveltime_actual[
