@@ -1291,6 +1291,7 @@ class World:
         # Create a holder attribute for the signal attributes
         self.signal_attributes_low = {}
         self.signal_attributes_high = {}
+        self.breaks = []
         self.title = ''
 
         self.TMAX = tmax  # SimulationTime（s）
@@ -2098,8 +2099,9 @@ class World:
         ax.set_facecolor('black')
 
         # Vertical lines for the start and end of interlocking
-        plt.vlines(x=2, ymin=0, ymax=14.5, color='black', label='AF-Start', linewidth=15, zorder=9)
-        plt.vlines(x=27, ymin=0, ymax=14.5, color='black', label='AF-End', linewidth=15, zorder=9)
+        for x_value in self.breaks:
+            plt.vlines(x=x_value, ymin=0, ymax=14.5, color='black', label='AF-Start', linewidth=15, zorder=9)
+            plt.vlines(x=x_value, ymin=0, ymax=14.5, color='black', label='AF-End', linewidth=15, zorder=9)
 
         # Establish the limits of the plot
         plt.xlim([minx - buffx, maxx + buffx])
