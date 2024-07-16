@@ -2056,10 +2056,10 @@ class World:
                              horizontalalignment="center",
                              verticalalignment="center", zorder=30, fontsize=15)  # c, fontsize
                 else:
-                    plt.text(n.x - n.hoffset, n.y - n.voffset, n.name,
+                    plt.text(n.x - n.hoffset, n.y - (.25 + n.voffset), n.name,
                              c=n.label_color,
                              horizontalalignment="center",
-                             verticalalignment="center", zorder=3, fontsize=15)  # c, fontsize
+                             verticalalignment="center", zorder=3, fontsize=35)  # c, fontsize
         for l in self.LINKS:
             x1, y1 = l.start_node.x, l.start_node.y
             x2, y2 = l.end_node.x, l.end_node.y
