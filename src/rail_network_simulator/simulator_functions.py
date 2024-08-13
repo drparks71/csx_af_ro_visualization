@@ -388,6 +388,7 @@ class Link:
         self.color = 'green'
         # linkLength
         self.length = length
+        self.label_color = 'white'
 
         # NumberOfLanes
         self.lanes = int(number_of_lanes)
@@ -2054,7 +2055,7 @@ class World:
                     plt.text(n.x-n.hoffset, n.y-n.voffset, n.name,
                              c='White',
                              horizontalalignment="center",
-                             verticalalignment="center", zorder=30, fontsize=15)  # c, fontsize
+                             verticalalignment="center", zorder=30, fontsize=30)  # c, fontsize
                 else:
                     plt.text(n.x - n.hoffset, n.y - (.25 + n.voffset), n.name,
                              c=n.label_color,
@@ -2067,8 +2068,8 @@ class World:
             xmid1, ymid1 = (x1 + x2) / 2, (y1 + y2) / 2
             if show_links:
                 plt.plot([x1, x2], [y1, y2], color=l.color, lw=14, zorder=7, solid_capstyle="round")  # ms
-                plt.text(xmid1, ymid1, l.name, c="white", horizontalalignment="right", verticalalignment="top",
-                         zorder=30, fontsize=15)
+                plt.text(xmid1, ymid1, l.name, c=l.label_color, horizontalalignment="right", verticalalignment="top",
+                         zorder=30, fontsize=30)
 
             else:
                 plt.plot([x1, x2], [y1, y2], color=l.color, lw=14, zorder=7, solid_capstyle="round")  # ms
@@ -2100,8 +2101,8 @@ class World:
 
         # Vertical lines for the start and end of interlocking
         for x_value in self.breaks:
-            plt.vlines(x=x_value, ymin=0, ymax=14.5, color='black', label='AF-Start', linewidth=15, zorder=9)
-            plt.vlines(x=x_value, ymin=0, ymax=14.5, color='black', label='AF-End', linewidth=15, zorder=9)
+            plt.vlines(x=x_value, ymin=0, ymax=16.5, color='black', label='AF-Start', linewidth=15, zorder=9)
+            plt.vlines(x=x_value, ymin=0, ymax=16.5, color='black', label='AF-End', linewidth=15, zorder=9)
 
         # Establish the limits of the plot
         plt.xlim([minx - buffx, maxx + buffx])
