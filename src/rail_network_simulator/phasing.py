@@ -1,6 +1,14 @@
 from src.rail_network_simulator.network_definitions import TRV
 
+
 def existing_conditions():
+    # Reset the lines to all be green
+    for link in TRV.LINKS:
+        link.color = 'green'
+    for node in TRV.NODES:
+        node.color = 'green'
+
+    # Hide the lines that don't yet exist or are removed
     TRV.LINKS[99].color = 'black'
     TRV.LINKS[8].color = 'black'
     TRV.LINKS[9].color = 'black'
@@ -44,6 +52,16 @@ def existing_conditions():
     TRV.LINKS[80].color = 'black'
     TRV.LINKS[44].color = 'black'
     TRV.LINKS[81].color = 'green'
+    TRV.LINKS[102].color = 'black'
+    TRV.LINKS[103].color = 'black'
+    TRV.LINKS[104].color = 'black'
+    TRV.LINKS[105].color = 'black'
+    TRV.LINKS[106].color = 'black'
+    TRV.LINKS[107].color = 'black'
+    TRV.LINKS[108].color = 'black'
+    TRV.LINKS[109].color = 'black'
+    TRV.LINKS[110].color = 'black'
+
 
     TRV.NODES[6].color = 'black'
     TRV.NODES[7].color = 'black'
@@ -70,6 +88,13 @@ def existing_conditions():
     TRV.NODES[38].color = 'black'
     TRV.NODES[39].color = 'black'
     TRV.NODES[37].color = 'black'
+    TRV.NODES[93].color = 'black'
+    TRV.NODES[99].color = 'black'
+    TRV.NODES[97].color = 'black'
+    TRV.NODES[96].color = 'black'
+    TRV.NODES[95].color = 'black'
+    TRV.NODES[94].color = 'black'
+    TRV.NODES[101].color = 'black'
 
     # Hide tracks names that aren't open to traffic yet
     TRV.NODES[18].label_color = 'black'
@@ -90,26 +115,28 @@ def existing_conditions():
     TRV.NODES[40].name = 'NS Horn 1'
     TRV.NODES[91].name = 'NS Yard'
 
-    try:
-        # Get rid of signals that don't exist yet
-        del TRV.signal_attributes_low['Proposed 2']
-        del TRV.signal_attributes_low['Proposed 3']
-        del TRV.signal_attributes_low['NS Horn Track 1']
-        del TRV.signal_attributes_low['NS Horn Track 2']
-        del TRV.signal_attributes_low['slaters_Proposed 2_8']
-        del TRV.signal_attributes_low['slaters_Proposed 3_9']
+    # Get rid of signals that don't exist yet
+    TRV.signal_attributes_low['Proposed 2'][3] = False
+    TRV.signal_attributes_low['Proposed 3'][3] = False
+    TRV.signal_attributes_low['NS Horn Track 1'][3] = False
+    TRV.signal_attributes_low['NS Horn Track 2'][3] = False
+    TRV.signal_attributes_low['slaters_Proposed 2_8'][3] = False
+    TRV.signal_attributes_low['slaters_Proposed 3_9'][3] = False
 
-        del TRV.signal_attributes_high['Main 2_2']
-        del TRV.signal_attributes_high['Main 3_2']
-        del TRV.signal_attributes_high['slaters_Proposed 2_3']
-        del TRV.signal_attributes_high['slaters_Proposed 3_4']
-    except KeyError:
-        pass
+    TRV.signal_attributes_high['Main 2_2'][3] = False
+    TRV.signal_attributes_high['Main 3_2'][3] = False
+    TRV.signal_attributes_high['slaters_Proposed 2_3'][3] = False
+    TRV.signal_attributes_high['slaters_Proposed 3_4'][3] = False
 
-def phase1A_staging():
-    # Examples of Manipulating Nodes/Links
-    # TRV.LINKS[12].label_color = 'black'
-    # TRV.LINKS[12].name = 'Hello'
+
+def phase_1_stage_1a():
+    # Reset the lines to all be green
+    for link in TRV.LINKS:
+        link.color = 'green'
+    for node in TRV.NODES:
+        node.color = 'green'
+
+    # Define the links as they exist in 1B
     TRV.LINKS[8].color = 'black'
     TRV.LINKS[9].color = 'black'
     TRV.LINKS[10].color = 'black'
@@ -154,6 +181,15 @@ def phase1A_staging():
     TRV.LINKS[81].color = 'green'
     TRV.LINKS[99].color = 'green'
     TRV.LINKS[100].color = 'black'
+    TRV.LINKS[102].color = 'black'
+    TRV.LINKS[103].color = 'black'
+    TRV.LINKS[104].color = 'black'
+    TRV.LINKS[105].color = 'black'
+    TRV.LINKS[106].color = 'black'
+    TRV.LINKS[107].color = 'black'
+    TRV.LINKS[108].color = 'black'
+    TRV.LINKS[109].color = 'black'
+    TRV.LINKS[110].color = 'black'
 
     TRV.NODES[6].color = 'black'
     TRV.NODES[7].color = 'black'
@@ -180,6 +216,13 @@ def phase1A_staging():
     TRV.NODES[38].color = 'black'
     TRV.NODES[39].color = 'black'
     TRV.NODES[37].color = 'black'
+    TRV.NODES[93].color = 'black'
+    TRV.NODES[99].color = 'black'
+    TRV.NODES[97].color = 'black'
+    TRV.NODES[96].color = 'black'
+    TRV.NODES[95].color = 'black'
+    TRV.NODES[94].color = 'black'
+    TRV.NODES[101].color = 'black'
 
     # Hide tracks names that aren't open to traffic yet
     TRV.NODES[18].label_color = 'black'
@@ -221,8 +264,8 @@ def phase1A_staging():
     TRV.LINKS[64].color = 'red'
     TRV.LINKS[65].color = 'red'
 
-
     TRV.NODES[1].color = 'red'
+    TRV.NODES[2].color = 'red'
     TRV.NODES[5].color = 'red'
     TRV.NODES[12].color = 'red'
     TRV.NODES[30].color = 'red'
@@ -243,20 +286,142 @@ def phase1A_staging():
     TRV.NODES[49].color = 'red'
     TRV.NODES[40].color = 'red'
 
+    # Get rid of signals that don't exist yet
+    TRV.signal_attributes_low['Proposed 2'][3] = False
+    TRV.signal_attributes_low['Proposed 3'][3] = False
+    TRV.signal_attributes_low['NS Horn Track 1'][3] = False
+    TRV.signal_attributes_low['NS Horn Track 2'][3] = False
+    TRV.signal_attributes_low['slaters_Proposed 2_8'][3] = False
+    TRV.signal_attributes_low['slaters_Proposed 3_9'][3] = False
+
+    TRV.signal_attributes_high['Main 2_2'][3] = False
+    TRV.signal_attributes_high['Main 3_2'][3] = False
+    TRV.signal_attributes_high['slaters_Proposed 2_3'][3] = False
+    TRV.signal_attributes_high['slaters_Proposed 3_4'][3] = False
 
 
-    try:
-        # Get rid of signals that don't exist yet
-        del TRV.signal_attributes_low['Proposed 2']
-        del TRV.signal_attributes_low['Proposed 3']
-        del TRV.signal_attributes_low['NS Horn Track 1']
-        del TRV.signal_attributes_low['NS Horn Track 2']
-        del TRV.signal_attributes_low['slaters_Proposed 2_8']
-        del TRV.signal_attributes_low['slaters_Proposed 3_9']
+def phase_1_stage_1b():
+    # Reset the lines to all be green
+    for link in TRV.LINKS:
+        link.color = 'green'
+    for node in TRV.NODES:
+        node.color = 'green'
 
-        del TRV.signal_attributes_high['Main 2_2']
-        del TRV.signal_attributes_high['Main 3_2']
-        del TRV.signal_attributes_high['slaters_Proposed 2_3']
-        del TRV.signal_attributes_high['slaters_Proposed 3_4']
-    except KeyError:
-        pass
+    # New Tracks
+    red_links = [7, 9, 10, 11, 16, 12, 13, 22, 23, 24, 25, 36, 69, 109]
+    for x in red_links:
+        TRV.LINKS[x].color = 'red'
+
+    # Hide tracks unavailable to trains
+    black_links = [8, 108, 100, 102, 103, 104, 105, 106, 107, 29, 37, 32, 28, 31, 27, 26, 30, 75, 80, 74, 73, 79,
+                   35, 34, 45, 43, 33, 18, 47, 46, 42, 72, 41, 72, 71, 70, 44, 49, 38, 39, 50, 48]
+    for x in black_links:
+        TRV.LINKS[x].color = 'black'
+
+    TRV.NODES[93].color = 'black'
+    TRV.NODES[99].color = 'black'
+    TRV.NODES[97].color = 'black'
+    TRV.NODES[96].color = 'black'
+    TRV.NODES[95].color = 'black'
+    TRV.NODES[94].color = 'black'
+
+    # AF Names
+    TRV.NODES[40].name = 'NS Horn 1'
+    TRV.NODES[41].name = 'Main 4'
+    TRV.NODES[42].name = 'Main 3'
+    TRV.NODES[43].name = 'Main 2'
+    TRV.NODES[45].name = 'Main 1'
+    TRV.NODES[91].name = 'NS Yard'
+
+    # RO Names
+    TRV.NODES[4].name = 'Main 2'
+    TRV.NODES[5].name = 'Main 3'
+
+    # RO to Slaters Names
+    TRV.NODES[77].name = 'Main 1'
+    TRV.NODES[16].name = 'Main 2'
+    TRV.NODES[17].name = 'Main 3'
+
+
+def phase_1_stage_1c():
+    # Reset the lines to all be green
+    for link in TRV.LINKS:
+        link.color = 'green'
+    for node in TRV.NODES:
+        node.color = 'green'
+
+    # New Tracks
+    red_links = [7, 9, 10, 11, 16, 12, 13, 22, 23, 24, 25, 69, 109, 102, 105, 107, 106, 33, 36, 104, 103]
+
+    for x in red_links:
+        TRV.LINKS[x].color = 'red'
+
+    # Hide tracks unavailable to trains
+    black_links = [8, 108, 100, 29, 37, 32, 28, 31, 27, 26, 30, 75, 80, 74, 73, 79,
+                   35, 34, 45, 43, 18, 47, 46, 42, 72, 41, 72, 71, 70, 44, 49, 38, 39, 50, 48]
+    for x in black_links:
+        TRV.LINKS[x].color = 'black'
+
+    TRV.NODES[93].color = 'black'
+    TRV.NODES[99].color = 'black'
+    TRV.NODES[97].color = 'black'
+    TRV.NODES[96].color = 'black'
+    TRV.NODES[95].color = 'black'
+    TRV.NODES[94].color = 'black'
+
+    # AF Names
+    TRV.NODES[40].name = 'NS Horn 1'
+    TRV.NODES[41].name = 'Main 4'
+    TRV.NODES[42].name = 'Main 3'
+    TRV.NODES[43].name = 'Main 2'
+    TRV.NODES[45].name = 'Main 1'
+    TRV.NODES[91].name = 'NS Yard'
+
+    # RO Names
+    TRV.NODES[4].name = 'Main 2'
+    TRV.NODES[5].name = 'Main 3'
+
+    # RO to Slaters Names
+    TRV.NODES[77].name = 'Main 1'
+    TRV.NODES[16].name = 'Main 2'
+    TRV.NODES[17].name = 'Main 3'
+
+
+def phase_1_stage_2a():
+    # Reset the lines to all be green
+    for link in TRV.LINKS:
+        link.color = 'green'
+    for node in TRV.NODES:
+        node.color = 'green'
+
+    # Hide Tracks
+    black_links = [7, 100, 101, 82, 104, 106, 103, 99, 109, 86, 85, 18, 53, 90, 72, 73, 74, 46, 47,
+                   45, 42, 79, 48, 49, 44, 43, 38, 50, 41,  70, 71, 39]
+
+    for x in black_links:
+        TRV.LINKS[x].color = 'black'
+
+    # New Tracks
+    red_links = [8, 9, 12, 16, 102, 83, 82, 86, 100, 105, 106, 107, 87, 88, 17, 90, 53, 89, 54, 109]
+
+    for x in red_links:
+        TRV.LINKS[x].color = 'red'
+
+    TRV.NODES[77].name = 'Main 1'
+    TRV.NODES[19].name = 'Main 3'
+    TRV.NODES[18].name = 'Main 2'
+
+def phase_1_stage_2b():
+    # Reset the lines to all be green
+    for link in TRV.LINKS:
+        link.color = 'green'
+    for node in TRV.NODES:
+        node.color = 'green'
+
+def phase_1_stage_3():
+    # Reset the lines to all be green
+    for link in TRV.LINKS:
+        link.color = 'green'
+    for node in TRV.NODES:
+        node.color = 'green'
+

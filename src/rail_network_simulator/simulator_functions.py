@@ -2000,7 +2000,9 @@ class World:
             im = OffsetImage(signal_icon, zoom=.5)
             ab = AnnotationBbox(im, self.signal_attributes_low[signal][1], boxcoords="offset points",
                                 bboxprops=dict(visible=False))
-            signal_symbols.append(ab)
+
+            if self.signal_attributes_low[signal][3]:
+                signal_symbols.append(ab)
 
         for signal in self.signal_attributes_high:
             # Mainline Green/Green Case
@@ -2037,7 +2039,9 @@ class World:
             im = OffsetImage(signal_icon, zoom=.5)
             ab = AnnotationBbox(im, self.signal_attributes_high[signal][1], boxcoords="offset points",
                                 bboxprops=dict(visible=False))
-            signal_symbols.append(ab)
+
+            if self.signal_attributes_high[signal][3]:
+                signal_symbols.append(ab)
 
         f = plt.figure(figsize=figsize)
         plt.subplot(111, aspect="equal")
@@ -2062,6 +2066,7 @@ class World:
                              horizontalalignment="center",
                              verticalalignment="center", zorder=3, fontsize=35)  # c, fontsize
         for l in self.LINKS:
+
             x1, y1 = l.start_node.x, l.start_node.y
             x2, y2 = l.end_node.x, l.end_node.y
             # simpleMode
