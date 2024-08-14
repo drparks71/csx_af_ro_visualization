@@ -135,6 +135,8 @@ TRV.addNode("N99", 47, 16)
 TRV.addNode("N100", 49, 14)
 TRV.addNode("N101", 34, 8)
 TRV.addNode("N102", 28, 8)
+TRV.addNode("N103", 24, 14)
+TRV.addNode("N104", 30, 16, label_color='white', voffset=.7, hoffset=1)
 
 # Define Links
 TRV.addLink("L0", "N4", "N8", length=20)
@@ -148,7 +150,7 @@ TRV.addLink("L7", "N13", "N1", length=20)
 TRV.addLink("L8", "N12", "N6", length=20)
 TRV.addLink("L9", "N6", "N15", length=20)
 TRV.addLink("L10", "N15", "N14", length=20)
-TRV.addLink("L11", "N14", "N18", length=20)
+TRV.addLink("L11", "N14", "N102", length=20)
 TRV.addLink("L12", "N15", "N7", length=20)
 TRV.addLink("L13", "N7", "N3", length=20)
 
@@ -166,7 +168,7 @@ TRV.addLink("L21", "N33", "N16", length=50)                        # 21
 TRV.addLink("L22", "N22", "N31", length=50)                        # 22
 TRV.addLink("L23", "N31", "N30", length=50)                        # 23
 TRV.addLink("L24", "N30", "N34", length=50)                        # 24
-TRV.addLink("L25", "N34", "N17", length=50)                        # 25
+TRV.addLink("L25", "N34", "N2", length=50)                        # 25
 TRV.addLink("L26", "N23", "N28", length=50)                        # 26
 TRV.addLink("L27", "N28", "N29", length=50)                        # 27
 TRV.addLink("L28", "N29", "N35", length=50)                        # 28
@@ -242,7 +244,7 @@ TRV.addLink("L80", "N68", "N74", length=50)                        # 80
 
 TRV.addLink("L81", "N33", "N79", length=50)
 TRV.addLink("L82", "N75", "N76", length=50)
-TRV.addLink("L83", "N75", "N77", length=50)
+TRV.addLink("L83", "N103", "N77", length=50)
 TRV.addLink("L84", "N79", "N32", length=50)
 TRV.addLink("L85", "N79", "N80", length=50)
 TRV.addLink("L86", "N77", "N80", length=50)
@@ -270,6 +272,11 @@ TRV.addLink("L107", "N99", "N100", length=50)
 TRV.addLink("L108", "N18", "N101", length=50)
 TRV.addLink("L109", "N19", "N2", length=50)
 TRV.addLink("L110", "N102", "N0", length=50)
+TRV.addLink("L111", "N102", "N18", length=50)
+TRV.addLink("L112", "N17", "N2", length=50)
+TRV.addLink("L113", "N13", "N103", length=50)
+TRV.addLink("L114", "N75", "N93", length=50)
+TRV.addLink("L115", "N103", "N75", length=50)
 
 
 
