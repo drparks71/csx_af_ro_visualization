@@ -55,8 +55,9 @@ if phase_1_stage_2B_status:
 if phase_1_stage_3_status:
     phase_1_stage_3()
 
+fig = TRV.show_network(figsize=(60, 30))
 
-st.pyplot(TRV.show_network(figsize=(60, 30)))
+st.pyplot(fig)
 
 # # (For Debugging)
 #fig = TRV.show_network(figsize=(120, 30), show_links=True, show_switches=True)
