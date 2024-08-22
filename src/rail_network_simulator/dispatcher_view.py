@@ -16,7 +16,7 @@ st.set_page_config(layout="wide")
 st.markdown("<h1 style='text-align: center; color: teal;'>AF-RO Outage Visualizer</h1>", unsafe_allow_html=True)
 
 st.markdown("<h1 style='text-align: center; color: green;'>Construction Phases</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: black;'>(Only select 1 option at a time)</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: green;'>(Only select 1 option at a time)</p>", unsafe_allow_html=True)
 
 phase0, phase1, phase2, phase3 = st.columns(4)
 
