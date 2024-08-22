@@ -21,6 +21,8 @@ import os
 
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
+base_dir = os.path.dirname(__file__)
+
 
 class Node:
     def __init__(self, W, name, x, y, signal=[0], signal_offset=0, number_of_lanes=1, block_control=0, flow_capacity=None,
@@ -1963,43 +1965,56 @@ class World:
         """
         signal_symbols = []
 
+        def load_image(image_name, rotate_right=True):
+            try:
+                base_dir = os.path.dirname(__file__)
+                image_path = os.path.join(base_dir, 'railroad icons', image_name)
+                image = plt.imread(image_path)
+                if rotate_right:
+                    return np.rot90(image)
+                else:
+                    return np.rot90(image, 3)
+            except FileNotFoundError:
+                print(f"Warning: File not found {image_path}")
+                # Return a placeholder image or handle as needed
+                return np.zeros((10, 10, 3))
+
         for signal in self.signal_attributes_low:
             # Mainline Green/Green Case
             if self.signal_attributes_low[signal][2] != 'yard' and self.signal_attributes_low[signal][0] == 'green' and \
                     self.signal_attributes_low[signal][2] == 'green':
-                signal_icon = np.rot90(plt.imread(
-                    f'{os.getcwd()}/railroad icons/{self.signal_attributes_low[signal][0]}_circle_{self.signal_attributes_low[signal][2]}_square.png'))
+                signal_icon = load_image(
+                    f'{self.signal_attributes_low[signal][0]}_circle_{self.signal_attributes_low[signal][2]}_square.png')
 
             # Mainline Green/Red Case
             elif self.signal_attributes_low[signal][2] != 'yard' and self.signal_attributes_low[signal][
                 0] == 'green' and \
                     self.signal_attributes_low[signal][2] == 'red':
-                signal_icon = np.rot90(plt.imread(f'{os.getcwd()}/railroad icons/red_circle_yellow_square.png'))
+                signal_icon = load_image('red_circle_yellow_square.png')
 
             # Mainline Red/Green Case
             elif self.signal_attributes_low[signal][2] != 'yard' and self.signal_attributes_low[signal][0] == 'red' and \
                     self.signal_attributes_low[signal][2] == 'green':
-                signal_icon = np.rot90(plt.imread(f'{os.getcwd()}/railroad icons/red_circle_red_square.png'))
+                signal_icon = load_image('red_circle_red_square.png')
 
             # Mainline Red/Red Case
             elif self.signal_attributes_low[signal][2] != 'yard' and self.signal_attributes_low[signal][0] == 'red' and \
                     self.signal_attributes_low[signal][2] == 'red':
-                signal_icon = np.rot90(plt.imread(
-                    f'{os.getcwd()}/railroad icons/{self.signal_attributes_low[signal][0]}_circle_{self.signal_attributes_low[signal][2]}_square.png'))
+                signal_icon = load_image(
+                    f'{self.signal_attributes_low[signal][0]}_circle_{self.signal_attributes_low[signal][2]}_square.png')
 
             # Yard Case - Green
             elif self.signal_attributes_low[signal][2] == 'yard' and self.signal_attributes_low[signal][0] == 'green':
-                signal_icon = np.rot90(
-                    plt.imread(f'{os.getcwd()}/railroad icons/{self.signal_attributes_low[signal][0]}_circle.png'))
+                signal_icon = load_image(f'{self.signal_attributes_low[signal][0]}_circle.png')
 
             # Yard Case - Red
             elif self.signal_attributes_low[signal][2] == 'yard' and self.signal_attributes_low[signal][0] == 'red':
-                signal_icon = np.rot90(
-                    plt.imread(f'{os.getcwd()}/railroad icons/{self.signal_attributes_low[signal][0]}_circle.png'))
+                signal_icon = load_image(f'{self.signal_attributes_low[signal][0]}_circle.png')
 
             # Unexpected Case
             else:
                 print(signal)
+                continue
 
             im = OffsetImage(signal_icon, zoom=.5)
             ab = AnnotationBbox(im, self.signal_attributes_low[signal][1], boxcoords="offset points",
@@ -2013,40 +2028,42 @@ class World:
             if self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][
                 0] == 'green' and \
                     self.signal_attributes_high[signal][2] == 'green':
-                signal_icon = np.rot90(plt.imread(
-                    f'{os.getcwd()}/railroad icons/{self.signal_attributes_high[signal][0]}_circle_{self.signal_attributes_high[signal][2]}_square.png'),
-                    3)
+                signal_icon = load_image(
+                    f'{self.signal_attributes_high[signal][0]}_circle_{self.signal_attributes_high[signal][2]}_square.png',
+                    rotate_right=False)
 
             # Mainline Green/Red Case
             elif self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][
-                0] == 'green' and self.signal_attributes_high[signal][2] == 'red':
-                signal_icon = np.rot90(plt.imread(f'{os.getcwd()}/railroad icons/red_circle_yellow_square.png'), 3)
+                0] == 'green' and \
+                    self.signal_attributes_high[signal][2] == 'red':
+                signal_icon = load_image('red_circle_yellow_square.png', rotate_right=False)
 
             # Mainline Red/Green Case
             elif self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][
-                0] == 'red' and self.signal_attributes_high[signal][2] == 'green':
-                signal_icon = np.rot90(plt.imread(f'{os.getcwd()}/railroad icons/red_circle_red_square.png'), 3)
+                0] == 'red' and \
+                    self.signal_attributes_high[signal][2] == 'green':
+                signal_icon = load_image('red_circle_red_square.png', rotate_right=False)
 
             # Mainline Red/Red Case
             elif self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][
-                0] == 'red' and self.signal_attributes_high[signal][2] == 'red':
-                signal_icon = np.rot90(plt.imread(
-                    f'{os.getcwd()}/railroad icons/{self.signal_attributes_high[signal][0]}_circle_{self.signal_attributes_high[signal][2]}_square.png'),
-                    3)
+                0] == 'red' and \
+                    self.signal_attributes_high[signal][2] == 'red':
+                signal_icon = load_image(
+                    f'{self.signal_attributes_high[signal][0]}_circle_{self.signal_attributes_high[signal][2]}_square.png',
+                    rotate_right=False)
 
             # Yard Case - Green
             elif self.signal_attributes_high[signal][2] == 'yard' and self.signal_attributes_high[signal][0] == 'green':
-                signal_icon = np.rot90(
-                    plt.imread(f'{os.getcwd()}/railroad icons/{self.signal_attributes_high[signal][0]}_circle.png'), 3)
+                signal_icon = load_image(f'{self.signal_attributes_high[signal][0]}_circle.png', rotate_right=False)
 
             # Yard Case - Red
             elif self.signal_attributes_high[signal][2] == 'yard' and self.signal_attributes_high[signal][0] == 'red':
-                signal_icon = np.rot90(
-                    plt.imread(f'{os.getcwd()}/railroad icons/{self.signal_attributes_high[signal][0]}_circle.png'), 3)
+                signal_icon = load_image(f'{self.signal_attributes_high[signal][0]}_circle.png', rotate_right=False)
 
             # Unexpected Case
             else:
                 print(signal)
+                continue
 
             im = OffsetImage(signal_icon, zoom=.5)
             ab = AnnotationBbox(im, self.signal_attributes_high[signal][1], boxcoords="offset points",
