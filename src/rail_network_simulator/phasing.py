@@ -8,94 +8,24 @@ def existing_conditions():
     for node in TRV.NODES:
         node.color = 'green'
 
+    black_nodes = [3, 12, 14, 15, 18, 19, 19, 23, 24, 27, 28, 29, 35, 36, 37, 38, 39, 48, 52, 55, 58, 67, 68, 70, 73,
+                   73, 74, 93, 94, 94, 95, 96, 97, 99, 102, 104]
+
+    for x in black_nodes:
+        TRV.NODES[x].color = (0, 0, 0, 0)
+
+    black_links = [8, 9, 10, 11, 12, 13, 16, 18, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 41, 42, 43,
+                   44, 45, 46, 47, 48, 49, 50, 70, 71, 72, 73, 74, 75, 75, 79, 80, 99, 102, 103, 104, 105, 106, 107,
+                   108, 109, 110, 111, 113, 114]
+
+    for x in black_links:
+        TRV.LINKS[x].color = (0, 0, 0, 0)
+
     # Hide the lines that don't yet exist or are removed
-    TRV.LINKS[99].color = (0,0,0,0)
-    TRV.LINKS[8].color = (0,0,0,0)
-    TRV.LINKS[9].color = (0,0,0,0)
-    TRV.LINKS[10].color = (0,0,0,0)
-    TRV.LINKS[11].color = (0,0,0,0)
-    TRV.LINKS[12].color = (0,0,0,0)
-    TRV.LINKS[13].color = (0,0,0,0)
-    TRV.LINKS[18].color = (0,0,0,0)
-    TRV.LINKS[26].color = (0,0,0,0)
-    TRV.LINKS[27].color = (0,0,0,0)
-    TRV.LINKS[28].color = (0,0,0,0)
-    TRV.LINKS[29].color = (0,0,0,0)
-    TRV.LINKS[30].color = (0,0,0,0)
-    TRV.LINKS[32].color = (0,0,0,0)
-    TRV.LINKS[33].color = (0,0,0,0)
-    TRV.LINKS[34].color = (0,0,0,0)
-    TRV.LINKS[37].color = (0,0,0,0)
-    TRV.LINKS[38].color = (0,0,0,0)
-    TRV.LINKS[39].color = (0,0,0,0)
-    TRV.LINKS[16].color = (0,0,0,0)
-    TRV.LINKS[35].color = (0,0,0,0)
-    TRV.LINKS[31].color = (0,0,0,0)
-    TRV.LINKS[81].color = (0,0,0,0)
-    TRV.LINKS[47].color = (0,0,0,0)
-    TRV.LINKS[42].color = (0,0,0,0)
-    TRV.LINKS[43].color = (0,0,0,0)
-    TRV.LINKS[45].color = (0,0,0,0)
-    TRV.LINKS[46].color = (0,0,0,0)
-    TRV.LINKS[48].color = (0,0,0,0)
-    TRV.LINKS[49].color = (0,0,0,0)
-    TRV.LINKS[50].color = (0,0,0,0)
-    TRV.LINKS[75].color = (0,0,0,0)
-    TRV.LINKS[72].color = (0,0,0,0)
-    TRV.LINKS[73].color = (0,0,0,0)
-    TRV.LINKS[74].color = (0,0,0,0)
-    TRV.LINKS[75].color = (0,0,0,0)
-    TRV.LINKS[41].color = (0,0,0,0)
-    TRV.LINKS[71].color = (0,0,0,0)
-    TRV.LINKS[70].color = (0,0,0,0)
-    TRV.LINKS[79].color = (0,0,0,0)
-    TRV.LINKS[80].color = (0,0,0,0)
-    TRV.LINKS[44].color = (0,0,0,0)
-    TRV.LINKS[81].color = 'green'
-    TRV.LINKS[102].color = (0,0,0,0)
-    TRV.LINKS[103].color = (0,0,0,0)
-    TRV.LINKS[104].color = (0,0,0,0)
-    TRV.LINKS[105].color = (0,0,0,0)
-    TRV.LINKS[106].color = (0,0,0,0)
-    TRV.LINKS[107].color = (0,0,0,0)
-    TRV.LINKS[108].color = (0,0,0,0)
-    TRV.LINKS[109].color = (0,0,0,0)
-    TRV.LINKS[110].color = (0,0,0,0)
-    TRV.LINKS[111].color = (0, 0, 0, 0)
-    TRV.LINKS[113].color = (0, 0, 0, 0)
-    TRV.LINKS[114].color = (0, 0, 0, 0)
 
     TRV.NODES[6].color = (0,0,0,0)
     TRV.NODES[7].color = (0,0,0,0)
-    TRV.NODES[12].color = (0,0,0,0)
-    TRV.NODES[15].color = (0,0,0,0)
-    TRV.NODES[14].color = (0,0,0,0)
-    TRV.NODES[18].color = (0,0,0,0)
-    TRV.NODES[19].color = (0,0,0,0)
-    TRV.NODES[24].color = (0,0,0,0)
-    TRV.NODES[27].color = (0,0,0,0)
-    TRV.NODES[36].color = (0,0,0,0)
-    TRV.NODES[68].color = (0,0,0,0)
-    TRV.NODES[70].color = (0,0,0,0)
-    TRV.NODES[67].color = (0,0,0,0)
-    TRV.NODES[58].color = (0,0,0,0)
-    TRV.NODES[73].color = (0,0,0,0)
-    TRV.NODES[74].color = (0,0,0,0)
-    TRV.NODES[28].color = (0,0,0,0)
-    TRV.NODES[29].color = (0,0,0,0)
-    TRV.NODES[35].color = (0,0,0,0)
-    TRV.NODES[55].color = (0,0,0,0)
-    TRV.NODES[52].color = (0,0,0,0)
-    TRV.NODES[48].color = (0,0,0,0)
-    TRV.NODES[38].color = (0,0,0,0)
-    TRV.NODES[39].color = (0,0,0,0)
-    TRV.NODES[37].color = (0,0,0,0)
-    TRV.NODES[93].color = (0,0,0,0)
-    TRV.NODES[99].color = (0,0,0,0)
-    TRV.NODES[97].color = (0,0,0,0)
-    TRV.NODES[96].color = (0,0,0,0)
-    TRV.NODES[95].color = (0,0,0,0)
-    TRV.NODES[94].color = (0,0,0,0)
+
     TRV.NODES[101].color = (0,0,0,0)
 
     # Hide tracks names that aren't open to traffic yet
@@ -140,96 +70,21 @@ def phase_1_stage_1a():
     for node in TRV.NODES:
         node.color = 'green'
 
-    # Define the links as they exist in 1B
-    TRV.LINKS[8].color = (0,0,0,0)
-    TRV.LINKS[9].color = (0,0,0,0)
-    TRV.LINKS[10].color = (0,0,0,0)
-    TRV.LINKS[11].color = (0,0,0,0)
-    TRV.LINKS[12].color = (0,0,0,0)
-    TRV.LINKS[13].color = (0,0,0,0)
-    TRV.LINKS[18].color = (0,0,0,0)
-    TRV.LINKS[26].color = (0,0,0,0)
-    TRV.LINKS[27].color = (0,0,0,0)
-    TRV.LINKS[28].color = (0,0,0,0)
-    TRV.LINKS[29].color = (0,0,0,0)
-    TRV.LINKS[30].color = (0,0,0,0)
-    TRV.LINKS[32].color = (0,0,0,0)
-    TRV.LINKS[33].color = (0,0,0,0)
-    TRV.LINKS[34].color = (0,0,0,0)
-    TRV.LINKS[37].color = (0,0,0,0)
-    TRV.LINKS[38].color = (0,0,0,0)
-    TRV.LINKS[39].color = (0,0,0,0)
-    TRV.LINKS[16].color = (0,0,0,0)
-    TRV.LINKS[35].color = (0,0,0,0)
-    TRV.LINKS[31].color = (0,0,0,0)
-    TRV.LINKS[81].color = (0,0,0,0)
-    TRV.LINKS[47].color = (0,0,0,0)
-    TRV.LINKS[42].color = (0,0,0,0)
-    TRV.LINKS[43].color = (0,0,0,0)
-    TRV.LINKS[45].color = (0,0,0,0)
-    TRV.LINKS[46].color = (0,0,0,0)
-    TRV.LINKS[48].color = (0,0,0,0)
-    TRV.LINKS[49].color = (0,0,0,0)
-    TRV.LINKS[50].color = (0,0,0,0)
-    TRV.LINKS[75].color = (0,0,0,0)
-    TRV.LINKS[72].color = (0,0,0,0)
-    TRV.LINKS[73].color = (0,0,0,0)
-    TRV.LINKS[74].color = (0,0,0,0)
-    TRV.LINKS[75].color = (0,0,0,0)
-    TRV.LINKS[41].color = (0,0,0,0)
-    TRV.LINKS[71].color = (0,0,0,0)
-    TRV.LINKS[70].color = (0,0,0,0)
-    TRV.LINKS[79].color = (0,0,0,0)
-    TRV.LINKS[80].color = (0,0,0,0)
-    TRV.LINKS[44].color = (0,0,0,0)
-    TRV.LINKS[81].color = 'green'
-    TRV.LINKS[99].color = 'green'
-    TRV.LINKS[100].color = (0,0,0,0)
-    TRV.LINKS[102].color = (0,0,0,0)
-    TRV.LINKS[103].color = (0,0,0,0)
-    TRV.LINKS[104].color = (0,0,0,0)
-    TRV.LINKS[105].color = (0,0,0,0)
-    TRV.LINKS[106].color = (0,0,0,0)
-    TRV.LINKS[107].color = (0,0,0,0)
-    TRV.LINKS[108].color = (0,0,0,0)
-    TRV.LINKS[109].color = (0,0,0,0)
-    TRV.LINKS[110].color = (0,0,0,0)
-    TRV.LINKS[111].color = (0, 0, 0, 0)
-    TRV.LINKS[113].color = (0, 0, 0, 0)
-    TRV.LINKS[114].color = (0, 0, 0, 0)
+    black_links = [8, 9, 10, 11, 12, 13, 16, 18, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 41, 42, 43, 44, 45,
+                   46, 47, 48, 49, 50, 70, 71, 72, 73, 74, 75, 79, 80, 100, 102, 103, 104, 105, 106, 107, 108, 109,
+                   110, 111, 113, 114]
 
-    TRV.NODES[6].color = (0,0,0,0)
-    TRV.NODES[7].color = (0,0,0,0)
-    TRV.NODES[12].color = (0,0,0,0)
-    TRV.NODES[15].color = (0,0,0,0)
-    TRV.NODES[14].color = (0,0,0,0)
-    TRV.NODES[18].color = (0,0,0,0)
-    TRV.NODES[19].color = (0,0,0,0)
-    TRV.NODES[24].color = (0,0,0,0)
-    TRV.NODES[27].color = (0,0,0,0)
-    TRV.NODES[36].color = (0,0,0,0)
-    TRV.NODES[68].color = (0,0,0,0)
-    TRV.NODES[70].color = (0,0,0,0)
-    TRV.NODES[67].color = (0,0,0,0)
-    TRV.NODES[58].color = (0,0,0,0)
-    TRV.NODES[73].color = (0,0,0,0)
-    TRV.NODES[74].color = (0,0,0,0)
-    TRV.NODES[28].color = (0,0,0,0)
-    TRV.NODES[29].color = (0,0,0,0)
-    TRV.NODES[35].color = (0,0,0,0)
-    TRV.NODES[55].color = (0,0,0,0)
-    TRV.NODES[52].color = (0,0,0,0)
-    TRV.NODES[48].color = (0,0,0,0)
-    TRV.NODES[38].color = (0,0,0,0)
-    TRV.NODES[39].color = (0,0,0,0)
-    TRV.NODES[37].color = (0,0,0,0)
-    TRV.NODES[93].color = (0,0,0,0)
-    TRV.NODES[99].color = (0,0,0,0)
-    TRV.NODES[97].color = (0,0,0,0)
-    TRV.NODES[96].color = (0,0,0,0)
-    TRV.NODES[95].color = (0,0,0,0)
-    TRV.NODES[94].color = (0,0,0,0)
-    TRV.NODES[101].color = (0,0,0,0)
+
+    for x in black_links:
+        TRV.LINKS[x].color = (0, 0, 0, 0)
+    # Define the links as they exist in 1B
+
+    black_nodes = [6, 7, 12, 15, 14, 18, 19, 24, 27, 36, 68, 70, 67, 58, 73, 74, 28, 29, 35, 55, 52, 48, 38, 39, 37, 93,
+                   99, 97, 96, 95, 94, 101, 104, 3, 19, 102, 23, 73]
+
+    for x in black_nodes:
+        TRV.NODES[x].color = (0,0,0,0)
+
 
     # Hide tracks names that aren't open to traffic yet
     TRV.NODES[18].label_color = (0,0,0,0)
@@ -316,25 +171,31 @@ def phase_1_stage_1b():
     for node in TRV.NODES:
         node.color = 'green'
 
+    red_nodes = [2, 3, 6, 7, 14, 15, 30, 31, 34, 72]
+
+    for x in red_nodes:
+        TRV.NODES[x].color = 'red'
+
     # New Tracks
-    red_links = [7, 9, 10, 11, 16, 12, 13, 22, 23, 24, 25, 36, 69, 109]
+    red_links = [7, 9, 10, 11, 12, 13, 16, 22, 23, 24, 25, 36, 69, 109]
+
     for x in red_links:
         TRV.LINKS[x].color = 'red'
 
     # Hide tracks unavailable to trains
-    black_links = [8, 108, 100, 102, 103, 104, 105, 106, 107, 29, 37, 32, 28, 31, 27, 26, 30, 75, 80, 74, 73, 79,
-                   35, 34, 45, 43, 33, 18, 47, 46, 42, 72, 41, 72, 71, 70, 44, 49, 38, 39, 50, 48, 110, 111, 112, 113,
-                   114, 7, 110]
+    black_links = [7, 8, 18, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 48,
+                   49, 50, 70, 71, 72, 72, 73, 74, 75, 79, 80, 100, 102, 103, 104, 105, 106, 107, 108, 110, 110,
+                   111, 112, 113, 114]
 
     for x in black_links:
         TRV.LINKS[x].color = (0,0,0,0)
 
-    TRV.NODES[93].color = (0,0,0,0)
-    TRV.NODES[99].color = (0,0,0,0)
-    TRV.NODES[97].color = (0,0,0,0)
-    TRV.NODES[96].color = (0,0,0,0)
-    TRV.NODES[95].color = (0,0,0,0)
-    TRV.NODES[94].color = (0,0,0,0)
+    black_nodes = [1, 17, 18, 23, 24, 27, 28, 29, 35, 36, 37, 38, 39, 48, 52, 55, 58, 67, 68, 70, 73, 74, 93, 94,
+                   95, 96, 97, 99, 101, 102, 104]
+
+    for x in black_nodes:
+        TRV.NODES[x].color = (0,0,0,0)
+
 
     # AF Names
     TRV.NODES[40].name = 'NS Horn 1'
@@ -361,25 +222,30 @@ def phase_1_stage_1c():
     for node in TRV.NODES:
         node.color = 'green'
 
+    red_nodes = [2, 3, 6, 7, 14, 15, 19, 22, 30, 31, 34, 72, 86, 102, 104]
+
+    for x in red_nodes:
+        TRV.NODES[x].color = 'red'
+
     # New Tracks
-    red_links = [7, 9, 10, 11, 16, 12, 13, 22, 23, 24, 25, 69, 109, 102, 105, 107, 106, 33, 36, 104, 103]
+    red_links = [7, 9, 10, 11, 12, 13, 16, 22, 23, 24, 25, 33, 36, 69, 102, 103, 104, 105, 106, 107, 109]
 
     for x in red_links:
         TRV.LINKS[x].color = 'red'
 
     # Hide tracks unavailable to trains
-    black_links = [8, 108, 100, 29, 37, 32, 28, 31, 27, 26, 30, 75, 80, 74, 73, 79, 110, 111, 112, 110, 7,
-                   35, 34, 45, 43, 18, 47, 46, 42, 72, 41, 72, 71, 70, 44, 49, 38, 39, 50, 48, 113, 114]
+    black_links = [7, 8, 18, 26, 27, 28, 29, 30, 31, 32, 34, 35, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 48,
+                   49, 50, 70, 71, 72, 72, 73, 74, 75, 79, 80, 100, 108, 110, 110, 111, 112, 113, 114]
 
     for x in black_links:
         TRV.LINKS[x].color = (0,0,0,0)
 
-    TRV.NODES[93].color = (0,0,0,0)
-    TRV.NODES[99].color = (0,0,0,0)
-    TRV.NODES[97].color = (0,0,0,0)
-    TRV.NODES[96].color = (0,0,0,0)
-    TRV.NODES[95].color = (0,0,0,0)
-    TRV.NODES[94].color = (0,0,0,0)
+    black_nodes = [1, 4, 17, 18, 23, 24, 27, 28, 29, 35, 36, 37, 38, 39, 48, 52, 55, 58, 67, 68, 70, 73, 74, 93,
+                   94, 95, 96, 97, 99, 101]
+
+    for x in black_nodes:
+        TRV.NODES[x].color = (0, 0, 0, 0)
+
 
     # AF Names
     TRV.NODES[40].name = 'NS Horn 1'
@@ -406,17 +272,28 @@ def phase_1_stage_2a():
     for node in TRV.NODES:
         node.color = 'green'
 
+    black_nodes = [1, 17, 18, 23, 24, 27, 28, 29, 35, 36, 37, 38, 39, 48, 52, 55, 58, 67, 68, 70, 73, 74, 92, 96,
+                   97, 101]
+
+    for x in black_nodes:
+        TRV.NODES[x].color = (0,0,0,0)
+
+    red_nodes = [3, 6, 7, 15, 19, 20, 25, 46, 47, 75, 77, 78, 80, 93, 94, 95, 98, 99, 100, 102, 103, 104]
+
+    for x in red_nodes:
+        TRV.NODES[x].color = 'red'
+
     # Hide Tracks
-    black_links = [7, 100, 101, 82, 104, 106, 103, 99, 109, 86, 18, 53, 90, 72, 73, 74, 46, 47,
-                   45, 42, 79, 48, 49, 44, 43, 38, 50, 41,  70, 71, 39, 108, 29, 28, 32, 31, 27, 34, 26, 30, 75, 80,
-                   37, 35, 111, 112, 100, 113, 114]
+    black_links = [7, 18, 26, 27, 28, 29, 30, 31, 32, 34, 35, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 48, 49,
+                   50, 53, 70, 71, 72, 73, 74, 75, 79, 80, 82, 86, 90, 99, 100, 100, 101, 103, 104, 106, 108,
+                   109, 111, 112, 113, 114]
 
     for x in black_links:
         TRV.LINKS[x].color = (0,0,0,0)
 
     # New Tracks
-    red_links = [8, 9, 12, 16, 102, 83, 82, 86, 105, 106, 107, 87, 88, 17, 90, 53, 89, 54, 109, 110, 10, 13,
-                 11, 115]
+    red_links = [8, 9, 10, 11, 12, 13, 16, 17, 53, 54, 82, 83, 86, 87, 88, 89, 90, 102, 105, 106, 107, 109,
+                 110, 115]
 
     for x in red_links:
         TRV.LINKS[x].color = 'red'
@@ -437,19 +314,29 @@ def phase_1_stage_2b():
         node.color = 'green'
 
     # Hide Tracks
-    black_links = [7, 100, 101, 82, 104, 106, 103, 99, 109, 86, 18, 53, 90, 72, 73, 74, 46, 47,
-                   45, 42, 79, 48, 49, 44, 43, 38, 50, 41,  70, 71, 39, 108, 29, 28, 32, 31, 27, 34, 26, 30, 75, 80,
-                   37, 35, 111, 112, 100, 115]
+    black_links = [7, 18, 26, 27, 28, 29, 30, 31, 32, 34, 35, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 48, 49,
+                   50, 53, 70, 71, 72, 73, 74, 75, 79, 80, 82, 86, 90, 99, 100, 100, 101, 103, 104, 106, 108,
+                   111, 112, 115]
 
     for x in black_links:
         TRV.LINKS[x].color = (0,0,0,0)
 
+    black_nodes = [1, 16, 17, 18, 23, 24, 27, 28, 29, 35, 36, 37, 38, 39, 48, 52, 55, 58, 67, 68, 70, 73, 74, 96, 97,
+                   101]
+
+    for x in black_nodes:
+        TRV.NODES[x].color = (0,0,0,0)
+
     # New Tracks
-    red_links = [8, 9, 12, 16, 102, 83, 82, 86, 105, 106, 107, 87, 88, 17, 90, 53, 89, 54, 109, 110, 10, 13,
-                 11, 113, 114]
+    red_links = [17, 53, 54, 82, 83, 86, 87, 88, 89, 90, 102, 105, 106, 107, 113, 114]
 
     for x in red_links:
         TRV.LINKS[x].color = 'red'
+
+    red_nodes = [20, 25, 46, 47, 75, 77, 78, 80, 92, 93, 94, 95, 98, 99, 100, 103, 104]
+
+    for x in red_nodes:
+        TRV.NODES[x].color = 'red'
 
     TRV.NODES[104].name = 'Main 0'
     TRV.NODES[77].name = 'Main 1'
@@ -457,6 +344,7 @@ def phase_1_stage_2b():
     TRV.NODES[17].name = ''
     TRV.NODES[19].name = 'Main 3'
     TRV.NODES[18].name = 'Main 2'
+
 
 def phase_1_stage_3():
     # Reset the lines to all be green
@@ -466,16 +354,27 @@ def phase_1_stage_3():
         node.color = 'green'
 
     # Hide Tracks
-    black_links = [7, 100, 101, 104, 103, 99, 109, 18, 72, 73, 74, 46, 47,
-                   45, 42, 79, 48, 49, 44, 43, 38, 50, 41, 70, 71, 39, 108, 29, 28, 32, 31, 27, 34, 26, 30, 75, 80,
-                   37, 35, 111, 112, 100, 115]
+    black_links = [7, 18, 26, 27, 28, 29, 30, 31, 32, 34, 35, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 48, 49,
+                   50, 70, 71, 72, 73, 74, 75, 79, 80, 99, 100, 100, 101, 103, 104, 108, 109, 111, 112, 115]
 
     for x in black_links:
         TRV.LINKS[x].color = (0,0,0,0)
 
+    black_nodes = [1, 16, 17, 18, 23, 23, 23, 24, 26, 27, 28, 29, 35, 36, 37, 38, 39, 48, 52, 55, 58, 67, 68, 70, 73,
+                   73, 74, 96, 97, 101]
+
+    for x in black_nodes:
+        TRV.NODES[x].color = (0,0,0,0)
+
+    red_nodes = [0, 2, 3, 6, 7, 14, 15, 19, 21, 30, 31, 32, 33, 34, 40, 49, 50, 51, 56, 57, 59, 63, 65, 66, 69, 71, 72,
+                 79, 85, 86, 102]
+
+    for x in red_nodes:
+        TRV.NODES[x].color = 'red'
+
     # New Tracks
-    red_links = [8, 9, 12, 16, 109, 110, 10, 13, 21, 25, 24, 81, 36, 33, 19, 22, 81, 21, 84, 25, 24, 11, 85, 23, 20,
-                 61, 69, 68, 67, 66, 65, 64, 63, 93, 60, 94, 78, 77, 76]
+    red_links = [8, 9, 10, 11, 12, 13, 16, 19, 20, 21, 21, 22, 23, 24, 24, 25, 25, 33, 36, 60, 61, 63, 64, 65, 66, 67,
+                 68, 69, 76, 77, 78, 81, 81, 84, 85, 93, 94, 109, 110]
 
     for x in red_links:
         TRV.LINKS[x].color = 'red'

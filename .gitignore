@@ -168,3 +168,4 @@ cython_debug/
 /.idea/RailNetworkSimulator.iml
 /.idea/vcs.xml
 /Notebooks/outAF-RO/*
+/.idea/other.xml

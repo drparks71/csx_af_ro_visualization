@@ -21,8 +21,8 @@ with phase1:
     phase1.header('Phase 1')
     phase_1_stage_1A_status = st.checkbox("Stage 1A", key='const_phase_1_stage_1A')
     phase_1_stage_1B_status = st.checkbox("Stage 1B", key='const_phase_1_stage_1B')
-    phase_1_stage_1C_status = st.checkbox("Stage 1C", key='const_phase_1_stage_1C')
-    phase_1_stage_2A_status = st.checkbox("Stage 2A", key='const_phase_1_stage_2A')
+    phase_1_stage_1C_status = st.checkbox("Stage 1C - Temporary Outages As-needed", key='const_phase_1_stage_1C')
+    phase_1_stage_2A_status = st.checkbox("Stage 2A - Temporary Outages As-needed", key='const_phase_1_stage_2A')
     phase_1_stage_2B_status = st.checkbox("Stage 2B", key='const_phase_1_stage_2B')
     phase_1_stage_3_status = st.checkbox("Stage 3", key='const_phase_1_stage_3')
 
@@ -59,5 +59,5 @@ if phase_1_stage_3_status:
 st.pyplot(TRV.show_network(figsize=(60, 30)))
 
 # # (For Debugging)
-# fig = TRV.show_network(figsize=(120, 30), show_links=True, show_switches=True)
-# fig.show()
+fig = TRV.show_network(figsize=(120, 30), show_links=True, show_switches=True)
+fig.show()
