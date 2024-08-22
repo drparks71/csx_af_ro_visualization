@@ -57,9 +57,7 @@ if phase_1_stage_2B_status:
 if phase_1_stage_3_status:
     phase_1_stage_3()
 
-fig = TRV.show_network(figsize=(60, 30))
-
-print(os.getcwd())
+fig, ax = TRV.show_network(figsize=(60, 30))
 
 st.pyplot(fig=fig)
 

@@ -17,6 +17,7 @@ import dill as pickle
 
 from analyzer import *
 from utils import *
+import os
 
 from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
@@ -1967,31 +1968,34 @@ class World:
             if self.signal_attributes_low[signal][2] != 'yard' and self.signal_attributes_low[signal][0] == 'green' and \
                     self.signal_attributes_low[signal][2] == 'green':
                 signal_icon = np.rot90(plt.imread(
-                    f'railroad icons/{self.signal_attributes_low[signal][0]}_circle_{self.signal_attributes_low[signal][2]}_square.png'))
+                    f'{os.getcwd()}/railroad icons/{self.signal_attributes_low[signal][0]}_circle_{self.signal_attributes_low[signal][2]}_square.png'))
 
             # Mainline Green/Red Case
-            elif self.signal_attributes_low[signal][2] != 'yard' and self.signal_attributes_low[signal][0] == 'green' and \
+            elif self.signal_attributes_low[signal][2] != 'yard' and self.signal_attributes_low[signal][
+                0] == 'green' and \
                     self.signal_attributes_low[signal][2] == 'red':
-                signal_icon = np.rot90(plt.imread(f'railroad icons/red_circle_yellow_square.png'))
+                signal_icon = np.rot90(plt.imread(f'{os.getcwd()}/railroad icons/red_circle_yellow_square.png'))
 
             # Mainline Red/Green Case
             elif self.signal_attributes_low[signal][2] != 'yard' and self.signal_attributes_low[signal][0] == 'red' and \
                     self.signal_attributes_low[signal][2] == 'green':
-                signal_icon = np.rot90(plt.imread(f'railroad icons/red_circle_red_square.png'))
+                signal_icon = np.rot90(plt.imread(f'{os.getcwd()}/railroad icons/red_circle_red_square.png'))
 
             # Mainline Red/Red Case
             elif self.signal_attributes_low[signal][2] != 'yard' and self.signal_attributes_low[signal][0] == 'red' and \
                     self.signal_attributes_low[signal][2] == 'red':
                 signal_icon = np.rot90(plt.imread(
-                    f'railroad icons/{self.signal_attributes_low[signal][0]}_circle_{self.signal_attributes_low[signal][2]}_square.png'))
+                    f'{os.getcwd()}/railroad icons/{self.signal_attributes_low[signal][0]}_circle_{self.signal_attributes_low[signal][2]}_square.png'))
 
             # Yard Case - Green
             elif self.signal_attributes_low[signal][2] == 'yard' and self.signal_attributes_low[signal][0] == 'green':
-                signal_icon = np.rot90(plt.imread(f'railroad icons/{self.signal_attributes_low[signal][0]}_circle.png'))
+                signal_icon = np.rot90(
+                    plt.imread(f'{os.getcwd()}/railroad icons/{self.signal_attributes_low[signal][0]}_circle.png'))
 
             # Yard Case - Red
             elif self.signal_attributes_low[signal][2] == 'yard' and self.signal_attributes_low[signal][0] == 'red':
-                signal_icon = np.rot90(plt.imread(f'railroad icons/{self.signal_attributes_low[signal][0]}_circle.png'))
+                signal_icon = np.rot90(
+                    plt.imread(f'{os.getcwd()}/railroad icons/{self.signal_attributes_low[signal][0]}_circle.png'))
 
             # Unexpected Case
             else:
@@ -2006,31 +2010,39 @@ class World:
 
         for signal in self.signal_attributes_high:
             # Mainline Green/Green Case
-            if self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][0] == 'green' and \
+            if self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][
+                0] == 'green' and \
                     self.signal_attributes_high[signal][2] == 'green':
                 signal_icon = np.rot90(plt.imread(
-                    f'railroad icons/{self.signal_attributes_high[signal][0]}_circle_{self.signal_attributes_high[signal][2]}_square.png'), 3)
+                    f'{os.getcwd()}/railroad icons/{self.signal_attributes_high[signal][0]}_circle_{self.signal_attributes_high[signal][2]}_square.png'),
+                    3)
 
             # Mainline Green/Red Case
-            elif self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][0] == 'green' and self.signal_attributes_high[signal][2] == 'red':
-                signal_icon = np.rot90(plt.imread(f'railroad icons/red_circle_yellow_square.png'), 3)
+            elif self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][
+                0] == 'green' and self.signal_attributes_high[signal][2] == 'red':
+                signal_icon = np.rot90(plt.imread(f'{os.getcwd()}/railroad icons/red_circle_yellow_square.png'), 3)
 
             # Mainline Red/Green Case
-            elif self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][0] == 'red' and self.signal_attributes_high[signal][2] == 'green':
-                signal_icon = np.rot90(plt.imread(f'railroad icons/red_circle_red_square.png'), 3)
+            elif self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][
+                0] == 'red' and self.signal_attributes_high[signal][2] == 'green':
+                signal_icon = np.rot90(plt.imread(f'{os.getcwd()}/railroad icons/red_circle_red_square.png'), 3)
 
             # Mainline Red/Red Case
-            elif self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][0] == 'red' and self.signal_attributes_high[signal][2] == 'red':
+            elif self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][
+                0] == 'red' and self.signal_attributes_high[signal][2] == 'red':
                 signal_icon = np.rot90(plt.imread(
-                    f'railroad icons/{self.signal_attributes_high[signal][0]}_circle_{self.signal_attributes_high[signal][2]}_square.png'), 3)
+                    f'{os.getcwd()}/railroad icons/{self.signal_attributes_high[signal][0]}_circle_{self.signal_attributes_high[signal][2]}_square.png'),
+                    3)
 
             # Yard Case - Green
             elif self.signal_attributes_high[signal][2] == 'yard' and self.signal_attributes_high[signal][0] == 'green':
-                signal_icon = np.rot90(plt.imread(f'railroad icons/{self.signal_attributes_high[signal][0]}_circle.png'), 3)
+                signal_icon = np.rot90(
+                    plt.imread(f'{os.getcwd()}/railroad icons/{self.signal_attributes_high[signal][0]}_circle.png'), 3)
 
             # Yard Case - Red
             elif self.signal_attributes_high[signal][2] == 'yard' and self.signal_attributes_high[signal][0] == 'red':
-                signal_icon = np.rot90(plt.imread(f'railroad icons/{self.signal_attributes_high[signal][0]}_circle.png'), 3)
+                signal_icon = np.rot90(
+                    plt.imread(f'{os.getcwd()}/railroad icons/{self.signal_attributes_high[signal][0]}_circle.png'), 3)
 
             # Unexpected Case
             else:
@@ -2043,41 +2055,34 @@ class World:
             if self.signal_attributes_high[signal][3]:
                 signal_symbols.append(ab)
 
-        f = plt.figure(figsize=figsize)
-        plt.subplot(111, aspect="equal")
-
-        ax = plt.gca()
+        fig, ax = plt.subplots(figsize=figsize)
 
         if signal_symbols:
             for signal in signal_symbols:
                 ax.add_artist(signal)
 
         for n in self.NODES:
-            plt.plot(n.x, n.y, "o", color=n.color, ms=13, zorder=30, solid_capstyle="round")  # ms
+            ax.plot(n.x, n.y, "o", color=n.color, ms=13, zorder=30, solid_capstyle="round")  # ms
             if network_font_size > 0:
                 if show_switches:
-                    plt.text(n.x-n.hoffset, n.y-n.voffset, n.name,
-                             c='White',
-                             horizontalalignment="center",
-                             verticalalignment="center", zorder=30, fontsize=30)  # c, fontsize
+                    ax.text(n.x - n.hoffset, n.y - n.voffset, n.name, c='White',
+                            horizontalalignment="center", verticalalignment="center",
+                            zorder=30, fontsize=30)  # c, fontsize
                 else:
-                    plt.text(n.x - n.hoffset, n.y - (.25 + n.voffset), n.name,
-                             c=n.label_color,
-                             horizontalalignment="center",
-                             verticalalignment="center", zorder=3, fontsize=35)  # c, fontsize
-        for l in self.LINKS:
+                    ax.text(n.x - n.hoffset, n.y - (.25 + n.voffset), n.name, c=n.label_color,
+                            horizontalalignment="center", verticalalignment="center",
+                            zorder=3, fontsize=35)  # c, fontsize
 
+        for l in self.LINKS:
             x1, y1 = l.start_node.x, l.start_node.y
             x2, y2 = l.end_node.x, l.end_node.y
-            # simpleMode
             xmid1, ymid1 = (x1 + x2) / 2, (y1 + y2) / 2
             if show_links:
-                plt.plot([x1, x2], [y1, y2], color=l.color, lw=14, zorder=7, solid_capstyle="round")  # ms
-                plt.text(xmid1, ymid1, l.name, c=l.label_color, horizontalalignment="right", verticalalignment="top",
-                         zorder=30, fontsize=30)
-
+                ax.plot([x1, x2], [y1, y2], color=l.color, lw=14, zorder=7, solid_capstyle="round")  # ms
+                ax.text(xmid1, ymid1, l.name, c=l.label_color, horizontalalignment="right", verticalalignment="top",
+                        zorder=30, fontsize=30)
             else:
-                plt.plot([x1, x2], [y1, y2], color=l.color, lw=14, zorder=7, solid_capstyle="round")  # ms
+                ax.plot([x1, x2], [y1, y2], color=l.color, lw=14, zorder=7, solid_capstyle="round")  # ms
 
         maxx = max([n.x for n in self.NODES])
         minx = min([n.x for n in self.NODES])
@@ -2090,7 +2095,6 @@ class World:
         if buffy == 0:
             buffy = buffx
 
-        # Assign the current plot axes to ax to start adding in signals
         plt.style.use('dark_background')
 
         ax.spines['bottom'].set_color('black')
@@ -2104,17 +2108,16 @@ class World:
         ax.set_title(self.title, fontdict=font1, pad=40)
         ax.set_facecolor('black')
 
-        # Vertical lines for the start and end of interlocking
         for x_value in self.breaks:
-            plt.vlines(x=x_value, ymin=0, ymax=16.5, color='black', label='AF-Start', linewidth=15, zorder=9)
-            plt.vlines(x=x_value, ymin=0, ymax=16.5, color='black', label='AF-End', linewidth=15, zorder=9)
+            ax.vlines(x=x_value, ymin=0, ymax=16.5, color='black', label='AF-Start', linewidth=15, zorder=9)
+            ax.vlines(x=x_value, ymin=0, ymax=16.5, color='black', label='AF-End', linewidth=15, zorder=9)
 
-        # Establish the limits of the plot
-        plt.xlim([minx - buffx, maxx + buffx])
-        plt.ylim([0, maxy + buffy])  # miny - buffy
-        plt.tight_layout()
+        ax.set_xlim([minx - buffx, maxx + buffx])
+        ax.set_ylim([0, maxy + buffy])
 
-        return f
+        fig.tight_layout()
+
+        return fig, ax
 
     def copy(self):
         """
