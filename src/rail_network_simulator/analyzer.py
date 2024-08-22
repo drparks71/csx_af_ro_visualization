@@ -18,7 +18,7 @@ import io
 from scipy.sparse.csgraph import floyd_warshall
 from pathlib import Path
 
-from .utils import *
+from utils import *
 
 plt.rcParams["font.family"] = get_font_for_matplotlib()
 

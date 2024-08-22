@@ -1,8 +1,8 @@
 import streamlit as st
 
-from src.rail_network_simulator.network_definitions import TRV
-from src.rail_network_simulator.phasing import existing_conditions, phase_1_stage_1a, phase_1_stage_1b, phase_1_stage_1c
-from src.rail_network_simulator.phasing import phase_1_stage_2a, phase_1_stage_2b, phase_1_stage_3
+from network_definitions import TRV
+from phasing import existing_conditions, phase_1_stage_1a, phase_1_stage_1b, phase_1_stage_1c
+from phasing import phase_1_stage_2a, phase_1_stage_2b, phase_1_stage_3
 
 import matplotlib.pyplot as plt
 plt.ioff()

@@ -1,4 +1,4 @@
-from src.rail_network_simulator.simulator_functions import *
+from simulator_functions import *
 
 # Create the World Object
 TRV = World(
