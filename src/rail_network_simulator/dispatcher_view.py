@@ -4,6 +4,8 @@ from network_definitions import TRV
 from phasing import existing_conditions, phase_1_stage_1a, phase_1_stage_1b, phase_1_stage_1c
 from phasing import phase_1_stage_2a, phase_1_stage_2b, phase_1_stage_3
 
+import os
+
 import matplotlib.pyplot as plt
 plt.ioff()
 
@@ -56,6 +58,8 @@ if phase_1_stage_3_status:
     phase_1_stage_3()
 
 fig = TRV.show_network(figsize=(60, 30))
+
+print(os.getcwd())
 
 st.pyplot(fig=fig)
 
