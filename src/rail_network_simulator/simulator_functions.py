@@ -1971,7 +1971,6 @@ class World:
                 return np.zeros((10, 10, 3))
 
         def process_signal(signal, attrs, rotate_right):
-            print(f"Processing signal: {signal}, Attributes: {attrs}")  # Debug statement
             mapping = {
                 ('green', 'green'): f'{attrs[0]}_circle_{attrs[2]}_square.png',
                 ('green', 'red'): 'red_circle_yellow_square.png',
