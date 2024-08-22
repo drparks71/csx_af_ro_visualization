@@ -1,4 +1,4 @@
-from src.rail_network_simulator.network_definitions import TRV
+from network_definitions import TRV
 
 
 def existing_conditions():
