@@ -1960,180 +1960,76 @@ class World:
     @catch_exceptions_and_warn()
     def show_network(self, width=1, left_handed=1, figsize=(6, 6), network_font_size=10, node_size=6,
                      show_switches=False, show_links=False):
-        """
-        Visualizes the entire transportation network shape.
-        """
-        signal_symbols = []
 
-        def load_image(image_name, rotate_right=True):
+        def load_and_rotate_image(image_name, rotate_right=True):
             try:
-                base_dir = os.path.dirname(__file__)
-                image_path = os.path.join(base_dir, 'railroad icons', image_name)
+                image_path = os.path.join(os.path.dirname(__file__), 'railroad icons', image_name)
                 image = plt.imread(image_path)
-                if rotate_right:
-                    return np.rot90(image)
-                else:
-                    return np.rot90(image, 3)
+                return np.rot90(image) if rotate_right else np.rot90(image, 3)
             except FileNotFoundError:
-                print(f"Warning: File not found {image_path}")
-                # Return a placeholder image or handle as needed
+                print(f"Warning: File not found {image_name}")
                 return np.zeros((10, 10, 3))
 
-        for signal in self.signal_attributes_low:
-            # Mainline Green/Green Case
-            if self.signal_attributes_low[signal][2] != 'yard' and self.signal_attributes_low[signal][0] == 'green' and \
-                    self.signal_attributes_low[signal][2] == 'green':
-                signal_icon = load_image(
-                    f'{self.signal_attributes_low[signal][0]}_circle_{self.signal_attributes_low[signal][2]}_square.png')
-
-            # Mainline Green/Red Case
-            elif self.signal_attributes_low[signal][2] != 'yard' and self.signal_attributes_low[signal][
-                0] == 'green' and \
-                    self.signal_attributes_low[signal][2] == 'red':
-                signal_icon = load_image('red_circle_yellow_square.png')
-
-            # Mainline Red/Green Case
-            elif self.signal_attributes_low[signal][2] != 'yard' and self.signal_attributes_low[signal][0] == 'red' and \
-                    self.signal_attributes_low[signal][2] == 'green':
-                signal_icon = load_image('red_circle_red_square.png')
-
-            # Mainline Red/Red Case
-            elif self.signal_attributes_low[signal][2] != 'yard' and self.signal_attributes_low[signal][0] == 'red' and \
-                    self.signal_attributes_low[signal][2] == 'red':
-                signal_icon = load_image(
-                    f'{self.signal_attributes_low[signal][0]}_circle_{self.signal_attributes_low[signal][2]}_square.png')
-
-            # Yard Case - Green
-            elif self.signal_attributes_low[signal][2] == 'yard' and self.signal_attributes_low[signal][0] == 'green':
-                signal_icon = load_image(f'{self.signal_attributes_low[signal][0]}_circle.png')
-
-            # Yard Case - Red
-            elif self.signal_attributes_low[signal][2] == 'yard' and self.signal_attributes_low[signal][0] == 'red':
-                signal_icon = load_image(f'{self.signal_attributes_low[signal][0]}_circle.png')
-
-            # Unexpected Case
-            else:
-                print(signal)
-                continue
-
-            im = OffsetImage(signal_icon, zoom=.5)
-            ab = AnnotationBbox(im, self.signal_attributes_low[signal][1], boxcoords="offset points",
-                                bboxprops=dict(visible=False))
-
-            if self.signal_attributes_low[signal][3]:
-                signal_symbols.append(ab)
-
-        for signal in self.signal_attributes_high:
-            # Mainline Green/Green Case
-            if self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][
-                0] == 'green' and \
-                    self.signal_attributes_high[signal][2] == 'green':
-                signal_icon = load_image(
-                    f'{self.signal_attributes_high[signal][0]}_circle_{self.signal_attributes_high[signal][2]}_square.png',
-                    rotate_right=False)
-
-            # Mainline Green/Red Case
-            elif self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][
-                0] == 'green' and \
-                    self.signal_attributes_high[signal][2] == 'red':
-                signal_icon = load_image('red_circle_yellow_square.png', rotate_right=False)
-
-            # Mainline Red/Green Case
-            elif self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][
-                0] == 'red' and \
-                    self.signal_attributes_high[signal][2] == 'green':
-                signal_icon = load_image('red_circle_red_square.png', rotate_right=False)
-
-            # Mainline Red/Red Case
-            elif self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][
-                0] == 'red' and \
-                    self.signal_attributes_high[signal][2] == 'red':
-                signal_icon = load_image(
-                    f'{self.signal_attributes_high[signal][0]}_circle_{self.signal_attributes_high[signal][2]}_square.png',
-                    rotate_right=False)
-
-            # Yard Case - Green
-            elif self.signal_attributes_high[signal][2] == 'yard' and self.signal_attributes_high[signal][0] == 'green':
-                signal_icon = load_image(f'{self.signal_attributes_high[signal][0]}_circle.png', rotate_right=False)
-
-            # Yard Case - Red
-            elif self.signal_attributes_high[signal][2] == 'yard' and self.signal_attributes_high[signal][0] == 'red':
-                signal_icon = load_image(f'{self.signal_attributes_high[signal][0]}_circle.png', rotate_right=False)
-
-            # Unexpected Case
-            else:
-                print(signal)
-                continue
-
-            im = OffsetImage(signal_icon, zoom=.5)
-            ab = AnnotationBbox(im, self.signal_attributes_high[signal][1], boxcoords="offset points",
-                                bboxprops=dict(visible=False))
-
-            if self.signal_attributes_high[signal][3]:
-                signal_symbols.append(ab)
+        def process_signal(signal, attrs, rotate_right):
+            print(f"Processing signal: {signal}, Attributes: {attrs}")  # Debug statement
+            mapping = {
+                ('green', 'green'): f'{attrs[0]}_circle_{attrs[2]}_square.png',
+                ('green', 'red'): 'red_circle_yellow_square.png',
+                ('red', 'green'): 'red_circle_red_square.png',
+                ('red', 'red'): f'{attrs[0]}_circle_{attrs[2]}_square.png',
+                ('green', 'yard'): f'{attrs[0]}_circle.png',
+                ('red', 'yard'): f'{attrs[0]}_circle.png'
+            }
+            key = (attrs[0], attrs[2])
+            image_name = mapping.get(key)
+            if image_name:
+                signal_icon = load_and_rotate_image(image_name, rotate_right)
+                im = OffsetImage(signal_icon, zoom=.5)
+                ab = AnnotationBbox(im, attrs[1], boxcoords="offset points", bboxprops=dict(visible=False))
+                if attrs[3]:
+                    return ab
 
         fig, ax = plt.subplots(figsize=figsize)
+        signal_symbols = [ab for ab in
+                          [process_signal(s, self.signal_attributes_low[s], True) for s in self.signal_attributes_low]
+                          if ab]
+        signal_symbols += [ab for ab in [process_signal(s, self.signal_attributes_high[s], False) for s in
+                                         self.signal_attributes_high] if ab]
 
-        if signal_symbols:
-            for signal in signal_symbols:
-                ax.add_artist(signal)
+        for symbol in signal_symbols:
+            ax.add_artist(symbol)
 
         for n in self.NODES:
-            ax.plot(n.x, n.y, "o", color=n.color, ms=13, zorder=30, solid_capstyle="round")  # ms
-            if network_font_size > 0:
-                if show_switches:
-                    ax.text(n.x - n.hoffset, n.y - n.voffset, n.name, c='White',
-                            horizontalalignment="center", verticalalignment="center",
-                            zorder=30, fontsize=30)  # c, fontsize
-                else:
-                    ax.text(n.x - n.hoffset, n.y - (.25 + n.voffset), n.name, c=n.label_color,
-                            horizontalalignment="center", verticalalignment="center",
-                            zorder=3, fontsize=35)  # c, fontsize
+            ax.plot(n.x, n.y, "o", color=n.color, ms=13, zorder=30, solid_capstyle="round")
+            if network_font_size:
+                hoffset, voffset, color = n.hoffset, n.voffset, 'White' if show_switches else n.label_color
+                ax.text(n.x - hoffset, n.y - (voffset if show_switches else voffset + 0.25), n.name, c=color,
+                        ha="center", va="center", zorder=30 if show_switches else 3,
+                        fontsize=30 if show_switches else 35)
 
         for l in self.LINKS:
-            x1, y1 = l.start_node.x, l.start_node.y
-            x2, y2 = l.end_node.x, l.end_node.y
-            xmid1, ymid1 = (x1 + x2) / 2, (y1 + y2) / 2
+            x1, y1, x2, y2 = l.start_node.x, l.start_node.y, l.end_node.x, l.end_node.y
+            ax.plot([x1, x2], [y1, y2], color=l.color, lw=14, zorder=7, solid_capstyle="round")
             if show_links:
-                ax.plot([x1, x2], [y1, y2], color=l.color, lw=14, zorder=7, solid_capstyle="round")  # ms
-                ax.text(xmid1, ymid1, l.name, c=l.label_color, horizontalalignment="right", verticalalignment="top",
-                        zorder=30, fontsize=30)
-            else:
-                ax.plot([x1, x2], [y1, y2], color=l.color, lw=14, zorder=7, solid_capstyle="round")  # ms
+                ax.text((x1 + x2) / 2, (y1 + y2) / 2, l.name, c=l.label_color, ha="right", va="top", zorder=30,
+                        fontsize=30)
 
-        maxx = max([n.x for n in self.NODES])
-        minx = min([n.x for n in self.NODES])
-        maxy = max([n.y for n in self.NODES]) + 2
-        miny = min([n.y for n in self.NODES])
-        buffx, buffy = (maxx - minx) / 10, (maxy - miny) / 10
-
-        if buffx == 0:
-            buffx = buffy
-        if buffy == 0:
-            buffy = buffx
+        maxx, minx, maxy, miny = max(n.x for n in self.NODES), min(n.x for n in self.NODES), max(
+            n.y for n in self.NODES) + 2, min(n.y for n in self.NODES)
+        buff = max(buffx := (maxx - minx) / 10, buffy := (maxy - miny) / 10)
 
         plt.style.use('dark_background')
-
-        ax.spines['bottom'].set_color('black')
-        ax.spines['top'].set_color('black')
-        ax.spines['right'].set_color('black')
-        ax.spines['left'].set_color('black')
-
-        ax.tick_params(which='both', colors='black')
-
-        font1 = {'family': 'serif', 'color': 'Yellow', 'size': 40}
-        ax.set_title(self.title, fontdict=font1, pad=40)
+        ax.set_xlim([minx - buff, maxx + buff])
+        ax.set_ylim([0, maxy + buff])
+        ax.set_title(self.title, fontdict={'family': 'serif', 'color': 'Yellow', 'size': 40}, pad=40)
         ax.set_facecolor('black')
+        ax.tick_params(which='both', colors='black')
+        for sp in ax.spines.values(): sp.set_color('black')
 
         for x_value in self.breaks:
-            ax.vlines(x=x_value, ymin=0, ymax=16.5, color='black', label='AF-Start', linewidth=15, zorder=9)
-            ax.vlines(x=x_value, ymin=0, ymax=16.5, color='black', label='AF-End', linewidth=15, zorder=9)
-
-        ax.set_xlim([minx - buffx, maxx + buffx])
-        ax.set_ylim([0, maxy + buffy])
+            ax.vlines(x=x_value, ymin=0, ymax=16.5, color='black', linewidth=15, zorder=9)
 
         fig.tight_layout()
-
         return fig, ax
 
     def copy(self):
