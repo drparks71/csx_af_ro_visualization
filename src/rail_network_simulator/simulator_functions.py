@@ -1967,31 +1967,31 @@ class World:
             if self.signal_attributes_low[signal][2] != 'yard' and self.signal_attributes_low[signal][0] == 'green' and \
                     self.signal_attributes_low[signal][2] == 'green':
                 signal_icon = np.rot90(plt.imread(
-                    f'./railroad icons/{self.signal_attributes_low[signal][0]}_circle_{self.signal_attributes_low[signal][2]}_square.png'))
+                    f'railroad icons/{self.signal_attributes_low[signal][0]}_circle_{self.signal_attributes_low[signal][2]}_square.png'))
 
             # Mainline Green/Red Case
             elif self.signal_attributes_low[signal][2] != 'yard' and self.signal_attributes_low[signal][0] == 'green' and \
                     self.signal_attributes_low[signal][2] == 'red':
-                signal_icon = np.rot90(plt.imread(f'./railroad icons/red_circle_yellow_square.png'))
+                signal_icon = np.rot90(plt.imread(f'railroad icons/red_circle_yellow_square.png'))
 
             # Mainline Red/Green Case
             elif self.signal_attributes_low[signal][2] != 'yard' and self.signal_attributes_low[signal][0] == 'red' and \
                     self.signal_attributes_low[signal][2] == 'green':
-                signal_icon = np.rot90(plt.imread(f'./railroad icons/red_circle_red_square.png'))
+                signal_icon = np.rot90(plt.imread(f'railroad icons/red_circle_red_square.png'))
 
             # Mainline Red/Red Case
             elif self.signal_attributes_low[signal][2] != 'yard' and self.signal_attributes_low[signal][0] == 'red' and \
                     self.signal_attributes_low[signal][2] == 'red':
                 signal_icon = np.rot90(plt.imread(
-                    f'./railroad icons/{self.signal_attributes_low[signal][0]}_circle_{self.signal_attributes_low[signal][2]}_square.png'))
+                    f'railroad icons/{self.signal_attributes_low[signal][0]}_circle_{self.signal_attributes_low[signal][2]}_square.png'))
 
             # Yard Case - Green
             elif self.signal_attributes_low[signal][2] == 'yard' and self.signal_attributes_low[signal][0] == 'green':
-                signal_icon = np.rot90(plt.imread(f'./railroad icons/{self.signal_attributes_low[signal][0]}_circle.png'))
+                signal_icon = np.rot90(plt.imread(f'railroad icons/{self.signal_attributes_low[signal][0]}_circle.png'))
 
             # Yard Case - Red
             elif self.signal_attributes_low[signal][2] == 'yard' and self.signal_attributes_low[signal][0] == 'red':
-                signal_icon = np.rot90(plt.imread(f'./railroad icons/{self.signal_attributes_low[signal][0]}_circle.png'))
+                signal_icon = np.rot90(plt.imread(f'railroad icons/{self.signal_attributes_low[signal][0]}_circle.png'))
 
             # Unexpected Case
             else:
@@ -2009,28 +2009,28 @@ class World:
             if self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][0] == 'green' and \
                     self.signal_attributes_high[signal][2] == 'green':
                 signal_icon = np.rot90(plt.imread(
-                    f'./railroad icons/{self.signal_attributes_high[signal][0]}_circle_{self.signal_attributes_high[signal][2]}_square.png'), 3)
+                    f'railroad icons/{self.signal_attributes_high[signal][0]}_circle_{self.signal_attributes_high[signal][2]}_square.png'), 3)
 
             # Mainline Green/Red Case
             elif self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][0] == 'green' and self.signal_attributes_high[signal][2] == 'red':
-                signal_icon = np.rot90(plt.imread(f'./railroad icons/red_circle_yellow_square.png'), 3)
+                signal_icon = np.rot90(plt.imread(f'railroad icons/red_circle_yellow_square.png'), 3)
 
             # Mainline Red/Green Case
             elif self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][0] == 'red' and self.signal_attributes_high[signal][2] == 'green':
-                signal_icon = np.rot90(plt.imread(f'./railroad icons/red_circle_red_square.png'), 3)
+                signal_icon = np.rot90(plt.imread(f'railroad icons/red_circle_red_square.png'), 3)
 
             # Mainline Red/Red Case
             elif self.signal_attributes_high[signal][2] != 'yard' and self.signal_attributes_high[signal][0] == 'red' and self.signal_attributes_high[signal][2] == 'red':
                 signal_icon = np.rot90(plt.imread(
-                    f'./railroad icons/{self.signal_attributes_high[signal][0]}_circle_{self.signal_attributes_high[signal][2]}_square.png'), 3)
+                    f'railroad icons/{self.signal_attributes_high[signal][0]}_circle_{self.signal_attributes_high[signal][2]}_square.png'), 3)
 
             # Yard Case - Green
             elif self.signal_attributes_high[signal][2] == 'yard' and self.signal_attributes_high[signal][0] == 'green':
-                signal_icon = np.rot90(plt.imread(f'./railroad icons/{self.signal_attributes_high[signal][0]}_circle.png'), 3)
+                signal_icon = np.rot90(plt.imread(f'railroad icons/{self.signal_attributes_high[signal][0]}_circle.png'), 3)
 
             # Yard Case - Red
             elif self.signal_attributes_high[signal][2] == 'yard' and self.signal_attributes_high[signal][0] == 'red':
-                signal_icon = np.rot90(plt.imread(f'./railroad icons/{self.signal_attributes_high[signal][0]}_circle.png'), 3)
+                signal_icon = np.rot90(plt.imread(f'railroad icons/{self.signal_attributes_high[signal][0]}_circle.png'), 3)
 
             # Unexpected Case
             else:
