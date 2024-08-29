@@ -49,21 +49,25 @@ def existing_conditions():
     TRV.NODES[91].name = 'NS Yard'
 
     # Get rid of signals that don't exist yet
-    TRV.signal_attributes_low['Proposed 2'][3] = False
-    TRV.signal_attributes_low['Proposed 3'][3] = False
-    TRV.signal_attributes_low['NS Horn Track 1'][3] = False
-    TRV.signal_attributes_low['NS Horn Track 2'][3] = False
-    TRV.signal_attributes_low['slaters_Proposed 2_8'][3] = False
-    TRV.signal_attributes_low['slaters_Proposed 3_9'][3] = False
+    TRV.signal_attributes_low['RO_Proposed 2'][3] = True
+    TRV.signal_attributes_low['RO_Existing 1'][3] = True
+    TRV.signal_attributes_low['RO_Proposed 3'][3] = True
+    TRV.signal_attributes_low['RO_Temp Proposed 0'][3] = False
+    TRV.signal_attributes_low['RO_Proposed 2'][3] = False
+    TRV.signal_attributes_low['RO_Proposed 3'][3] = False
+    TRV.signal_attributes_low['AF_NS Horn Track 1'][3] = False
+    TRV.signal_attributes_low['AF_NS Horn Track 2'][3] = False
+    TRV.signal_attributes_low['slaters_Proposed 2_1'][3] = False
+    TRV.signal_attributes_low['slaters_Proposed 3_1'][3] = False
+    TRV.signal_attributes_low['RO_Temp Proposed 0'][3] = False
 
-    TRV.signal_attributes_high['Main 2_2'][3] = False
-    TRV.signal_attributes_high['Main 3_2'][3] = False
-    TRV.signal_attributes_high['slaters_Proposed 2_3'][3] = False
-    TRV.signal_attributes_high['slaters_Proposed 3_4'][3] = False
+    TRV.signal_attributes_high['AF_Main 2_2'][3] = False
+    TRV.signal_attributes_high['AF_Main 3_2'][3] = False
+    TRV.signal_attributes_high['slaters_Proposed 2_0'][3] = False
+    TRV.signal_attributes_high['slaters_Proposed 3_0'][3] = False
 
 
 def phase_1_stage_1a():
-    # //TODO - Switch to list method of assigning these when possible
     # Reset the lines to all be green
     for link in TRV.LINKS:
         link.color = 'green'
@@ -105,117 +109,34 @@ def phase_1_stage_1a():
     TRV.NODES[40].name = 'NS Horn 1'
     TRV.NODES[91].name = 'NS Yard'
 
-    TRV.LINKS[3].color = 'red'
-    TRV.LINKS[4].color = 'red'
-    TRV.LINKS[7].color = 'red'
-    TRV.LINKS[25].color = 'red'
-    TRV.LINKS[36].color = 'red'
-    TRV.LINKS[24].color = 'red'
-    TRV.LINKS[23].color = 'red'
-    TRV.LINKS[22].color = 'red'
-    TRV.LINKS[69].color = 'red'
-    TRV.LINKS[66].color = 'red'
-    TRV.LINKS[67].color = 'red'
-    TRV.LINKS[68].color = 'red'
-    TRV.LINKS[93].color = 'red'
-    TRV.LINKS[63].color = 'red'
-    TRV.LINKS[94].color = 'red'
-    TRV.LINKS[76].color = 'red'
-    TRV.LINKS[77].color = 'red'
-    TRV.LINKS[78].color = 'red'
-    TRV.LINKS[64].color = 'red'
-    TRV.LINKS[65].color = 'red'
-    TRV.LINKS[112].color = 'red'
-
-    TRV.NODES[1].color = 'red'
-    TRV.NODES[2].color = 'red'
-    TRV.NODES[5].color = 'red'
-    TRV.NODES[12].color = 'red'
-    TRV.NODES[30].color = 'red'
-    TRV.NODES[34].color = 'red'
-    TRV.NODES[17].color = 'red'
-    TRV.NODES[31].color = 'red'
-    TRV.NODES[72].color = 'red'
-    TRV.NODES[34].color = 'red'
-    TRV.NODES[86].color = 'red'
-    TRV.NODES[69].color = 'red'
-    TRV.NODES[65].color = 'red'
-    TRV.NODES[63].color = 'red'
-    TRV.NODES[59].color = 'red'
-    TRV.NODES[57].color = 'red'
-    TRV.NODES[56].color = 'red'
-    TRV.NODES[51].color = 'red'
-    TRV.NODES[50].color = 'red'
-    TRV.NODES[49].color = 'red'
-    TRV.NODES[40].color = 'red'
-
-
-    # Get rid of signals that don't exist yet
-    TRV.signal_attributes_low['Proposed 2'][3] = False
-    TRV.signal_attributes_low['Proposed 3'][3] = False
-    TRV.signal_attributes_low['NS Horn Track 1'][3] = False
-    TRV.signal_attributes_low['NS Horn Track 2'][3] = False
-    TRV.signal_attributes_low['slaters_Proposed 2_8'][3] = False
-    TRV.signal_attributes_low['slaters_Proposed 3_9'][3] = False
-
-    TRV.signal_attributes_high['Main 2_2'][3] = False
-    TRV.signal_attributes_high['Main 3_2'][3] = False
-    TRV.signal_attributes_high['slaters_Proposed 2_3'][3] = False
-    TRV.signal_attributes_high['slaters_Proposed 3_4'][3] = False
-
-
-def phase_1_stage_1b():
-    # Reset the lines to all be green
-    for link in TRV.LINKS:
-        link.color = 'green'
-    for node in TRV.NODES:
-        node.color = 'green'
-
-    red_nodes = [2, 3, 6, 7, 14, 15, 19, 30, 31, 34, 72]
-
-    for x in red_nodes:
-        TRV.NODES[x].color = 'red'
-
-    # New Tracks
-    red_links = [7, 9, 10, 11, 12, 13, 16, 22, 23, 24, 25, 36, 69, 109]
+    red_links = [3, 4, 7, 25, 36, 24, 23, 22, 69, 66, 67, 68, 93, 63, 94, 76, 77, 78, 64, 65, 112]
 
     for x in red_links:
         TRV.LINKS[x].color = 'red'
 
-    # Hide tracks unavailable to trains
-    black_links = [7, 8, 18, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 48,
-                   49, 50, 70, 71, 72, 72, 73, 74, 75, 79, 80, 100, 102, 103, 104, 105, 106, 107, 108, 110, 110,
-                   111, 112, 113, 114]
+    red_nodes = [1, 2, 5, 12, 30, 34, 17, 31, 72, 34, 86, 69, 65, 63, 59, 57, 56, 51, 50, 49, 40]
 
-    for x in black_links:
-        TRV.LINKS[x].color = (0,0,0,0)
-
-    black_nodes = [1, 17, 18, 23, 24, 27, 28, 29, 35, 36, 37, 38, 39, 48, 52, 55, 58, 67, 68, 70, 73, 74, 93, 94,
-                   95, 96, 97, 99, 101, 102, 104]
-
-    for x in black_nodes:
-        TRV.NODES[x].color = (0,0,0,0)
+    for x in red_nodes:
+        TRV.NODES[x].color = 'red'
 
 
-    # AF Names
-    TRV.NODES[40].name = 'NS Horn 1'
-    TRV.NODES[41].name = 'Main 4'
-    TRV.NODES[42].name = 'Main 3'
-    TRV.NODES[43].name = 'Main 2'
-    TRV.NODES[45].name = 'Main 1'
-    TRV.NODES[91].name = 'NS Yard'
+    # Get rid of signals that don't exist yet
+    TRV.signal_attributes_low['RO_Temp Proposed 0'][3] = False
+    TRV.signal_attributes_low['RO_Proposed 2'][3] = False
+    TRV.signal_attributes_low['RO_Proposed 3'][3] = False
+    TRV.signal_attributes_low['AF_NS Horn Track 1'][3] = False
+    TRV.signal_attributes_low['AF_NS Horn Track 2'][3] = False
+    TRV.signal_attributes_low['slaters_Proposed 2_1'][3] = False
+    TRV.signal_attributes_low['slaters_Proposed 3_1'][3] = False
+    TRV.signal_attributes_low['RO_Temp Proposed 0'][3] = False
 
-    # RO Names
-    TRV.NODES[4].name = 'Main 2'
-    TRV.NODES[5].name = 'Main 3'
-
-    # RO to Slaters Names
-    TRV.NODES[77].name = 'Main 1'
-    TRV.NODES[16].name = 'Main 2'
-    TRV.NODES[17].name = 'Main 3'
+    TRV.signal_attributes_high['AF_Main 2_2'][3] = False
+    TRV.signal_attributes_high['AF_Main 3_2'][3] = False
+    TRV.signal_attributes_high['slaters_Proposed 2_0'][3] = False
+    TRV.signal_attributes_high['slaters_Proposed 3_0'][3] = False
 
 
-def phase_1_stage_1c():
+def phase_1_stage_1b():
     # Reset the lines to all be green
     for link in TRV.LINKS:
         link.color = 'green'
@@ -228,14 +149,14 @@ def phase_1_stage_1c():
         TRV.NODES[x].color = 'red'
 
     # New Tracks
-    red_links = [7, 9, 10, 11, 12, 13, 16, 22, 23, 24, 25, 33, 36, 69, 102, 103, 104, 105, 106, 107, 109]
+    red_links = [7, 9, 10, 11, 12, 13, 16, 22, 23, 24, 25, 33, 36, 69, 102, 105, 106, 107, 109]
 
     for x in red_links:
         TRV.LINKS[x].color = 'red'
 
     # Hide tracks unavailable to trains
     black_links = [7, 8, 18, 26, 27, 28, 29, 30, 31, 32, 34, 35, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 48,
-                   49, 50, 70, 71, 72, 72, 73, 74, 75, 79, 80, 100, 108, 110, 110, 111, 112, 113, 114]
+                   49, 50, 70, 71, 72, 72, 73, 74, 75, 79, 80, 100, 103, 104, 108, 110, 110, 111, 112, 113, 114]
 
     for x in black_links:
         TRV.LINKS[x].color = (0,0,0,0)
@@ -244,7 +165,7 @@ def phase_1_stage_1c():
                    94, 95, 96, 97, 99, 101]
 
     for x in black_nodes:
-        TRV.NODES[x].color = (0, 0, 0, 0)
+        TRV.NODES[x].color = (0,0,0,0)
 
 
     # AF Names
@@ -264,6 +185,23 @@ def phase_1_stage_1c():
     TRV.NODES[16].name = 'Main 2'
     TRV.NODES[17].name = 'Main 3'
 
+    # Get rid of signals that don't exist yet
+    TRV.signal_attributes_low['RO_Temp Proposed 0'][3] = True
+    TRV.signal_attributes_low['RO_Proposed 2'][3] = True
+    TRV.signal_attributes_low['RO_Proposed 3'][3] = True
+    TRV.signal_attributes_low['AF_NS Horn Track 1'][3] = False
+    TRV.signal_attributes_low['AF_NS Horn Track 2'][3] = False
+    TRV.signal_attributes_low['slaters_Proposed 2_1'][3] = False
+    TRV.signal_attributes_low['slaters_Proposed 3_1'][3] = False
+    TRV.signal_attributes_low['RO_Existing 3'][3] = False
+
+    TRV.signal_attributes_high['slaters_Proposed 0_0'][3] = True
+    TRV.signal_attributes_high['slaters_Proposed 0_0'][3] = True
+    TRV.signal_attributes_high['AF_Main 2_2'][3] = False
+    TRV.signal_attributes_high['AF_Main 3_2'][3] = False
+    TRV.signal_attributes_high['slaters_Proposed 2_0'][3] = True
+    TRV.signal_attributes_high['slaters_Proposed 2_0'][1] = (34, 14.75)
+
 
 def phase_1_stage_2a():
     # Reset the lines to all be green
@@ -272,28 +210,27 @@ def phase_1_stage_2a():
     for node in TRV.NODES:
         node.color = 'green'
 
-    black_nodes = [1, 17, 18, 23, 24, 27, 28, 29, 35, 36, 37, 38, 39, 48, 52, 55, 58, 67, 68, 70, 73, 74, 92, 96,
+    black_nodes = [0, 1, 16, 17, 18, 23, 24, 27, 28, 29, 35, 36, 37, 38, 39, 48, 52, 55, 58, 67, 68, 70, 73, 74, 92, 96,
                    97, 101]
 
     for x in black_nodes:
         TRV.NODES[x].color = (0,0,0,0)
 
-    red_nodes = [3, 6, 7, 14, 15, 19, 20, 25, 46, 47, 75, 77, 78, 80, 93, 94, 95, 98, 99, 100, 102, 103, 104]
+    red_nodes = [13, 14, 93, 94, 95, 99, 102, 104]
 
     for x in red_nodes:
         TRV.NODES[x].color = 'red'
 
     # Hide Tracks
     black_links = [7, 18, 26, 27, 28, 29, 30, 31, 32, 34, 35, 37, 38, 39, 41, 42, 43, 44, 45, 46, 47, 48, 49,
-                   50, 53, 70, 71, 72, 73, 74, 75, 79, 80, 82, 86, 90, 99, 100, 100, 101, 103, 104, 106, 108,
-                   109, 111, 112, 113, 114]
+                   50, 70, 71, 72, 73, 74, 75, 79, 80, 99, 100, 100, 101, 103, 104, 106, 108,
+                   111, 112, 113, 114]
 
     for x in black_links:
         TRV.LINKS[x].color = (0,0,0,0)
 
     # New Tracks
-    red_links = [8, 9, 10, 11, 12, 13, 16, 17, 53, 54, 82, 83, 86, 87, 88, 89, 90, 102, 105, 106, 107, 109,
-                 110, 115]
+    red_links = [6, 10, 11, 16, 21, 102, 105, 106, 107, 110]
 
     for x in red_links:
         TRV.LINKS[x].color = 'red'
@@ -304,6 +241,21 @@ def phase_1_stage_2a():
     TRV.NODES[17].name = ''
     TRV.NODES[18].name = 'Main 2'
     TRV.NODES[19].name = 'Main 3'
+
+    # Get rid of signals that don't exist yet
+    TRV.signal_attributes_low['RO_Proposed 2'][3] = True
+    TRV.signal_attributes_low['RO_Proposed 3'][3] = True
+    TRV.signal_attributes_low['AF_NS Horn Track 1'][3] = False
+    TRV.signal_attributes_low['AF_NS Horn Track 2'][3] = False
+    TRV.signal_attributes_low['slaters_Proposed 2_1'][3] = False
+    TRV.signal_attributes_low['slaters_Proposed 3_1'][3] = False
+    TRV.signal_attributes_low['RO_Existing 2'][3] = False
+    TRV.signal_attributes_low['RO_Existing 3'][3] = False
+
+    TRV.signal_attributes_high['AF_Main 2_2'][3] = False
+    TRV.signal_attributes_high['AF_Main 3_2'][3] = False
+    TRV.signal_attributes_high['slaters_Proposed 2_0'][1] = (34, 14.75)
+    TRV.signal_attributes_high['slaters_Proposed 3_0'][3] = False
 
 
 def phase_1_stage_2b():
@@ -344,6 +296,10 @@ def phase_1_stage_2b():
     TRV.NODES[17].name = ''
     TRV.NODES[19].name = 'Main 3'
     TRV.NODES[18].name = 'Main 2'
+
+    TRV.signal_attributes_low['RO_Temp Proposed 0'][3] = True
+    TRV.signal_attributes_low['RO_Existing 2'][3] = False
+    TRV.signal_attributes_low['RO_Existing 3'][3] = False
 
 
 def phase_1_stage_3():
@@ -386,3 +342,6 @@ def phase_1_stage_3():
     TRV.NODES[19].name = 'Main 3'
     TRV.NODES[18].name = 'Main 2'
 
+    TRV.signal_attributes_low['RO_Temp Proposed 0'][3] = True
+    TRV.signal_attributes_low['RO_Existing 2'][3] = False
+    TRV.signal_attributes_low['RO_Existing 3'][3] = False

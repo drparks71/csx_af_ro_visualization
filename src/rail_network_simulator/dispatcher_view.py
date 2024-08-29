@@ -1,7 +1,7 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 from network_definitions import TRV
-from phasing import existing_conditions, phase_1_stage_1a, phase_1_stage_1b, phase_1_stage_1c
+from phasing import existing_conditions, phase_1_stage_1a, phase_1_stage_1b
 from phasing import phase_1_stage_2a, phase_1_stage_2b, phase_1_stage_3
 
 
@@ -17,8 +17,7 @@ def main():
         unsafe_allow_html=True)
 
     # Define Phase options
-    phase_1_options = ["None", "Stage 1A", "Stage 1B", "Stage 1C - Temporary Outages As-needed",
-                       "Stage 2A - Temporary Outages As-needed", "Stage 2B", "Stage 3"]
+    phase_1_options = ["None", "Stage 1A", "Stage 1B", "Stage 2A - Temporary Outages As-needed", "Stage 2B", "Stage 3"]
     phase_2_options = ["None", "Stage 1", "Stage 2"]
 
     # Layout the phases in columns
@@ -36,7 +35,6 @@ def main():
     phase_1_stages = {
         "Stage 1A": phase_1_stage_1a,
         "Stage 1B": phase_1_stage_1b,
-        "Stage 1C - Temporary Outages As-needed": phase_1_stage_1c,
         "Stage 2A - Temporary Outages As-needed": phase_1_stage_2a,
         "Stage 2B": phase_1_stage_2b,
         "Stage 3": phase_1_stage_3,

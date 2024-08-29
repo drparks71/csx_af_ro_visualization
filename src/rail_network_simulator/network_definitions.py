@@ -283,27 +283,28 @@ TRV.addLink("L115", "N103", "N75", length=50)
 # Determine if the Routes are open or closed on either side of RO interlocking
 TRV.signal_attributes_high = {
     # Origin Values (color, position, opp end color)
-    'Existing 2': [TRV.LINKS[0].color, (3, 10.75), TRV.LINKS[2].color, True],
-    'Existing 3': [TRV.LINKS[3].color, (3, 8.75), TRV.LINKS[7].color, True],
+    'RO_Existing 2': [TRV.LINKS[0].color, (3, 10.75), TRV.LINKS[2].color, True],
+    'RO_Existing 3': [TRV.LINKS[3].color, (3, 8.75), TRV.LINKS[7].color, True],
 }
 
 TRV.signal_attributes_low = {
     # Destinations
-    'Existing 1': [TRV.LINKS[2].color, (22.5, 14.75), TRV.LINKS[0].color, True],
-    'Proposed 0': [TRV.LINKS[2].color, (22.5, 12.75), TRV.LINKS[0].color, True],
-    'Proposed 1': [TRV.LINKS[7].color, (22.5, 10.75), TRV.LINKS[3].color, True],
-    'Proposed 2': [TRV.LINKS[11].color, (22.5, 8.75), TRV.LINKS[3].color, True],
-    'Proposed 3': [TRV.LINKS[13].color, (22.5, 6.75), TRV.LINKS[3].color, True]
+    'RO_Temp Proposed 0': [TRV.LINKS[2].color, (22.5, 16.75), TRV.LINKS[0].color, True],
+    'RO_Existing 1': [TRV.LINKS[2].color, (22.5, 14.75), TRV.LINKS[0].color, True],
+    'RO_Existing 2': [TRV.LINKS[2].color, (22.5, 12.75), TRV.LINKS[0].color, True],
+    'RO_Existing 3': [TRV.LINKS[7].color, (22.5, 10.75), TRV.LINKS[3].color, True],
+    'RO_Proposed 2': [TRV.LINKS[11].color, (22.5, 8.75), TRV.LINKS[3].color, True],
+    'RO_Proposed 3': [TRV.LINKS[13].color, (22.5, 6.75), TRV.LINKS[3].color, True]
 }
 
 # Determine if the Routes are open or closed on either side of Slater's interlocking
 slaters_signals_high = {
     # Slaters RO (color, position, opp end color)
     'slaters_Proposed 0_0': [TRV.LINKS[86].color, (34, 12.75), TRV.LINKS[17].color, True],
-    'slaters_Proposed 0_1': [TRV.LINKS[22].color, (34, 10.75), TRV.LINKS[19].color, True],
-    'slaters_Proposed 1_2': [TRV.LINKS[26].color, (34, 8.75), TRV.LINKS[23].color, True],
-    'slaters_Proposed 2_3': [TRV.LINKS[30].color, (34, 6.75), TRV.LINKS[27].color, True],
-    'slaters_Proposed 3_4': [TRV.LINKS[33].color, (34, 4.75), TRV.LINKS[31].color, True]
+    'slaters_Proposed 0_2': [TRV.LINKS[22].color, (34, 10.75), TRV.LINKS[19].color, True],
+    'slaters_Proposed 1_0': [TRV.LINKS[26].color, (34, 8.75), TRV.LINKS[23].color, True],
+    'slaters_Proposed 2_0': [TRV.LINKS[30].color, (34, 6.75), TRV.LINKS[27].color, True],
+    'slaters_Proposed 3_0': [TRV.LINKS[33].color, (34, 4.75), TRV.LINKS[31].color, True]
 }
 
 TRV.signal_attributes_high.update(slaters_signals_high)
@@ -311,10 +312,10 @@ TRV.signal_attributes_high.update(slaters_signals_high)
 slaters_signals_low = {
     # AF to Slaters
     'slaters_OOS_NS_5': [TRV.LINKS[17].color, (54.5, 14.75), TRV.LINKS[86].color, True],
-    'slaters_Proposed 0_6': [TRV.LINKS[19].color, (54.5, 12.75), TRV.LINKS[22].color, True],
-    'slaters_Proposed 1_7': [TRV.LINKS[23].color, (54.5, 10.75), TRV.LINKS[26].color, True],
-    'slaters_Proposed 2_8': [TRV.LINKS[27].color, (54.5, 8.75), TRV.LINKS[30].color, True],
-    'slaters_Proposed 3_9': [TRV.LINKS[31].color, (54.5, 6.75), TRV.LINKS[33].color, True]
+    'slaters_Proposed 0_1': [TRV.LINKS[19].color, (54.5, 12.75), TRV.LINKS[22].color, True],
+    'slaters_Proposed 1_1': [TRV.LINKS[23].color, (54.5, 10.75), TRV.LINKS[26].color, True],
+    'slaters_Proposed 2_1': [TRV.LINKS[27].color, (54.5, 8.75), TRV.LINKS[30].color, True],
+    'slaters_Proposed 3_1': [TRV.LINKS[31].color, (54.5, 6.75), TRV.LINKS[33].color, True]
 }
 
 TRV.signal_attributes_low.update(slaters_signals_low)
@@ -322,23 +323,23 @@ TRV.signal_attributes_low.update(slaters_signals_low)
 # Determine if the Routes are open or closed on either side of AF interlocking
 AF_signals_low = {
     # Origin Values (color, position)
-    'yard': [TRV.LINKS[98].color, (85, 16.75), 'yard', True],
-    'Main 0_1': [TRV.LINKS[53].color, (85, 14.75), TRV.LINKS[52].color, True],
-    'Main 1_1': [TRV.LINKS[56].color, (85, 12.75), TRV.LINKS[62].color, True],
-    'Main 2_1': [TRV.LINKS[63].color, (85, 10.75), TRV.LINKS[70].color, True],
-    'Main 3_1': [TRV.LINKS[71].color, (85, 8.75), 'yard', True],
-    'NS Horn Track 3': [TRV.LINKS[77].color, (85, 6.75), 'yard', True],
-    'NS Horn Track 2': [TRV.LINKS[51].color, (85, 4.5), 'yard', True],
-    'NS Horn Track 1': [TRV.LINKS[49].color, (85, 2), 'yard', True]
+    'AF_yard': [TRV.LINKS[98].color, (85, 16.75), 'yard', True],
+    'AF_Main 0_1': [TRV.LINKS[53].color, (85, 14.75), TRV.LINKS[52].color, True],
+    'AF_Main 1_1': [TRV.LINKS[56].color, (85, 12.75), TRV.LINKS[62].color, True],
+    'AF_Main 2_1': [TRV.LINKS[63].color, (85, 10.75), TRV.LINKS[70].color, True],
+    'AF_Main 3_1': [TRV.LINKS[71].color, (85, 8.75), 'yard', True],
+    'AF_NS Horn Track 3': [TRV.LINKS[77].color, (85, 6.75), 'yard', True],
+    'AF_NS Horn Track 2': [TRV.LINKS[51].color, (85, 4.5), 'yard', True],
+    'AF_NS Horn Track 1': [TRV.LINKS[49].color, (85, 2), 'yard', True]
 }
 
 AF_signals_low_high = {
     # Destinations
-    'Setoff Track': [TRV.LINKS[55].color, (63, 12.75), TRV.LINKS[61].color, True],
-    'Main 0_2': [TRV.LINKS[62].color, (63, 10.75), TRV.LINKS[56].color, True],
-    'Main 1_2': [TRV.LINKS[70].color, (63, 8.75), TRV.LINKS[63].color, True],
-    'Main 2_2': [TRV.LINKS[76].color, (63, 6.75), TRV.LINKS[71].color, True],
-    'Main 3_2': [TRV.LINKS[80].color, (63, 4.75), TRV.LINKS[77].color, True]
+    'AF_Setoff Track': [TRV.LINKS[55].color, (63, 12.75), TRV.LINKS[61].color, True],
+    'AF_Main 0_2': [TRV.LINKS[62].color, (63, 10.75), TRV.LINKS[56].color, True],
+    'AF_Main 1_2': [TRV.LINKS[70].color, (63, 8.75), TRV.LINKS[63].color, True],
+    'AF_Main 2_2': [TRV.LINKS[76].color, (63, 6.75), TRV.LINKS[71].color, True],
+    'AF_Main 3_2': [TRV.LINKS[80].color, (63, 4.75), TRV.LINKS[77].color, True]
 }
 
 TRV.signal_attributes_low.update(AF_signals_low)
