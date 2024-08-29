@@ -171,7 +171,7 @@ def phase_1_stage_1b():
     for node in TRV.NODES:
         node.color = 'green'
 
-    red_nodes = [2, 3, 6, 7, 14, 15, 30, 31, 34, 72]
+    red_nodes = [2, 3, 6, 7, 14, 15, 19, 30, 31, 34, 72]
 
     for x in red_nodes:
         TRV.NODES[x].color = 'red'
