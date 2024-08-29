@@ -278,7 +278,7 @@ def phase_1_stage_2a():
     for x in black_nodes:
         TRV.NODES[x].color = (0,0,0,0)
 
-    red_nodes = [3, 6, 7, 15, 19, 20, 25, 46, 47, 75, 77, 78, 80, 93, 94, 95, 98, 99, 100, 102, 103, 104]
+    red_nodes = [3, 6, 7, 14, 15, 19, 20, 25, 46, 47, 75, 77, 78, 80, 93, 94, 95, 98, 99, 100, 102, 103, 104]
 
     for x in red_nodes:
         TRV.NODES[x].color = 'red'

@@ -63,7 +63,7 @@ def main():
     st.pyplot(fig=fig)
 
     # # (For Debugging)
-    # fig = TRV.show_network(figsize=(120, 30), show_links=True, show_switches=True)
+    # fig, ax = TRV.show_network(figsize=(120, 30), show_links=True, show_switches=True)
     # fig.show()
 
 
