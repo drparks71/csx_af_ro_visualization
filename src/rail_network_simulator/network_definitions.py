@@ -1,3 +1,5 @@
+from matplotlib.pyplot import xlabel
+
 from simulator_functions import *
 
 # Create the World Object
@@ -35,10 +37,10 @@ TRV.addNode("N15", 8, 8)
 # ======================================= Slaters Lane - Definitions ==================================================
 
 # Define Southern (Low MP) Origins
-TRV.addNode("N16", 30, 12, label_color='white', voffset=.7, hoffset=1)        # RO-Slaters Main 0
-TRV.addNode("N17", 30, 10, label_color='white', voffset=.7, hoffset=1)        # RO-Slaters Main 1
-TRV.addNode("N18", 30, 8, label_color='white', voffset=.7, hoffset=1)         # RO-Slaters Main 2
-TRV.addNode("N19", 30, 6, label_color='white', voffset=.7, hoffset=1)         # RO-Slaters Main 3
+TRV.addNode("N16", 30, 12, label_color='white', voffset=.7, hoffset=1)  # RO-Slaters Main 0
+TRV.addNode("N17", 30, 10, label_color='white', voffset=.7, hoffset=1)  # RO-Slaters Main 1
+TRV.addNode("N18", 30, 8, label_color='white', voffset=.7, hoffset=1.7)  # RO-Slaters Main 2
+TRV.addNode("N19", 30, 6, label_color='white', voffset=.7, hoffset=1.7)  # RO-Slaters Main 3
 
 # Define Northern (High MP) Origins
 TRV.addNode("N20", 58.5, 14)                                                   # OOS_NS
@@ -168,7 +170,7 @@ TRV.addLink("L21", "N33", "N16", length=50)                        # 21
 TRV.addLink("L22", "N22", "N31", length=50)                        # 22
 TRV.addLink("L23", "N31", "N30", length=50)                        # 23
 TRV.addLink("L24", "N30", "N34", length=50)                        # 24
-TRV.addLink("L25", "N34", "N2", length=50)                        # 25
+TRV.addLink("L25", "N34", "N2", length=50)  # 25
 TRV.addLink("L26", "N23", "N28", length=50)                        # 26
 TRV.addLink("L27", "N28", "N29", length=50)                        # 27
 TRV.addLink("L28", "N29", "N35", length=50)                        # 28
@@ -193,7 +195,7 @@ TRV.addLink("L41", "N55", "N56", length=50)                        # 41
 TRV.addLink("L42", "N57", "N58", length=50)                        # 42
 TRV.addLink("L43", "N59", "N61", length=50)                        # 43
 TRV.addLink("L44", "N62", "N63", length=50)                        # 44
-TRV.addLink("L45", "N65", "N66", length=50)                        # 45
+TRV.addLink("L45", "N65", "N66", length=50, voffset=.2)  # 45
 TRV.addLink("L46", "N67", "N68", length=50)                        # 46
 TRV.addLink("L47", "N69", "N70", length=50)                        # 47
 

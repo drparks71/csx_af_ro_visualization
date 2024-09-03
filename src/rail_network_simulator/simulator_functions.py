@@ -262,7 +262,7 @@ class Link:
 
     def __init__(self, W, name, start_node, end_node, length, free_flow_speed=20, jam_density=0.2,
                  jam_density_per_lane=None, number_of_lanes=1, merge_priority=1, signal_group=0, capacity_out=None,
-                 capacity_in=None, eular_dx=None, attribute=None, auto_rename=False):
+                 capacity_in=None, eular_dx=None, attribute=None, auto_rename=False, voffset=0, hoffset=0):
         """
         Create a link
 
@@ -392,6 +392,8 @@ class Link:
         # linkLength
         self.length = length
         self.label_color = 'white'
+        self.voffset = voffset
+        self.hoffset = hoffset
 
         # NumberOfLanes
         self.lanes = int(number_of_lanes)
@@ -2010,8 +2012,9 @@ class World:
             x1, y1, x2, y2 = l.start_node.x, l.start_node.y, l.end_node.x, l.end_node.y
             ax.plot([x1, x2], [y1, y2], color=l.color, lw=14, zorder=7, solid_capstyle="round")
             if show_links:
-                ax.text((x1 + x2) / 2, (y1 + y2) / 2, l.name, c=l.label_color, ha="right", va="top", zorder=30,
-                        fontsize=30)
+                hoffset, voffset, color = l.hoffset, l.voffset, 'White' if show_switches else l.label_color
+                ax.text(((x1 + x2) / 2) - hoffset, ((y1 + y2) / 2) - (voffset if show_switches else voffset + 0.25),
+                        l.name, c=l.label_color, ha="right", va="top", zorder=30, fontsize=30)
 
         maxx, minx, maxy, miny = max(n.x for n in self.NODES), min(n.x for n in self.NODES), max(
             n.y for n in self.NODES) + 2, min(n.y for n in self.NODES)
