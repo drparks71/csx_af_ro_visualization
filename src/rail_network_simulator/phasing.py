@@ -370,8 +370,8 @@ def phase_1_stage_3():
     # Rename tracks to what their current names are
     TRV.NODES[4].name = 'Main 2'
     TRV.NODES[5].name = 'Main 3'
-    TRV.NODES[16].name = 'Main 2'
-    TRV.NODES[17].name = 'Main 3'
+    TRV.NODES[16].name = ''
+    TRV.NODES[17].name = ''
     TRV.NODES[18].name = 'Main 2'
     TRV.NODES[19].name = 'Main 3'
     TRV.NODES[40].name = 'NS Horn 1'
@@ -381,7 +381,7 @@ def phase_1_stage_3():
     TRV.NODES[45].name = 'Main 1'
     TRV.NODES[77].name = 'Main 1'
     TRV.NODES[91].name = 'NS Yard'
-    TRV.NODES[104].name = ''
+    TRV.NODES[104].name = 'Main 0'
 
     # TRV.NODES[104].name = 'Main 0'
     # TRV.NODES[77].name = 'Main 1'
