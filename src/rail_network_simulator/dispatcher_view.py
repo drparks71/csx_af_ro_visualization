@@ -20,7 +20,7 @@ def main():
 
     # Define Phase options
     phase_1_options = ["None", "Stage 1A", "Stage 1B", "Stage 1C", "Stage 2A", "Stage 2B", "Stage 3A", "Stage 3B"]
-    phase_2_options = ["None", "Stage 1", "Stage 2", "stage 3"]
+    phase_2_options = ["None", "Stage 1", "Stage 2", "Stage 3"]
 
     # Layout the phases in columns
     phase0, phase1, phase2, phase3 = st.columns(4)
