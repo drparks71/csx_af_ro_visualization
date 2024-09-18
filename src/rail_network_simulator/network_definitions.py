@@ -139,6 +139,9 @@ TRV.addNode("N101", 34, 8)
 TRV.addNode("N102", 28, 8)
 TRV.addNode("N103", 24, 14)
 TRV.addNode("N104", 30, 16, label_color='white', voffset=.7, hoffset=1)
+TRV.addNode("N105", 66, 14)  # Setoff_org_AF
+TRV.addNode("N106", 64, 16)  # Setoff_org_AF
+
 
 # Define Links
 TRV.addLink("L0", "N4", "N8", length=20)
@@ -279,6 +282,8 @@ TRV.addLink("L112", "N17", "N2", length=50)
 TRV.addLink("L113", "N13", "N103", length=50)
 TRV.addLink("L114", "N75", "N93", length=50)
 TRV.addLink("L115", "N103", "N75", length=50)
+TRV.addLink("L116", "N99", "N106", length=50)
+TRV.addLink("L117", "N105", "N106", length=50)
 
 
 
