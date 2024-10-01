@@ -520,8 +520,6 @@ def phase_1_stage_3b():
     # RO - Slaters
     TRV.NODES[104].name = 'Main 2'
     TRV.NODES[77].name = 'Main 3'
-    TRV.NODES[16].name = ''
-    TRV.NODES[17].name = ''
     TRV.NODES[18].name = 'Main 4'
     TRV.NODES[19].name = 'Main 5'
 
@@ -532,8 +530,10 @@ def phase_1_stage_3b():
     TRV.NODES[42].name = 'CSX #4'
     TRV.NODES[41].name = 'CSX #5'
     TRV.NODES[40].name = 'NS Horn'
-    TRV.NODES[39].name = ''
-    TRV.NODES[37].name = ''
+    TRV.NODES[39].name = ' '
+    TRV.NODES[37].name = ' '
+    TRV.NODES[16].name = ' '
+    TRV.NODES[17].name = ' '
 
     TRV.signal_attributes_low['RO_Temp Proposed 0'][3] = True
     TRV.signal_attributes_low['RO_Existing 2'][3] = False
