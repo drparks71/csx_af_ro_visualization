@@ -180,23 +180,29 @@ def phase_1_stage_1b():
     for x in black_nodes:
         TRV.NODES[x].color = (0,0,0,0)
 
-    # Rename tracks to what their current names are
+    # Pre RO
     TRV.NODES[4].name = 'Main 2'
     TRV.NODES[5].name = 'Main 3'
-    TRV.NODES[16].name = 'Main 2'
-    TRV.NODES[17].name = 'Main 3'
-    TRV.NODES[18].name = 'Main 2'
-    TRV.NODES[19].name = 'Main 3'
-    TRV.NODES[37].name = ''
-    TRV.NODES[39].name = ''
-    TRV.NODES[40].name = 'NS Horn 1'
-    TRV.NODES[41].name = 'Main 4'
-    TRV.NODES[42].name = 'Main 3'
-    TRV.NODES[43].name = 'Main 2'
-    TRV.NODES[45].name = 'Main 1'
-    TRV.NODES[77].name = 'Main 1'
-    TRV.NODES[91].name = 'NS Yard'
+
+    # RO - Slaters
     TRV.NODES[104].name = 'Main 0'
+    TRV.NODES[77].name = 'Main 2'
+    TRV.NODES[16].name = 'Main 3'
+    TRV.NODES[17].name = ''
+    TRV.NODES[18].name = 'Main 4'
+    TRV.NODES[19].name = 'Main 5'
+
+    # After Af
+    TRV.NODES[91].name = 'NS Yard'
+    TRV.NODES[45].name = 'CSX #2'
+    TRV.NODES[43].name = 'CSX #3'
+    TRV.NODES[42].name = 'CSX #4'
+    TRV.NODES[41].name = 'CSX #5'
+    TRV.NODES[40].name = 'NS Horn'
+    TRV.NODES[39].name = ''
+    TRV.NODES[37].name = ''
+
+
 
     # Get rid of signals that don't exist yet
     TRV.signal_attributes_low['RO_Temp Proposed 0'][3] = True
@@ -229,8 +235,9 @@ def phase_1_stage_1c():
     for x in black_nodes:
         TRV.NODES[x].color = (0, 0, 0, 0)
 
-    red_nodes = [2, 3, 6, 7, 13, 14, 15, 22, 72, 30, 31, 34, 40, 49, 50, 51, 56, 57, 59, 69, 65, 63, 86, 93, 94, 95, 99,
-                 102, 104, 116, 117]
+    red_nodes = [2, 3, 6, 7, 13, 14, 15, 19, 22, 72, 30, 31, 34, 40, 49, 50, 51, 56, 57, 59, 69, 65, 63, 86, 93, 94, 95,
+                 99,
+                 102, 104]
 
     for x in red_nodes:
         TRV.NODES[x].color = 'red'
@@ -250,23 +257,27 @@ def phase_1_stage_1c():
     for x in red_links:
         TRV.LINKS[x].color = 'red'
 
-    # Rename tracks to what their current names are
+    # Pre RO
     TRV.NODES[4].name = 'Main 2'
     TRV.NODES[5].name = 'Main 3'
-    TRV.NODES[16].name = ''
-    TRV.NODES[17].name = ''
-    TRV.NODES[18].name = 'Main 2'
-    TRV.NODES[19].name = 'Main 3'
-    TRV.NODES[37].name = ''
-    TRV.NODES[39].name = ''
-    TRV.NODES[40].name = 'NS Horn 1'
-    TRV.NODES[41].name = 'Main 4'
-    TRV.NODES[42].name = 'Main 3'
-    TRV.NODES[43].name = 'Main 2'
-    TRV.NODES[45].name = 'Main 1'
-    TRV.NODES[77].name = 'Main 1'
-    TRV.NODES[91].name = 'NS Yard'
+
+    # RO - Slaters
     TRV.NODES[104].name = 'Main 0'
+    TRV.NODES[77].name = 'Main 2'
+    TRV.NODES[16].name = 'Main 3'
+    TRV.NODES[17].name = ''
+    TRV.NODES[18].name = 'Main 4'
+    TRV.NODES[19].name = 'Main 5'
+
+    # After Af
+    TRV.NODES[91].name = 'NS Yard'
+    TRV.NODES[45].name = 'CSX #2'
+    TRV.NODES[43].name = 'CSX #3'
+    TRV.NODES[42].name = 'CSX #4'
+    TRV.NODES[41].name = 'CSX #5'
+    TRV.NODES[40].name = 'NS Horn'
+    TRV.NODES[39].name = ''
+    TRV.NODES[37].name = ''
 
     # Get rid of signals that don't exist yet
     TRV.signal_attributes_low['RO_Proposed 2'][3] = True
@@ -316,23 +327,27 @@ def phase_1_stage_2a():
     for x in red_links:
         TRV.LINKS[x].color = 'red'
 
-    # Rename tracks to what their current names are
+    # Pre RO
     TRV.NODES[4].name = 'Main 2'
     TRV.NODES[5].name = 'Main 3'
+
+    # RO - Slaters
+    TRV.NODES[104].name = 'Main 0'
+    TRV.NODES[77].name = 'Main 2'
     TRV.NODES[16].name = ''
     TRV.NODES[17].name = ''
-    TRV.NODES[18].name = 'Main 2'
-    TRV.NODES[19].name = 'Main 3'
-    TRV.NODES[37].name = ''
-    TRV.NODES[39].name = ''
-    TRV.NODES[40].name = 'NS Horn 1'
-    TRV.NODES[41].name = 'Main 4'
-    TRV.NODES[42].name = 'Main 3'
-    TRV.NODES[43].name = 'Main 2'
-    TRV.NODES[45].name = 'Main 1'
-    TRV.NODES[77].name = 'Main 1'
+    TRV.NODES[18].name = 'Main 4'
+    TRV.NODES[19].name = 'Main 5'
+
+    # After Af
     TRV.NODES[91].name = 'NS Yard'
-    TRV.NODES[104].name = 'Main 0'
+    TRV.NODES[45].name = 'CSX #2'
+    TRV.NODES[43].name = 'CSX #3'
+    TRV.NODES[42].name = 'CSX #4'
+    TRV.NODES[41].name = 'CSX #5'
+    TRV.NODES[40].name = 'NS Horn'
+    TRV.NODES[39].name = ''
+    TRV.NODES[37].name = ''
 
     # Get rid of signals that don't exist yet
     TRV.signal_attributes_low['RO_Proposed 2'][3] = True
@@ -382,23 +397,27 @@ def phase_1_stage_2b():
     for x in red_nodes:
         TRV.NODES[x].color = 'red'
 
-    # Rename tracks to what their current names are
+    # Pre RO
     TRV.NODES[4].name = 'Main 2'
     TRV.NODES[5].name = 'Main 3'
+
+    # RO - Slaters
+    TRV.NODES[104].name = 'Main 2'
+    TRV.NODES[77].name = 'Main 3'
     TRV.NODES[16].name = ''
     TRV.NODES[17].name = ''
-    TRV.NODES[18].name = 'Main 2'
-    TRV.NODES[19].name = 'Main 3'
-    TRV.NODES[37].name = ''
-    TRV.NODES[39].name = ''
-    TRV.NODES[40].name = 'NS Horn 1'
-    TRV.NODES[41].name = 'Main 4'
-    TRV.NODES[42].name = 'Main 3'
-    TRV.NODES[43].name = 'Main 2'
-    TRV.NODES[45].name = 'Main 1'
-    TRV.NODES[77].name = 'Main 1'
+    TRV.NODES[18].name = 'Main 4'
+    TRV.NODES[19].name = 'Main 5'
+
+    # After Af
     TRV.NODES[91].name = 'NS Yard'
-    TRV.NODES[104].name = 'Main 0'
+    TRV.NODES[45].name = 'CSX #2'
+    TRV.NODES[43].name = 'CSX #3'
+    TRV.NODES[42].name = 'CSX #4'
+    TRV.NODES[41].name = 'CSX #5'
+    TRV.NODES[40].name = 'NS Horn'
+    TRV.NODES[39].name = ''
+    TRV.NODES[37].name = ''
 
     TRV.signal_attributes_low['RO_Temp Proposed 0'][3] = True
     TRV.signal_attributes_low['RO_Existing 2'][3] = False
@@ -436,21 +455,27 @@ def phase_1_stage_3a():
     for x in red_links:
         TRV.LINKS[x].color = 'red'
 
-    # Rename tracks to what their current names are
+    # Pre RO
     TRV.NODES[4].name = 'Main 2'
     TRV.NODES[5].name = 'Main 3'
+
+    # RO - Slaters
+    TRV.NODES[104].name = 'Main 2'
+    TRV.NODES[77].name = 'Main 3'
     TRV.NODES[16].name = ''
     TRV.NODES[17].name = ''
-    TRV.NODES[18].name = 'Main 2'
-    TRV.NODES[19].name = 'Main 3'
-    TRV.NODES[40].name = 'NS Horn 1'
-    TRV.NODES[41].name = 'Main 4'
-    TRV.NODES[42].name = 'Main 3'
-    TRV.NODES[43].name = 'Main 2'
-    TRV.NODES[45].name = 'Main 1'
-    TRV.NODES[77].name = 'Main 1'
+    TRV.NODES[18].name = 'Main 4'
+    TRV.NODES[19].name = 'Main 5'
+
+    # After Af
     TRV.NODES[91].name = 'NS Yard'
-    TRV.NODES[104].name = 'Main 0'
+    TRV.NODES[45].name = 'CSX #2'
+    TRV.NODES[43].name = 'CSX #3'
+    TRV.NODES[42].name = 'CSX #4'
+    TRV.NODES[41].name = 'CSX #5'
+    TRV.NODES[40].name = 'NS Horn'
+    TRV.NODES[39].name = ''
+    TRV.NODES[37].name = ''
 
     TRV.signal_attributes_low['RO_Temp Proposed 0'][3] = True
     TRV.signal_attributes_low['RO_Existing 2'][3] = False
@@ -488,21 +513,27 @@ def phase_1_stage_3b():
     for x in red_links:
         TRV.LINKS[x].color = 'red'
 
-    # Rename tracks to what their current names are
+    # Pre RO
     TRV.NODES[4].name = 'Main 2'
     TRV.NODES[5].name = 'Main 3'
+
+    # RO - Slaters
+    TRV.NODES[104].name = 'Main 0'
+    TRV.NODES[77].name = 'Main 2'
     TRV.NODES[16].name = ''
     TRV.NODES[17].name = ''
-    TRV.NODES[18].name = 'Main 2'
-    TRV.NODES[19].name = 'Main 3'
-    TRV.NODES[40].name = 'NS Horn 1'
-    TRV.NODES[41].name = 'Main 4'
-    TRV.NODES[42].name = 'Main 3'
-    TRV.NODES[43].name = 'Main 2'
-    TRV.NODES[45].name = 'Main 1'
-    TRV.NODES[77].name = 'Main 1'
+    TRV.NODES[18].name = 'Main 4'
+    TRV.NODES[19].name = 'Main 5'
+
+    # After Af
     TRV.NODES[91].name = 'NS Yard'
-    TRV.NODES[104].name = 'Main 0'
+    TRV.NODES[45].name = 'CSX #2'
+    TRV.NODES[43].name = 'CSX #3'
+    TRV.NODES[42].name = 'CSX #4'
+    TRV.NODES[41].name = 'CSX #5'
+    TRV.NODES[40].name = 'NS Horn'
+    TRV.NODES[39].name = ''
+    TRV.NODES[37].name = ''
 
     TRV.signal_attributes_low['RO_Temp Proposed 0'][3] = True
     TRV.signal_attributes_low['RO_Existing 2'][3] = False
@@ -529,8 +560,8 @@ def phase_2_stage_1():
     for x in black_nodes:
         TRV.NODES[x].color = (0, 0, 0, 0)
 
-    red_nodes = [11, 19, 20, 25, 40, 44, 45, 46, 47, 49, 50, 51, 75, 76, 77, 78,
-                 80, 81, 83, 89, 90, 91, 92, 93, 94, 95, 98, 99, 100, 103, 104, 105, 106]
+    red_nodes = [11, 20, 25, 40, 41, 44, 45, 46, 47, 49, 50, 51, 75, 76, 77, 78,
+                 80, 81, 83, 87, 89, 90, 91, 92, 93, 94, 95, 98, 99, 100, 103, 104, 105, 106]
 
     for x in red_nodes:
         TRV.NODES[x].color = 'red'
@@ -542,21 +573,27 @@ def phase_2_stage_1():
     for x in red_links:
         TRV.LINKS[x].color = 'red'
 
-    # Rename tracks to what their current names are
+    # Pre RO
     TRV.NODES[4].name = 'Main 2'
     TRV.NODES[5].name = 'Main 3'
+
+    # RO - Slaters
+    TRV.NODES[104].name = 'Main 2'
+    TRV.NODES[77].name = 'Main 3'
     TRV.NODES[16].name = ''
     TRV.NODES[17].name = ''
-    TRV.NODES[18].name = 'Main 2'
-    TRV.NODES[19].name = 'Main 3'
-    TRV.NODES[40].name = 'NS Horn 1'
-    TRV.NODES[41].name = 'Main 4'
-    TRV.NODES[42].name = 'Main 3'
-    TRV.NODES[43].name = 'Main 2'
-    TRV.NODES[45].name = 'Main 1'
-    TRV.NODES[77].name = 'Main 1'
+    TRV.NODES[18].name = 'Main 4'
+    TRV.NODES[19].name = 'Main 5'
+
+    # After Af
     TRV.NODES[91].name = 'NS Yard'
-    TRV.NODES[104].name = 'Main 0'
+    TRV.NODES[45].name = 'CSX #2'
+    TRV.NODES[43].name = 'CSX #3'
+    TRV.NODES[42].name = 'CSX #4'
+    TRV.NODES[41].name = 'CSX #5'
+    TRV.NODES[40].name = 'NS Horn'
+    TRV.NODES[39].name = ''
+    TRV.NODES[37].name = ''
 
     TRV.signal_attributes_low['RO_Temp Proposed 0'][3] = True
     TRV.signal_attributes_low['RO_Existing 2'][3] = False
@@ -596,21 +633,27 @@ def phase_2_stage_2():
     for x in red_links:
         TRV.LINKS[x].color = 'red'
 
-    # Rename tracks to what their current names are
+    # Pre RO
     TRV.NODES[4].name = 'Main 2'
     TRV.NODES[5].name = 'Main 3'
+
+    # RO - Slaters
+    TRV.NODES[104].name = 'Main 2'
+    TRV.NODES[77].name = 'Main 3'
     TRV.NODES[16].name = ''
     TRV.NODES[17].name = ''
-    TRV.NODES[18].name = 'Main 2'
-    TRV.NODES[19].name = 'Main 3'
-    TRV.NODES[40].name = 'NS Horn 1'
-    TRV.NODES[41].name = 'Main 4'
-    TRV.NODES[42].name = 'Main 3'
-    TRV.NODES[43].name = 'Main 2'
-    TRV.NODES[45].name = 'Main 1'
-    TRV.NODES[77].name = 'Main 1'
+    TRV.NODES[18].name = 'Main 4'
+    TRV.NODES[19].name = 'Main 5'
+
+    # After Af
     TRV.NODES[91].name = 'NS Yard'
-    TRV.NODES[104].name = 'Main 0'
+    TRV.NODES[45].name = 'CSX #2'
+    TRV.NODES[43].name = 'CSX #3'
+    TRV.NODES[42].name = 'CSX #4'
+    TRV.NODES[41].name = 'CSX #5'
+    TRV.NODES[40].name = 'NS Horn'
+    TRV.NODES[39].name = ''
+    TRV.NODES[37].name = ''
 
     TRV.signal_attributes_low['RO_Temp Proposed 0'][3] = True
     TRV.signal_attributes_low['RO_Existing 2'][3] = False
@@ -650,21 +693,27 @@ def phase_2_stage_3():
     for x in red_links:
         TRV.LINKS[x].color = 'red'
 
-    # Rename tracks to what their current names are
+    # Pre RO
     TRV.NODES[4].name = 'Main 2'
     TRV.NODES[5].name = 'Main 3'
+
+    # RO - Slaters
+    TRV.NODES[104].name = 'Main 2'
+    TRV.NODES[77].name = 'Main 3'
     TRV.NODES[16].name = ''
     TRV.NODES[17].name = ''
-    TRV.NODES[18].name = 'Main 2'
-    TRV.NODES[19].name = 'Main 3'
-    TRV.NODES[40].name = 'NS Horn 1'
-    TRV.NODES[41].name = 'Main 4'
-    TRV.NODES[42].name = 'Main 3'
-    TRV.NODES[43].name = 'Main 2'
-    TRV.NODES[45].name = 'Main 1'
-    TRV.NODES[77].name = 'Main 1'
+    TRV.NODES[18].name = 'Main 4'
+    TRV.NODES[19].name = 'Main 5'
+
+    # After Af
     TRV.NODES[91].name = 'NS Yard'
-    TRV.NODES[104].name = 'Main 0'
+    TRV.NODES[45].name = 'CSX #2'
+    TRV.NODES[43].name = 'CSX #3'
+    TRV.NODES[42].name = 'CSX #4'
+    TRV.NODES[41].name = 'CSX #5'
+    TRV.NODES[40].name = 'NS Horn'
+    TRV.NODES[39].name = ''
+    TRV.NODES[37].name = ''
 
     TRV.signal_attributes_low['RO_Temp Proposed 0'][3] = True
     TRV.signal_attributes_low['RO_Existing 2'][3] = False
