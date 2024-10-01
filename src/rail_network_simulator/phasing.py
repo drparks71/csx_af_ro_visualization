@@ -496,7 +496,7 @@ def phase_1_stage_3b():
     for x in black_links:
         TRV.LINKS[x].color = (0, 0, 0, 0)
 
-    black_nodes = [1, 16, 17, 18, 23, 23, 23, 24, 26, 27, 28, 29, 35, 36, 37, 38, 39, 48, 52, 55, 58, 67, 68, 70, 73,
+    black_nodes = [1, 16, 17, 23, 23, 23, 24, 26, 27, 28, 29, 35, 36, 37, 38, 39, 48, 52, 55, 58, 67, 68, 70, 73,
                    73, 74, 96, 97, 101, 106]
 
     for x in black_nodes:
@@ -522,6 +522,8 @@ def phase_1_stage_3b():
     TRV.NODES[77].name = 'Main 3'
     TRV.NODES[18].name = 'Main 4'
     TRV.NODES[19].name = 'Main 5'
+    TRV.NODES[16].name = ''
+    TRV.NODES[17].name = ''
 
     # After Af
     TRV.NODES[91].name = 'NS Yard'
@@ -530,10 +532,8 @@ def phase_1_stage_3b():
     TRV.NODES[42].name = 'CSX #4'
     TRV.NODES[41].name = 'CSX #5'
     TRV.NODES[40].name = 'NS Horn'
-    TRV.NODES[39].name = ' '
-    TRV.NODES[37].name = ' '
-    TRV.NODES[16].name = ' '
-    TRV.NODES[17].name = ' '
+    TRV.NODES[39].name = ''
+    TRV.NODES[37].name = ''
 
     TRV.signal_attributes_low['RO_Temp Proposed 0'][3] = True
     TRV.signal_attributes_low['RO_Existing 2'][3] = False
