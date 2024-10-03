@@ -19,7 +19,8 @@ def main():
         unsafe_allow_html=True)
 
     # Define Phase options
-    phase_1_options = ["None", "Stage 1A", "Stage 1B", "Stage 1C", "Stage 2A", "Stage 2B", "Stage 3A", "Stage 3B"]
+    phase_1_options = ["None", "Stage 1A", "Stage 1B", "Stage 1C", "Stage 2A", "Stage 2B - Permanent Track Renaming",
+                       "Stage 3A", "Stage 3B"]
     phase_2_options = ["None", "Stage 1", "Stage 2", "Stage 3"]
 
     # Layout the phases in columns
@@ -39,7 +40,7 @@ def main():
         "Stage 1B": phase_1_stage_1b,
         "Stage 1C": phase_1_stage_1c,
         "Stage 2A": phase_1_stage_2a,
-        "Stage 2B": phase_1_stage_2b,
+        "Stage 2B - Permanent Track Renaming": phase_1_stage_2b,
         "Stage 3A": phase_1_stage_3a,
         "Stage 3B": phase_1_stage_3b,
     }
