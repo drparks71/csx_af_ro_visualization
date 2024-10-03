@@ -186,8 +186,8 @@ def phase_1_stage_1b():
 
     # RO - Slaters
     TRV.NODES[104].name = 'Main 0'
-    TRV.NODES[77].name = 'Main 2'
-    TRV.NODES[16].name = 'Main 3'
+    TRV.NODES[77].name = 'Main 1'
+    TRV.NODES[16].name = 'Main 2'
     TRV.NODES[17].name = ''
     TRV.NODES[18].name = 'Main 4'
     TRV.NODES[19].name = 'Main 5'
@@ -263,8 +263,8 @@ def phase_1_stage_1c():
 
     # RO - Slaters
     TRV.NODES[104].name = 'Main 0'
-    TRV.NODES[77].name = 'Main 2'
-    TRV.NODES[16].name = 'Main 3'
+    TRV.NODES[77].name = 'Main 1'
+    TRV.NODES[16].name = 'Main 2'
     TRV.NODES[17].name = ''
     TRV.NODES[18].name = 'Main 4'
     TRV.NODES[19].name = 'Main 5'
@@ -333,7 +333,7 @@ def phase_1_stage_2a():
 
     # RO - Slaters
     TRV.NODES[104].name = 'Main 0'
-    TRV.NODES[77].name = 'Main 2'
+    TRV.NODES[77].name = 'Main 1'
     TRV.NODES[16].name = ''
     TRV.NODES[17].name = ''
     TRV.NODES[18].name = 'Main 4'

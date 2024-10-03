@@ -67,9 +67,9 @@ def main():
     fig, ax = TRV.show_network(figsize=(50, 15))
     st.pyplot(fig=fig)
 
-    # (For Debugging)
-    fig, ax = TRV.show_network(figsize=(120, 30), show_links=True, show_switches=True)
-    fig.show()
+    # # (For Debugging)
+    # fig, ax = TRV.show_network(figsize=(120, 30), show_links=True, show_switches=True)
+    # fig.show()
 
 
 if __name__ == "__main__":
